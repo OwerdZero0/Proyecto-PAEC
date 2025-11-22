@@ -14,9 +14,9 @@ function setLenguaje(lang) {
 
     // ForEach para cambiar cada elemento por su texto de idioma
     elementos_texto.forEach((el) => {
-        const key = el.getAttribute("data-i18n"); //Obtenemos todos los data-i18n en key
-        const traduccion = traducciones[lang][key]; //Buscamos la traducción en el diccionario y lo guardamos
-        if (traduccion) { //Verificamos que la traducción exista
+        const key = el.getAttribute("data-i18n"); // Obtenemos todos los data-i18n en key
+        const traduccion = traducciones[lang][key]; // Buscamos la traducción en el diccionario y lo guardamos
+        if (traduccion) { // Verificamos que la traducción exista
             el.textContent = traduccion;
         }
     });
