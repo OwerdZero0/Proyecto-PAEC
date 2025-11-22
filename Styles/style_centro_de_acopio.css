@@ -1,0 +1,109 @@
+body {
+    background-color: #E1E6DB;
+}
+.titulo {
+    color: #215732;
+    font-size: 70px;
+    font-style: oblique;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+.fondo_titulo {
+    background-color: #A3BFA4;
+    border-radius: 30px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+}
+.contenedor1,
+.contenedor2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    gap: 50px;
+}
+.contenedor1 img,
+.contenedor2 img {
+width: 700px;
+height: auto;
+border-radius: 50px 10px;
+box-shadow: 10px 10px 20px 20px #6FAF5C;
+}
+.contenedor2 img {
+    box-shadow: 10px 10px 20px 20px #7A8FA1;
+}
+.fondo_informacion1 {
+    background-color: #C8E6C9;
+    box-shadow: 10px 10px 30px 5px #D8E8D1;
+    text-align: justify;
+    border-radius: 10px 30px;
+}
+.fondo_informacion2 {
+    background-color: #BBDEFB;
+    box-shadow: 10px 10px 30px 5px #C9D6E2;
+    text-align: justify;
+    border-radius: 10px 30px;
+}
+.subtitulo1,
+.subtitulo2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+}
+.subtitulo1 {
+    color: #3D7A3A;
+}
+.subtitulo2 {
+    color: #335B78;
+}
+.subtitulo1_1 {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+    color: #3D7A3A;
+}
+.informacion1,
+.informacion2 {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+.informacion1 {
+    color: #1C3929;
+}
+.informacion2 {
+    color: #1F3A4C;
+}
+.item_boton {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+}
+.item_boton span {
+    color: #1C3929;
+    font-weight: bold;
+    font-size: 40px;
+}
+a {
+    text-decoration: none;
+}
+.boton_inicio {
+    background: none;
+    border: none;
+    padding: none;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+}
+.boton_inicio img {
+    width: 100px;
+    height: auto;
+}
