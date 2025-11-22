@@ -6,7 +6,7 @@ export const centro_acopio = {
         "informacion1_1_centro_acopio": "Un centro de acopio es un lugar destinado a reunir, organizar y almacenar productos, materiales u objetos que las personas donan. Puede servir para apoyar en emergencias (como desastres naturales) o para recolectar materiales reciclables. Su función principal es recibir lo que la gente entrega y mantenerlo en orden para que pueda ser distribuido o reutilizado.",
         "informacion1_2_centro_acopio": "Un centro de acopio también funciona como un punto estratégico de organización, donde las donaciones pueden ser revisadas, clasificadas y distribuidas correctamente. Estos centros cuentan con voluntarios que ayudan a recibir los materiales y asegurarse de que estén en buen estado. Además, permiten que la ayuda llegue de manera rápida, segura y eficiente a las personas o lugares que más lo necesitan. Gracias a los centros de acopio, la comunidad puede coordinar sus esfuerzos y garantizar que los recursos se utilicen de forma adecuada y responsable.",
 
-        "subtitulo2_centro_acopio": "¿Por qué se deberia ayudar en centros de acopio?",
+        "subtitulo2_centro_acopio": "¿Por qué se debería ayudar en centros de acopio?",
         "informacion2_1_centro_acopio": "Ayudar en un centro de acopio es importante porque:",
 
         "lista1_1_centro_acopio": "Apoya a personas necesitadas en situaciones de emergencia.",

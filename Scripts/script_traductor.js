@@ -1,8 +1,8 @@
 //Importamos las traducciones
 import { traducciones } from "./script_traducciones.js";
 
-// Funcion para aplicarle el idioma a las paginas
-function setLenguaje (lang) {
+// Función para aplicarle el idioma a las páginas
+function setLenguaje(lang) {
     // Verificamos que el idioma exista en el diccionario
     if (!traducciones[lang]) return;
 
@@ -15,13 +15,13 @@ function setLenguaje (lang) {
     // ForEach para cambiar cada elemento por su texto de idioma
     elementos_texto.forEach((el) => {
         const key = el.getAttribute("data-i18n"); //Obtenemos todos los data-i18n en key
-        const traduccion = traducciones[lang][key]; //Buscamos la traduccion en el diccionario y lo guardamos
-        if (traduccion) { //Verificamos que la traduccion exista
+        const traduccion = traducciones[lang][key]; //Buscamos la traducción en el diccionario y lo guardamos
+        if (traduccion) { //Verificamos que la traducción exista
             el.textContent = traduccion;
         }
     });
 
-    // Elementos que traducen el ALT de las imágenes (En imagenes es "data-i18n-alt")
+    // Elementos que traducen el ALT de las imágenes (En imágenes es "data-i18n-alt")
     const elementos_alt = document.querySelectorAll("[data-i18n-alt]");
 
     elementos_alt.forEach((el) => {
@@ -32,7 +32,7 @@ function setLenguaje (lang) {
         }
     });
 
-    //Cambio de video segun el idioma
+    //Cambio de video según el idioma
     const videos_src = document.querySelectorAll("[data-i18n-src]")
 
     videos_src.forEach((el) => {
@@ -41,7 +41,7 @@ function setLenguaje (lang) {
         if (traduccion) {
             el.setAttribute("src", traduccion);
 
-            // Buscamos el video para recargarlo y se cambie el video
+            // Buscamos el video para recargar y cambiar el video
             const video = document.getElementById("video_galeria");
             if (video) {
                 video.load();

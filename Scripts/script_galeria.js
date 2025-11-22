@@ -108,6 +108,6 @@ function reiniciarAutoDeslizamiento() {
 botonAnterior.addEventListener("click", reiniciarAutoDeslizamiento);
 botonSiguiente.addEventListener("click", reiniciarAutoDeslizamiento);
 
-// INICIALIZACIÓN DEL SLIDER
-crearPuntos();           // Crea los botoncitos inferiores
+// INICIO DEL SLIDER
+crearPuntos();           // Crea los botones inferiores
 actualizarClasesActivas(); // Marca la diapositiva inicial
