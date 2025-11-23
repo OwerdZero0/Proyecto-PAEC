@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="Styles/Reciclar_style.css">
+	<title>Formulario PAEC</title>
+</head>
+<body>
+	<h1 class="titulo_formulario">Registro semanal de Acopio reciclable a CBTis No. 153</h1>
+	<form class="formulario">
+	<section class="contenedor_entrega">
+		<h2 class="subtitulo_formulario">Identificación de la entrega</h2>
+		<label class="pregunta">Fecha de la semana:</label>
+		<input type="date" name="fecha_entrega" class="respuesta">
+		<br>
+		<label class="pregunta">Responsable de la entrega (tutor):</label>
+		<select name="responsable_entrega">
+			<optgroup label="Matutino">
+			<option>CORONA ZAHUANTITLA MARICELA </option>
+			<option>MENDEZ SALAS EVARISTO GUADALUPE </option>
+			<option>GUTIERREZ URCID FERNANDO </option>
+			<option>ROJAS RODRIGUEZ CARLOS OCTAVIO </option>
+			<option>GOMEZ OREA NOEMI SUSANA </option>
+			<option>CASTILLO CARDONA SAMANTHA RUBI </option>
+			<option>PALMEROS ORTIZ EDGAR </option>
+			<option>ESPINOZA SANCHEZ BRISEIDA </option>
+			<option>CRUZ MARQUEZ MARIA DEL CARMEN </option>
+			<option>TAPIA SMITH NORMA LUZ </option>
+			<option>VAZQUEZ GONZALEZ GUADALUPE </option>
+			<option>CERON PEREZ SELENE </option>
+			<option>LEON COTE BARRERA </option>
+			<option>BAEZ BARRADAS ZARINA </option>
+			<option>HERNANDEZ LARA DULCE MARIA </option>
+			<option>SOTELO REYES TONANTZIN</option>
+			<option>PINEDA VAZQUEZ NARETH </option>
+			<option>DELGADO ATONAL SYAMASUNDAR-DAS</option>
+			<option>HERNANDEZ CRUZ MAXIMINO</option>
+			<option>BARRIOS RODRIGUEZ GLORIA</option>
+			</optgroup>
+			<optgroup label="Vespertino">
+			<option>JUAREZ JUAREZ ENRIQUE  </option>
+			<option>MATIAS GUZMAN FABIOLA </option>
+			<option>MORALES QUIROZ KAREN </option>
+			<option>ATONAL FERNANDEZ STHEPANIE </option>
+			<option>PEREZ CAMACHO GABINA </option>
+			<option>PEREZ COYOTL ANA LAURA </option>
+			<option>ITURBIDE ORTIZ LUDWINDG </option>
+			<option>ARROYO SERRANO HECTOR </option>
+			<option>DIYARZA MEZA MARIELA </option>
+			<option>GONZALEZ GONZALES YASMIN </option>
+			<option>RIVERA CASTILLO MATILDE  </option>
+			<option>RAMOS BRAVO OSCAR </option>
+			<option>MENA MENA IRMA </option>
+			<option>BLANCAS AGUILAR CESAR  </option>
+			<option>SANTIAGO GUZMAN MIGUEL ANGEL </option>
+			<option>JUAREZ SOTO LORENA</option>
+			<option>ESPEJEL SARTILLO LINDA  </option>
+			<option>MUÑOZ CORTES BEATRIZ </option>
+			<option>DE LOS SANTOS MUNIVE VICTORIA </option>
+			<option>VARGAS ALTAMIRANO ALEJANDRO</option>
+			</optgroup>
+		</select>
+		<br>
+		<label>Grupo:</label>
+		<input type="text" name="grupo_entrega" class="respuesta_M">
+	</section>
+	<br><br>
+	<section class="contenedor_cantidades">
+		<h2 class="subtitulo_formulario">Registro de cantidades</h2>
+		<label class="pregunta">Selecciona los productos entregados:</label>
+		<br>
+		<div class="cantidad_entrega">
+			<label class="respuesta">
+				<input type="checkbox" class="check" name="material_entrega" value="PET"> PET (botellas de plástico) <input type="number" name="cantidad" class="respuesta"> kg
+			</label>
+			<br>
+			<label class="respuesta">
+				<input type="checkbox" class="check" name="material_entrega" value="Cartón"> Cartón <input type="number" name="cantidad" class="respuesta"> kg
+			</label>
+			<br>
+			<label class="respuesta">
+				<input type="checkbox" class="check" name="material_entrega" value="Tapas"> Tapas plástico <input type="number" name="cantidad" class="respuesta"> kg
+			</label>
+			<br>
+			<label class="respuesta">
+				<input type="checkbox" class="check" name="material_entrega" value="Vidrio"> Vidrio <input type="number" name="cantidad" class="respuesta"> kg
+			</label>
+			<br>
+			<label class="respuesta">
+				<input type="checkbox" class="check" name="material_entrega" value="Electrodomesticos"> Aparatos electronicos <input type="number" name="cantidad" class="respuesta"> kg
+			</label>
+			<br>
+			<label class="respuesta">
+				<input type="checkbox" class="check" name="material_entrega" value="Papel"> Papel (libros y libretas) <input type="number" name="cantidad" class="respuesta"> kg
+			</label>
+		</div>
+	</section>
+	</form>
+</body>
+</html>

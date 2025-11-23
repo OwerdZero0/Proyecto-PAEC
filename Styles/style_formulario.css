@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+body {
+	background: #E8CFFF;
+}
+.titulo_formulario{
+    color: #1900A6;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bold;	
+    font-family: 'Lobster';
+}
+.subtitulo_formulario{
+	color: blueviolet;
+	font-size: 45px;
+}
