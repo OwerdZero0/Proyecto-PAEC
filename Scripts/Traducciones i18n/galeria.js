@@ -155,6 +155,6 @@ export const galeria = {
         "video_galeria": "In navegador amo quipalehui video HTML5.",
         "videos_galeria": "Multimedia/Videos/Galeria/video_galeria_nah.mp4",
 
-        "boton_inicio_galeria": "Pehua",
+        "boton_inicio_galeria": "Pehualiztli",
     },
 };

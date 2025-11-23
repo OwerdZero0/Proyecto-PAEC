@@ -158,6 +158,6 @@ export const centro_acopio = {
         "imagen3_centro_acopio": "Tlaixcopinaliztli tianquiztli de tlatlaliliztli (3)",
         "imagen4_centro_acopio": "Tlaixcopinaliztli tianquiztli de tlatlaliliztli (4)",
 
-        "boton_inicio_centro_acopio": "Pehua",
+        "boton_inicio_centro_acopio": "Pehualiztli",
     },
 };

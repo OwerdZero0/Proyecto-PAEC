@@ -140,6 +140,6 @@ export const reciclaje = {
         "imagen3_reciclaje": "Tlaixcopinaliztli tlamaniliztli (3)",
         "imagen4_reciclaje": "Tlaixcopinaliztli tlamaniliztli (4)",
 
-        "boton_inicio_reciclaje": "Pehua",
+        "boton_inicio_reciclaje": "Pehualiztli",
     },
 };
