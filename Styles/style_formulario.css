@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 body {
 	background: #E8CFFF;
+    text-align: center;
 }
 .titulo_formulario{
     color: #1900A6;
@@ -9,7 +10,39 @@ body {
     font-weight: bold;	
     font-family: 'Lobster';
 }
+.fondo_titulo{
+    background-color: #a4a3ff;
+    border-radius: 30px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+.fondo_subtitulo{
+    background-color: #d28eff;
+    border-radius: 30px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    margin: auto;
+}
 .subtitulo_formulario{
 	color: blueviolet;
 	font-size: 45px;
+}
+.contenedor_entrega{
+    color: darkorchid;
+}
+.contenedor_cantidades{
+    color: mediumpurple;
+    align-items: flex-end;
+}
+.respuesta{
+    background-color: rgb(243, 212, 247);
+}
+.formulario{
+    align-items: justify;
 }

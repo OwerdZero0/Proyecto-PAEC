@@ -3,19 +3,19 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="Styles/Reciclar_style.css">
+	<link rel="stylesheet" type="text/css" href="Styles/style_formulario.css">
 	<title>Formulario PAEC</title>
 </head>
 <body>
-	<h1 class="titulo_formulario">Registro semanal de Acopio reciclable a CBTis No. 153</h1>
+	<div class="fondo_titulo"><h1 class="titulo_formulario">Registro semanal de Acopio reciclable a CBTis No. 153</h1></div>
 	<form class="formulario">
-	<section class="contenedor_entrega">
-		<h2 class="subtitulo_formulario">Identificación de la entrega</h2>
+	<section class="contenedor_entrega"><br>
+		<div class="fondo_subtitulo"><h2 class="subtitulo_formulario">Identificación de la entrega</h2></div>
 		<label class="pregunta">Fecha de la semana:</label>
 		<input type="date" name="fecha_entrega" class="respuesta">
 		<br>
 		<label class="pregunta">Responsable de la entrega (tutor):</label>
-		<select name="responsable_entrega">
+		<select name="responsable_entrega" class="respuesta">
 			<optgroup label="Matutino">
 			<option>CORONA ZAHUANTITLA MARICELA </option>
 			<option>MENDEZ SALAS EVARISTO GUADALUPE </option>
@@ -63,11 +63,56 @@
 		</select>
 		<br>
 		<label>Grupo:</label>
-		<input type="text" name="grupo_entrega" class="respuesta_M">
+		<select name="grupo_entrega" class="respuesta">
+			<optgroup label="Matutino">
+				<option value="1AMC">1AMC</option>
+				<option value="1AMVT">1AMVT</option>
+				<option value="1AMP">1AMP</option>
+				<option value="1BMP">1BMP</option>
+				<option value="1AMINT">1AMINT</option>
+				<option value="1AMLQ">1AMLQ</option>
+				<option value="1BMLQ">1BMLQ</option>
+				<option value="1AMTOIN">1AMTOIN</option>
+				<option value="3AMC">3AMC</option>
+				<option value="3AMVT">3AMVT</option>
+				<option value="3AMP">3AMP</option>
+				<option value="3BMP">3BMP</option>
+				<option value="3AMLQ">3AMLQ</option>
+				<option value="3AMMTOIN">3AMMTOIN</option>
+				<option value="5AMC">5AMC</option>
+				<option value="5AMLG">5AMLG</option>
+				<option value="5AMP">5AMP</option>
+				<option value="5BMP">5BMP</option>
+				<option value="5AMLQ">5AMLQ</option>
+				<option value="5AMMTOIN">5AMMTOIN</option>
+			</optgroup>
+			<optgroup label="Vespertino">
+				<option value="1AVC">1AVC</option>
+				<option value="1AVE-C">1AVE-C</option>
+				<option value="1AVI">1AVI</option>
+				<option value="1AVP">1AVP</option>
+				<option value="1BCP">1BCP</option>
+				<option value="1AVLQ">1AVLQ</option>
+				<option value="1AVMTOIN">1AMTOIN</option>
+				<option value="1AVURB">1AVURB</option>
+				<option value="3AVC">3AVC</option>
+				<option value="3AVVT">3AVVT</option>
+				<option value="3AVP">3AVP</option>
+				<option value="3BVP">3BVP</option>
+				<option value="3AVLQ">3AVLQ</option>
+				<option value="3AMMTOIN">3AVMTOIN</option>
+				<option value="5AVC">5AVC</option>
+				<option value="5AVLOG">5AVLOG</option>
+				<option value="5AVP">5AVP</option>
+				<option value="5BVP">5BVP</option>
+				<option value="5AVLQ">5AVLQ</option>
+				<option value="5AVMTION">5AVMTION</option>
+			</optgroup>
+		</select>
 	</section>
 	<br><br>
 	<section class="contenedor_cantidades">
-		<h2 class="subtitulo_formulario">Registro de cantidades</h2>
+		<div class="fondo_subtitulo"><h2 class="subtitulo_formulario">Registro de cantidades</h2></div>
 		<label class="pregunta">Selecciona los productos entregados:</label>
 		<br>
 		<div class="cantidad_entrega">
