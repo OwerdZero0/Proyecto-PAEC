@@ -74,7 +74,7 @@ body{
 
 .averde { background: linear-gradient(to top,red,yellow,rgb(167, 248, 36)); }
 .atenue { background: linear-gradient(to top,red,rgb(243, 182, 69),yellow); }
-.amarillo { background:linear-gradient(to top,red,rgb(253, 207, 0),yellow); }
+.amarillo { background:linear-gradient(to top,red,rgb(245, 209, 52),yellow); }
 
 .bar .label {
     position: absolute;
