@@ -52,3 +52,39 @@ body{
     height: 300px;
     border-radius: 10px;
 }
+
+.chart {
+    display: flex;
+    align-items: flex-end; 
+    height: 300px;
+    border-left: 2px solid #333;
+    border-bottom: 2px solid #333;
+    padding: 10px;
+    width: 500px;
+}
+
+
+.bar {
+    width: 60px;
+    background-color: #ffffff;
+    margin: 0 15px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.averde { background: linear-gradient(to top,red,yellow,rgb(167, 248, 36)); }
+.atenue { background: linear-gradient(to top,red,rgb(243, 182, 69),yellow); }
+.amarillo { background:linear-gradient(to top,red,rgb(253, 207, 0),yellow); }
+
+.bar .label {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #333;
+}
+
+.bar:hover {
+    background-color: #45a049;
+}
