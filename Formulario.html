@@ -8,14 +8,17 @@
 </head>
 <body>
 	<div class="fondo_titulo"><h1 class="titulo_formulario">Registro semanal de Acopio reciclable a CBTis No. 153</h1></div>
+	<br><br>
 	<form class="formulario">
-	<section class="contenedor_entrega"><br>
+	<section class="contenedor_entrega">
+		<br><br>
 		<div class="fondo_subtitulo"><h2 class="subtitulo_formulario">Identificación de la entrega</h2></div>
-		<label class="pregunta">Fecha de la semana:</label>
-		<input type="date" name="fecha_entrega" class="respuesta">
 		<br>
+		<label class="pregunta">Fecha de la semana:</label>
+		<input type="date" name="fecha_entrega" class="respuesta" name="date">
+		<br><br>
 		<label class="pregunta">Responsable de la entrega (tutor):</label>
-		<select name="responsable_entrega" class="respuesta">
+		<select name="responsable_entrega" class="respuesta" name="text">
 			<optgroup label="Matutino">
 			<option>CORONA ZAHUANTITLA MARICELA </option>
 			<option>MENDEZ SALAS EVARISTO GUADALUPE </option>
@@ -61,9 +64,9 @@
 			<option>VARGAS ALTAMIRANO ALEJANDRO</option>
 			</optgroup>
 		</select>
-		<br>
+		<br><br>
 		<label>Grupo:</label>
-		<select name="grupo_entrega" class="respuesta">
+		<select name="grupo_entrega" class="respuesta" name="text">
 			<optgroup label="Matutino">
 				<option value="1AMC">1AMC</option>
 				<option value="1AMVT">1AMVT</option>
@@ -109,33 +112,36 @@
 				<option value="5AVMTION">5AVMTION</option>
 			</optgroup>
 		</select>
+		<br><br>
 	</section>
 	<br><br>
 	<section class="contenedor_cantidades">
+		<br><br>
 		<div class="fondo_subtitulo"><h2 class="subtitulo_formulario">Registro de cantidades</h2></div>
+		<br>
 		<label class="pregunta">Selecciona los productos entregados:</label>
 		<br>
 		<div class="cantidad_entrega">
 			<label class="respuesta">
 				<input type="checkbox" class="check" name="material_entrega" value="PET"> PET (botellas de plástico) <input type="number" name="cantidad" class="respuesta"> kg
 			</label>
-			<br>
+			<br><br>
 			<label class="respuesta">
 				<input type="checkbox" class="check" name="material_entrega" value="Cartón"> Cartón <input type="number" name="cantidad" class="respuesta"> kg
 			</label>
-			<br>
+			<br><br>
 			<label class="respuesta">
 				<input type="checkbox" class="check" name="material_entrega" value="Tapas"> Tapas plástico <input type="number" name="cantidad" class="respuesta"> kg
 			</label>
-			<br>
+			<br><br>
 			<label class="respuesta">
 				<input type="checkbox" class="check" name="material_entrega" value="Vidrio"> Vidrio <input type="number" name="cantidad" class="respuesta"> kg
 			</label>
-			<br>
+			<br><br>
 			<label class="respuesta">
 				<input type="checkbox" class="check" name="material_entrega" value="Electrodomesticos"> Aparatos electronicos <input type="number" name="cantidad" class="respuesta"> kg
 			</label>
-			<br>
+			<br><br>
 			<label class="respuesta">
 				<input type="checkbox" class="check" name="material_entrega" value="Papel"> Papel (libros y libretas) <input type="number" name="cantidad" class="respuesta"> kg
 			</label>

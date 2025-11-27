@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 body {
-	background: #E8CFFF;
+	background-color: #4682B4;
     text-align: center;
 }
 .titulo_formulario{
-    color: #1900A6;
+    color: #003f5c;
     font-size: 70px;
     text-align: center;
     font-weight: bold;	
     font-family: 'Lobster';
 }
 .fondo_titulo{
-    background-color: #a4a3ff;
+    background-color: #2ECC71;
     border-radius: 30px;
     height: 150px;
     display: flex;
@@ -21,24 +21,35 @@ body {
     margin: auto;
 }
 .fondo_subtitulo{
-    background-color: #d28eff;
+    background-color: #145A32;
     border-radius: 30px;
-    height: 120px;
+    height: 150px;
     display: flex;
     justify-content: center;
     width: 40%;
     margin: auto;
 }
 .subtitulo_formulario{
-	color: blueviolet;
+	color: #87CEEB;
 	font-size: 45px;
 }
 .contenedor_entrega{
-    color: darkorchid;
+    display: block;
+    justify-items: center;
+    margin: auto;
+    background-color: #c1fcf2;
+    mask: radial-gradient(circle, black 10%, transparent 70%);
+    width: 70%;
+    border-radius: 20px 70px;
 }
 .contenedor_cantidades{
-    color: mediumpurple;
-    align-items: flex-end;
+    display: block;
+    justify-items: center;
+    margin: auto;
+    background-color: #c1fcf2;
+    mask: radial-gradient(circle, black 10%, transparent 70%);
+    width: 70%;
+    border-radius: 20px 70px;
 }
 .respuesta{
     background-color: rgb(243, 212, 247);
