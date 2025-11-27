@@ -38,7 +38,7 @@ body {
     justify-items: center;
     margin: auto;
     background-color: #c1fcf2;
-    mask: radial-gradient(circle, black 10%, transparent 70%);
+    mask: radial-gradient(circle, black 30%, transparent 70%);
     width: 70%;
     border-radius: 20px 70px;
 }
@@ -47,13 +47,18 @@ body {
     justify-items: center;
     margin: auto;
     background-color: #c1fcf2;
-    mask: radial-gradient(circle, black 10%, transparent 70%);
+    mask: radial-gradient(circle, black 30%, transparent 70%);
     width: 70%;
     border-radius: 20px 70px;
 }
 .respuesta{
-    background-color: rgb(243, 212, 247);
+    background-color: #76E4D8;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
 }
-.formulario{
-    align-items: justify;
+.pregunta {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
