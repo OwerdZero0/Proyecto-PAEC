@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 body {
 	background-color: #4682B4;
     text-align: center;
@@ -61,4 +60,113 @@ body {
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+}
+.contenedor_botones {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+.boton_enviar {
+    width: 100px;
+    height: 40px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    background-color: rgb(12, 12, 12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+}
+.contenedor_icono_enviar {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to bottom, rgb(255, 136, 255), rgb(172, 70, 255));
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 2;
+    transition-duration: 0.3s;
+}
+.icono_enviar {
+    border-radius: 1px;
+}
+.texto_enviar {
+    height: 100%;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+    transition-duration: 0.3s;
+    font-size: 1.04em;
+}
+.boton_enviar:hover .contenedor_icono_enviar {
+    width: 90px;
+    transition-duration: 0.3s;
+}
+.boton_enviar:hover .texto_enviar {
+    transform: translate(10px);
+    width: 0;
+    font-size: 0;
+    transition-duration: 0.3s;
+}
+.boton_enviar:active {
+    transform: scale(0.95);
+    transition-duration: 0.3s;
+}
+.boton_basura {
+    width: 110px;
+    height: 40px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background-color: #0c0c0c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.contenedor_icono_basura {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to bottom, #ff8888, #ff4747);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    z-index: 2;
+}
+.icono_basura {
+    width: 18px;
+    height: 18px;
+    fill: white;
+}
+.texto_basura {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1em;
+    transition: 0.3s;
+    z-index: 1;
+}
+.boton_basura:hover .contenedor_icono_basura {
+    width: 90px;
+    border-radius: 40px;
+}
+.boton_basura:hover .texto_basura {
+    width: 0;
+    font-size: 0;
+    transform: translateX(10px);
+}
+.boton_basura:active {
+    transform: scale(0.95);
 }

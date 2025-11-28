@@ -57,29 +57,26 @@ for (const [resp, grp] of Object.entries(responsable_grupo)) {
 // Manejar cambio en RESPONSABLE
 if (responsable && grupo) {
     responsable.addEventListener("change", () => {
-        if (responsable.value !== "") {
-            // Desactiva grupo y lo autocomplete
-            grupo.disabled = true;
-            grupo.value = responsable_grupo[responsable.value] || "";
-        } else {
-            // Si limpian el responsable, se reactiva grupo
-            grupo.disabled = false;
-            grupo.value = "";
-        }
-    });
+    if (responsable.value !== "") {
+        const respKey = responsable.value.trim(); // por los espacios
+        const grupoCalculado = responsable_grupo[respKey] || "";
+        grupo.value = grupoCalculado;
+    } else {
+        grupo.value = "";
+    }
+});
 
     // Manejar cambio en GRUPO
     grupo.addEventListener("change", () => {
-        if (grupo.value !== "") {
-            // Desactiva responsable y lo autocomplete
-            responsable.disabled = true;
-            responsable.value = grupo_responsable[grupo.value] || "";
-        } else {
-            // Si limpian el grupo, se reactiva responsable
-            responsable.disabled = false;
-            responsable.value = "";
-        }
-    });
+    if (grupo.value !== "") {
+        const grpKey = grupo.value.trim();
+        const responsableCalculado = grupo_responsable[grpKey] || "";
+        responsable.value = responsableCalculado;
+    } else {
+        responsable.value = "";
+    }
+});
+
 }
 
 // B) PARTE CANTIDADES DE CHECKBOX
