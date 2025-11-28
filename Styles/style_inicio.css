@@ -1,94 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-fondo: #0c0f3c;
+    --color-primario: #00bcd4;
+    --color-secundario: #4dd0e1;
+    --color-texto: #ffffff;
+    --color-cristal: rgba(255, 255, 255, 0.1);
+    --sombra-suave: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --sombra-hover: 0 15px 35px rgba(0, 188, 212, 0.3);
+    --borde-radio: 20px;
+    --transicion-suave: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Animaciones */
+@keyframes entradaSuave {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradienteVivo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 body {
-    background-color: #0c0f3c;
+    background: linear-gradient(-45deg, #0c0f3c, #1a237e, #006064, #004d40);
+    background-size: 400% 400%;
+    animation: gradienteVivo 20s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-texto);
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título */
+.fondo_titulo {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra-suave);
+    padding: 30px 50px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: entradaSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .titulo {
-    color: darkblue;
-    font-size: 70px;
-    font-style: oblique;
-    text-align: center;
-    font-weight: bold;
+    color: var(--color-secundario);
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    margin: 0;
 }
 
-.fondo_titulo {
-    background-color: #94f4d1;
-    border-radius: 30px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contenedor {
-    display: flex;
-    justify-content: space-between;
-    /*Separa imagen a la izquierda y botones a la derecha*/
-    align-items: center;
-    /*Alinea verticalmente*/
-    width: 100%;
-}
-
-.img_centro_de_acopio {
-    width: 1200px;
-    border-radius: 30px;
-}
-
-.botones {
-    display: flex;
-    flex-direction: column;
-    /*Pone los 3 botones en lista vertical*/
-    gap: 120px;
-    /*Separación entre botones*/
-}
-
-.item_boton {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.item_boton span {
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    text-decoration: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-.boton_centro_de_acopio,
-.boton_reciclaje,
-.boton_galeria {
-    background: none;
-    border: none;
-    padding: none;
-    cursor: pointer;
-}
-
-.boton_centro_de_acopio img,
-.boton_reciclaje img,
-.boton_galeria img {
-    width: 100px;
-    height: auto;
-}
-
+/* Selector de Idioma */
 .glass-radio-group {
-    --bg: rgba(255, 255, 255, 0.06);
-    --text: #e5e5e5;
-
+    --bg: rgba(255, 255, 255, 0.1);
+    --text: #e0e0e0;
+    
     display: flex;
     position: relative;
     background: var(--bg);
-    border-radius: 1rem;
+    border-radius: 50px;
     backdrop-filter: blur(12px);
-    box-shadow:
-        inset 1px 1px 4px rgba(255, 255, 255, 0.2),
-        inset -1px -1px 6px rgba(0, 0, 0, 0.3),
-        0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     overflow: hidden;
     width: fit-content;
+    margin-bottom: 50px;
+    animation: entradaSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
 }
 
 .glass-radio-group input {
@@ -100,12 +98,12 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 80px;
-    font-size: 20px;
-    padding: 0.8rem 1.6rem;
+    min-width: 100px;
+    font-size: 1rem;
+    padding: 15px 25px;
     cursor: pointer;
     font-weight: 600;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
     color: var(--text);
     position: relative;
     z-index: 2;
@@ -114,48 +112,137 @@ a {
 
 .glass-radio-group label:hover {
     color: white;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
 }
 
-.glass-radio-group input:checked+label {
-    color: #fff;
+.glass-radio-group input:checked + label {
+    color: #000;
 }
 
 .glass-glider {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: calc(100% / 3);
-    border-radius: 1rem;
+    top: 5px;
+    bottom: 5px;
+    width: calc((100% / 3) - 10px); /* Ajuste para padding */
+    border-radius: 40px;
     z-index: 1;
-    transition:
-        transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56),
-        background 0.4s ease-in-out,
-        box-shadow 0.4s ease-in-out;
+    transition: transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56), background 0.4s ease-in-out;
+    left: 5px; /* Offset inicial */
 }
 
-/* Español */
-#glass-silver:checked~.glass-glider {
+/* Lógica del Glider */
+#glass-silver:checked ~ .glass-glider {
     transform: translateX(0%);
-    background: linear-gradient(135deg, #c0c0c055, #e0e0e0);
-    box-shadow:
-        0 0 18px rgba(192, 192, 192, 0.5),
-        0 0 10px rgba(255, 255, 255, 0.4) inset;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
-/* Ingles */
-#glass-gold:checked~.glass-glider {
-    transform: translateX(100%);
-    background: linear-gradient(135deg, #ffd70055, #ffcc00);
-    box-shadow:
-        0 0 18px rgba(255, 215, 0, 0.5),
-        0 0 10px rgba(255, 235, 150, 0.4) inset;
+#glass-gold:checked ~ .glass-glider {
+    transform: translateX(100%); /* Se ajusta solo por el width relativo del contenedor padre */
+    /* Corrección: translateX necesita ser relativo al ancho del label, no del glider. 
+       Como son 3 elementos iguales, 100% del glider es un salto. */
+    transform: translateX(calc(100% + 5px)); /* +5px gap compensation */
+    background: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
-/* Náhuatl */
-#glass-platinum:checked~.glass-glider {
-    transform: translateX(200%);
-    background: linear-gradient(135deg, #d0e7ff55, #a0d8ff);
-    box-shadow:
-        0 0 18px rgba(160, 216, 255, 0.5),
-        0 0 10px rgba(200, 240, 255, 0.4) inset;
+#glass-platinum:checked ~ .glass-glider {
+    transform: translateX(calc(200% + 10px));
+    background: #80d8ff;
+    box-shadow: 0 0 15px rgba(128, 216, 255, 0.8);
+}
+
+
+/* Contenedor Principal */
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    gap: 60px;
+    animation: entradaSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+/* Imagen Principal */
+.img_centro_de_acopio {
+    width: 60%;
+    max-width: 800px;
+    height: auto;
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra-suave);
+    transition: var(--transicion-suave);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.img_centro_de_acopio:hover {
+    transform: scale(1.02);
+    box-shadow: var(--sombra-hover);
+}
+
+/* Botones de Navegación */
+.botones {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 30%;
+}
+
+.item_boton {
+    width: 100%;
+}
+
+.item_boton a {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: var(--transicion-suave);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.item_boton a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-10px) scale(1.05);
+    box-shadow: var(--sombra-hover);
+    border-color: var(--color-secundario);
+}
+
+.boton_centro_de_acopio,
+.boton_reciclaje,
+.boton_galeria,
+.boton_formulario {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.boton_centro_de_acopio img,
+.boton_reciclaje img,
+.boton_galeria img,
+.boton_formulario img {
+    width: 60px;
+    height: auto;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
+}
+
+.item_boton a:hover img {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.item_boton span {
+    color: var(--color-texto);
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }

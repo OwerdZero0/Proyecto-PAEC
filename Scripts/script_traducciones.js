@@ -4,6 +4,7 @@ import { portada } from "./Traducciones i18n/portada.js"
 import { centro_acopio } from "./Traducciones i18n/centro_acopio.js"
 import { reciclaje } from "./Traducciones i18n/reciclaje.js"
 import { galeria } from "./Traducciones i18n/galeria.js"
+import { formulario } from "./Traducciones i18n/formulario.js"
 
 // Diccionario que contiene todos los idiomas de la página (es = Español, en = English, nah = Nahuatl).
 
@@ -14,7 +15,8 @@ export const traducciones = {
         ...portada.es,
         ...centro_acopio.es,
         ...reciclaje.es,
-        ...galeria.es
+        ...galeria.es,
+        ...formulario.es
     },
 
     en: {
@@ -23,7 +25,8 @@ export const traducciones = {
         ...portada.en,
         ...centro_acopio.en,
         ...reciclaje.en,
-        ...galeria.en
+        ...galeria.en,
+        ...formulario.en
     },
 
     nah: {
@@ -32,6 +35,7 @@ export const traducciones = {
         ...portada.nah,
         ...centro_acopio.nah,
         ...reciclaje.nah,
-        ...galeria.nah
+        ...galeria.nah,
+        ...formulario.nah
     }
 };

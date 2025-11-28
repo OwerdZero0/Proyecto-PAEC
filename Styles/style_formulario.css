@@ -320,3 +320,76 @@ body {
     width: 20px;
     height: 20px;
 }
+/* Botón Inicio */
+.boton_inicio {
+    width: 170px;
+    height: 55px;
+    border-radius: 30px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transicion-suave);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    background: linear-gradient(45deg, #388e3c, #66bb6a);
+    color: white;
+    box-shadow: 0 5px 15px rgba(56, 142, 60, 0.3);
+}
+
+.boton_inicio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.boton_inicio:hover::before {
+    left: 100%;
+}
+
+.boton_inicio:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.boton_inicio:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.contenedor_icono_inicio {
+    background: rgba(255,255,255,0.2);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    transition: transform 0.4s ease;
+}
+
+.boton_inicio:hover .contenedor_icono_inicio {
+    transform: rotate(-15deg);
+    background: rgba(255,255,255,0.3);
+}
+
+.icono_inicio {
+    fill: white;
+    width: 22px;
+    height: 22px;
+}
+a {
+    text-decoration: none;
+}

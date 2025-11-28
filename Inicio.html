@@ -12,10 +12,10 @@
     <div class="fondo_titulo">
         <h1 class="titulo" data-i18n="titulo_portada">Centros de acopio en la comunidad y reciclado</h1>
     </div>
-    <br><br>
+
     <!--Radio buttons de idioma-->
     <div class="glass-radio-group">
-        <input type="radio" name="plan" id="glass-silver" value="es" />
+        <input type="radio" name="plan" id="glass-silver" value="es" checked />
         <label for="glass-silver">Español</label>
 
         <input type="radio" name="plan" value="en" id="glass-gold" />
@@ -26,37 +26,51 @@
 
         <div class="glass-glider"></div>
     </div>
-    <br><br>
+
     <!--Botones para ir a las otras hojas-->
     <div class="contenedor">
         <img src="Multimedia/Imagenes/Inicio/Centro_de_Acopio.webp" alt="Imagen de un centro de acopio"
             class="img_centro_de_acopio" data-i18n-alt="imagen_centro_de_acopio_alt_portada">
+            
         <div class="botones">
             <div class="item_boton">
                 <a href="Centro_de_acopio.html">
-                    <button class="boton_centro_de_acopio"><img src="Multimedia/Imagenes/Inicio/Boton_casa.png"
-                            alt="Imagen de una casa"></button><br>
+                    <button class="boton_centro_de_acopio">
+                        <img src="Multimedia/Imagenes/Inicio/Boton_casa.png" alt="Imagen de una casa">
+                    </button>
                     <span data-i18n="boton_centro_de_acopio_portada">Centro de Acopio</span>
                 </a>
             </div>
+            
             <div class="item_boton">
                 <a href="Reciclaje.html">
-                    <button class="boton_reciclaje"><img src="Multimedia/Imagenes/Inicio/Boton_bote-de-basura.png"
-                            alt="Imagen de un bote de basura"></button><br>
+                    <button class="boton_reciclaje">
+                        <img src="Multimedia/Imagenes/Inicio/Boton_bote-de-basura.png" alt="Imagen de un bote de basura">
+                    </button>
                     <span data-i18n="boton_reciclaje_portada">Reciclaje</span>
                 </a>
             </div>
+            
             <div class="item_boton">
                 <a href="Galeria.html">
-                    <button class="boton_galeria"><img src="Multimedia/Imagenes/Inicio/Boton_camara.png"
-                            alt="Imagen de una camara"></button><br>
+                    <button class="boton_galeria">
+                        <img src="Multimedia/Imagenes/Inicio/Boton_camara.png" alt="Imagen de una camara">
+                    </button>
                     <span data-i18n="boton_galeria_portada">Galería</span>
+                </a>
+            </div>
+            <div class="item_boton">
+                <a href="Formulario.html">
+                    <button class="boton_formulario">
+                        <img src="Multimedia/Imagenes/Inicio/Boton_formulario.png" alt="Imagen de un formulario">
+                    </button>
+                    <span data-i18n="boton_formulario_portada">Formulario</span>
                 </a>
             </div>
         </div>
     </div>
-</body>
 
-<script type="module" src="Scripts/script_traductor.js"></script>
+    <script type="module" src="Scripts/script_traductor.js"></script>
+</body>
 
 </html>
