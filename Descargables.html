@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/Descargables.css">
+    <title>Descargables</title>
+</head>
+<body>
+    <header class="contenedor_titulo">
+        <h1 data-i18n="titulo_descargables">Materiales Descargables de Matemáticas, Historia y Recursos Socioemocionales</h1>
+    </header>
+    <main>
+        <!-- Primera card -->
+        <div class="contenedor_card">
+            <div class="card_padre">
+                <div class="card">
+                    <div class="card_frente" style="background-image: url(Multimedia/Imagenes/Descargables/fondo_historia.webp);">
+                        <div class="bg"></div>
+                        <div class="body_card_frente">
+                            <h2 data-i18n="subtitulo1_1_descargables">Proyecto de Historia</h2>
+                        </div>
+                    </div>
+                    <div class="card_fondo">
+                        <div class="body_card_fondo">
+                            <h2 data-i18n="subtitulo1_2_descargables">Archivo del proyecto</h2>
+                            <p data-i18n="informacion1_descargables">Descarga el archivo del proyecto de Historia</p>
+                            <input type="button" value="Descargar" onclick="descargar_historia()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Segunda card -->
+            <div class="card_padre">
+                <div class="card">
+                    <div class="card_frente" style="background-image: url(Multimedia/Imagenes/Descargables/fondo_Mate.webp);">
+                        <div class="bg"></div>
+                        <div class="body_card_frente">
+                            <h2 data-i18n="subtitulo2_1_descargables">Proyecto de Matemáticas</h2>
+                        </div>
+                    </div>
+                    <div class="card_fondo">
+                        <div class="body_card_fondo">
+                            <h2 data-i18n="subtitulo2_2_descargables">Archivo del proyecto</h2>
+                            <p data-i18n="informacion2_descargables">Descarga el archivo del proyecto de Matemáticas</p>
+                            <input type="button" value="Descargar" onclick="descargar_mate()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tercera card -->
+            <div class="card_padre">
+                <div class="card">
+                    <div class="card_frente" style="background-image: url(Multimedia/Imagenes/Descargables/fondo_recursos.webp);">
+                        <div class="bg"></div>
+                        <div class="body_card_frente">
+                            <h2 data-i18n="subtitulo3_1_descargables">Proyecto de Recursos Socioemocionales</h2>
+                        </div>
+                    </div>
+                    <div class="card_fondo">
+                        <div class="body_card_fondo">
+                            <h2 data-i18n="subtitulo3_2_descargables">Archivo del proyecto</h2>
+                            <p data-i18n="informacion3_descargables">Descarga el archivo del proyecto de Recursos Socioemocionales</p>
+                            <input type="button" value="Descargar" onclick="descargar_recursos()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!--Botón de regreso-->
+    <div class="item_boton">
+        <a href="Inicio.html">
+            <button class="boton_inicio"><img src="Multimedia/Imagenes/Centro de Acopio/boton_fecha_atras.png"
+                    alt="Imagen de una flecha hacia atras"></button>
+            <span data-i18n="boton_inicio_descargables">Inicio</span>
+        </a>
+    </div>
+    
+</body>
+
+<script src="Scripts/script_descargables.js"></script>
+<script type="module" src="Scripts/script_traductor.js"></script>
+</html>

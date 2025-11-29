@@ -217,7 +217,9 @@ body {
 .boton_centro_de_acopio,
 .boton_reciclaje,
 .boton_galeria,
-.boton_formulario {
+.boton_formulario,
+.boton_descargables,
+.boton_calculo_reciclaje {
     background: none;
     border: none;
     padding: 0;
@@ -228,7 +230,9 @@ body {
 .boton_centro_de_acopio img,
 .boton_reciclaje img,
 .boton_galeria img,
-.boton_formulario img {
+.boton_formulario img,
+.boton_descargables img,
+.boton_calculo_reciclaje img {
     width: 60px;
     height: auto;
     filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
