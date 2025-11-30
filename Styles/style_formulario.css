@@ -393,3 +393,94 @@ body {
 a {
     text-decoration: none;
 }
+
+
+/*RESPONSIVE*/
+@media (max-width: 1024px) {
+    body {
+        padding: 30px 16px;
+    }
+
+    .formulario {
+        padding: 32px 24px;
+    }
+
+    .titulo_formulario {
+        font-size: 2.1rem;
+    }
+
+    .subtitulo_formulario {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .formulario {
+        padding: 24px 18px;
+    }
+
+    .cantidad_entrega {
+        grid-template-columns: 1fr;
+    }
+
+    .cantidad_entrega label.respuesta {
+        padding: 12px;
+    }
+
+    .pregunta {
+        font-size: 0.95rem;
+    }
+
+    .respuesta {
+        font-size: 0.95rem;
+    }
+
+    .contenedor_botones {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .boton_enviar,
+    .boton_basura,
+    .boton_inicio {
+        width: 100%;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .formulario {
+        padding: 20px 14px;
+    }
+
+    .titulo_formulario {
+        font-size: 1.7rem;
+    }
+
+    .subtitulo_formulario {
+        font-size: 1.1rem;
+    }
+
+    .cantidad_entrega input[type="number"] {
+        width: 80px;
+    }
+
+    .boton_enviar,
+    .boton_basura,
+    .boton_inicio {
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .contenedor_icono_enviar,
+    .contenedor_icono_basura,
+    .contenedor_icono_inicio {
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+    }
+}

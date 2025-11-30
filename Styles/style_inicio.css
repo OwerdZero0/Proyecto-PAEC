@@ -250,3 +250,119 @@ body {
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
+
+
+/* === RESPONSIVE: Inicio === */
+@media (max-width: 1200px) {
+    .contenedor {
+        gap: 40px;
+    }
+
+    .img_centro_de_acopio {
+        width: 55%;
+    }
+
+    .botones {
+        width: 35%;
+    }
+}
+
+@media (max-width: 900px) {
+    .contenedor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .img_centro_de_acopio {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .botones {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .item_boton a {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 24px 14px;
+    }
+
+    .fondo_titulo {
+        padding: 20px 24px;
+    }
+
+    .titulo {
+        font-size: 2rem;
+    }
+
+    .glass-radio-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .glass-radio-group label {
+        min-width: 0;
+        font-size: 0.9rem;
+        padding: 12px 10px;
+    }
+
+    .botones {
+        gap: 18px;
+    }
+
+    .item_boton a {
+        padding: 14px 16px;
+    }
+
+    .item_boton span {
+        font-size: 1rem;
+    }
+
+    .boton_centro_de_acopio img,
+    .boton_reciclaje img,
+    .boton_galeria img,
+    .boton_formulario img,
+    .boton_descargables img,
+    .boton_calculo_reciclaje img {
+        width: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fondo_titulo {
+        padding: 16px 12px;
+    }
+
+    .titulo {
+        font-size: 1.6rem;
+    }
+
+    .glass-radio-group {
+        flex-direction: column;
+        border-radius: 24px;
+    }
+
+    .glass-radio-group label {
+        width: 100%;
+        padding: 10px 8px;
+    }
+
+    .glass-glider {
+        display: none;
+    }
+
+    .item_boton a {
+        padding: 12px 12px;
+    }
+
+    .item_boton span {
+        font-size: 0.95rem;
+    }
+}

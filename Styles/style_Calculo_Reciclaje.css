@@ -190,7 +190,7 @@ tr:last-child td {
     transform: scale(1.03);
 }
 
-/* Responsive */
+/*RESPONSIVE*/
 @media (max-width: 768px) {
     .titulo {
         font-size: 1.8rem;

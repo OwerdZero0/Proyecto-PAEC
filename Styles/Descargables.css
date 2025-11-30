@@ -285,3 +285,94 @@ body {
     font-size: 1.2rem;
     font-family: 'Poppins', sans-serif;
 }
+
+
+/*RESPONSIVE*/
+@media (max-width: 1024px) {
+    .contenedor_titulo {
+        width: 90%;
+        padding: 16px 20px;
+    }
+
+    .contenedor_titulo h1 {
+        font-size: 2.4rem;
+    }
+
+    .card {
+        width: 320px;
+        height: 380px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor_titulo {
+        width: 95%;
+        margin-top: 20px;
+    }
+
+    .contenedor_titulo h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .contenedor_card {
+        margin-top: 40px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card_padre {
+        margin: 15px 0;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 360px;
+        height: auto;
+        min-height: 320px;
+    }
+
+    .body_card_frente,
+    .body_card_fondo {
+        padding: 24px;
+    }
+
+    .body_card_fondo p {
+        font-size: 0.95rem;
+    }
+
+    .item_boton {
+        margin: 25px 0 40px;
+    }
+
+    .item_boton span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor_titulo h1 {
+        font-size: 1.7rem;
+    }
+
+    .card {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .body_card_frente h2 {
+        font-size: 1.1rem;
+    }
+
+    .body_card_fondo p {
+        font-size: 0.9rem;
+    }
+
+    .item_boton a {
+        padding: 10px 20px;
+    }
+
+    .boton_inicio img {
+        width: 32px;
+    }
+}

@@ -256,3 +256,95 @@ body {
     font-weight: 600;
     font-size: 1.2rem;
 }
+
+
+/*RESPONSIVE*/
+@media (max-width: 1024px) {
+    .galeria_deslizable {
+        max-width: 900px;
+        padding: 24px;
+    }
+
+    .galeria_titulo {
+        font-size: 2.1rem;
+    }
+
+    .imagen img,
+    .imagen_activa img {
+        max-height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .galeria_deslizable {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .galeria_titulo {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .imagen,
+    .imagen_activa {
+        padding: 6px;
+    }
+
+    .imagen img,
+    .imagen_activa img {
+        max-height: 320px;
+    }
+
+    .titulo_imagen {
+        font-size: 1rem;
+        padding: 4px 12px;
+    }
+
+    .boton_imagen_anterior,
+    .boton_imagen_siguiente {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .galeria_deslizable {
+        padding: 16px 10px;
+    }
+
+    .galeria_titulo {
+        font-size: 1.5rem;
+    }
+
+    .imagen img,
+    .imagen_activa img {
+        max-height: 240px;
+    }
+
+    .boton_imagen_anterior {
+        left: 10px;
+    }
+
+    .boton_imagen_siguiente {
+        right: 10px;
+    }
+
+    .puntos_desplazables {
+        gap: 6px;
+    }
+
+    .punto_desplazable {
+        width: 10px;
+        height: 10px;
+    }
+
+    .item_boton a {
+        padding: 10px 20px;
+    }
+
+    .boton_inicio img {
+        width: 32px;
+    }
+}
