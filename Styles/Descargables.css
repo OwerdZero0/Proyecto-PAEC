@@ -376,3 +376,100 @@ body {
         width: 32px;
     }
 }
+
+/* === RESPONSIVE: DESCARGABLES (CARDS) === */
+@media (max-width: 1024px) {
+    .contenedor_titulo {
+        width: 90%;
+        padding: 16px 20px;
+        margin-top: 30px;
+    }
+
+    .contenedor_titulo h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .card {
+        width: 320px;
+        height: 380px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor_card {
+        max-width: 100%;
+        margin-top: 40px;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .card_padre {
+        width: 100%;
+        max-width: 360px;
+        margin: 10px 0;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+        min-height: 320px;
+    }
+
+    .body_card_frente,
+    .body_card_fondo {
+        padding: 20px;
+    }
+
+    .body_card_frente h2,
+    .body_card_fondo h2 {
+        font-size: 1.1rem;
+    }
+
+    .body_card_fondo p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    .body_card_fondo input[type="button"] {
+        width: 100%;
+        max-width: 220px;
+        padding: 10px 0;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor_titulo {
+        width: 92%;
+        padding: 12px 10px;
+        margin-top: 20px;
+    }
+
+    .contenedor_titulo h1 {
+        font-size: 1.4rem;
+    }
+
+    .card_padre {
+        max-width: 100%;
+        padding: 0 8px;
+    }
+
+    .card {
+        border-radius: 16px;
+        min-height: 280px;
+    }
+
+    .body_card_fondo p {
+        font-size: 0.9rem;
+    }
+
+    .item_boton a {
+        padding: 10px 20px;
+    }
+
+    .boton_inicio img {
+        width: 32px;
+    }
+}

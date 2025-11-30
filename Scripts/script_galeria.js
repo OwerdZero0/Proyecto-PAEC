@@ -69,9 +69,12 @@ function irADiapositiva(indice) {
     // Actualiza el índice actual
     indiceActual = indice;
 
-    // Calcula cuánto debe moverse el track (-100%, -200%, etc.)
-    const desplazamiento = -indiceActual * 100;
-    pistaImagenes.style.transform = `translateX(${desplazamiento}%)`;
+    // Obtenemos la posición real del slide actual
+    const slideActual = diapositivas[indiceActual];
+    const desplazamiento = -slideActual.offsetLeft;
+
+    // Movemos la pista en PIXELES en lugar de porcentajes
+    pistaImagenes.style.transform = `translateX(${desplazamiento}px)`;
 
     // Actualiza clases de diapositivas y puntos
     actualizarClasesActivas();
