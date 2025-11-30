@@ -168,8 +168,9 @@ body {
 
 /* Imagen Principal */
 .img_centro_de_acopio {
-    width: 60%;
+    width: 80%;
     max-width: 800px;
+    margin-left: 100px;
     height: auto;
     border-radius: var(--borde-radio);
     box-shadow: var(--sombra-suave);
@@ -180,6 +181,17 @@ body {
 .img_centro_de_acopio:hover {
     transform: scale(1.02);
     box-shadow: var(--sombra-hover);
+}
+
+.texto_portada {
+    margin-top: 40px;
+    color: var(--color-texto);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
 }
 
 /* Botones de Navegación */
@@ -259,7 +271,13 @@ body {
     }
 
     .img_centro_de_acopio {
-        width: 55%;
+        width: 50%;
+        margin-left: 5px;
+    }
+    .texto_portada {
+        font-size: 0.8rem;
+        width: 90%;
+        margin-left: 20px;
     }
 
     .botones {
