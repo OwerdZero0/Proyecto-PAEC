@@ -252,7 +252,7 @@ body {
 }
 
 
-/* === RESPONSIVE: Inicio === */
+/*RESPONSIVE*/
 @media (max-width: 1200px) {
     .contenedor {
         gap: 40px;

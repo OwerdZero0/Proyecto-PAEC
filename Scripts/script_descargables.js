@@ -16,25 +16,43 @@ const archivos = {
     }
 }
 
+const nombreArchivos = {
+    es: {
+        "historia": "Proyecto de Historia.pdf",
+        "matematicas": "Proyecto de Matemáticas.pdf",
+        "recursos": "Proyecto de Recursos Socioemocionales.xlsx"
+    },
+    en: {
+        "historia": "Project History.pdf",
+        "matematicas": "Project Mathematics.pdf",
+        "recursos": "Project Socioemotional Resources.xlsx"
+    },
+    nah: {
+        "historia": "Tlatolmelāhuacayotl ihcuac tlatolamatl.pdf",
+        "matematicas": "Tlatolmelāhuacayotl ihcuac xōchihcayotl tlamantli.pdf",
+        "recursos": "Tlatolmelāhuacayotl ihcuac tlānēxtiliztli huan yōllōtl tatzkuilōtl.xlsx"
+    }
+}
+
 const idiomaGuardado = localStorage.getItem('idioma');
 
 function descargar_historia() {
     const link = document.createElement('a');
     link.href = archivos[idiomaGuardado]["historia"];
-    link.download = "Proyecto de Historia.pdf";
+    link.download = nombreArchivos[idiomaGuardado]["historia"];
     link.click();
 }
 
 function descargar_mate() {
     const link = document.createElement('a');
     link.href = archivos[idiomaGuardado]["matematicas"];
-    link.download = "Proyecto de Matemáticas.pdf";
+    link.download = nombreArchivos[idiomaGuardado]["matematicas"];
     link.click();
 }
 
 function descargar_recursos() {
     const link = document.createElement('a');
     link.href = archivos[idiomaGuardado]["recursos"];
-    link.download = "Proyecto de Recursos Socioemocionales.xlsx";
+    link.download = nombreArchivos[idiomaGuardado]["recursos"];
     link.click();
 }

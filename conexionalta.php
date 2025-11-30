@@ -1,24 +1,24 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "root", "base1")
+$conexion = mysqli_connect("localhost", "root", "root", "baseRecoleccion") // Nombre de la base de datos baseRecoleccion
     or die("Problemas con la conexión: " . mysqli_connect_error());
 
-$sql = "INSERT INTO alumnos(
-            `fecha_entrega`,
-            responsable_entrega,
-            grupo_entrega,
-            material_pet,
-            cantidad_pet,
-            material_carton,
-            cantidad_carton,
-            material_tapas,
-            cantidad_tapas,
-            material_vidrio,
-            cantidad_vidrio,
-            material_electrodomesticos,
-            cantidad_electrodomesticos,
-            material_papel,
-            cantidad_papel,
-            observaciones
+$sql = "INSERT INTO recoleccion( --Nombre de la tabla recoleccion
+            `fecha_entrega`, --DATE
+            responsable_entrega, --VARCHAR (80)
+            grupo_entrega, --VARCHAR (50)
+            material_pet, --BOOLEAN 
+            cantidad_pet, --DECIMAL (10,2)
+            material_carton, --BOOLEAN
+            cantidad_carton, --DECIMAL (10,2)
+            material_tapas, --BOOLEAN
+            cantidad_tapas, --DECIMAL (10,2)
+            material_vidrio, --BOOLEAN
+            cantidad_vidrio, --DECIMAL (10,2)
+            material_electrodomesticos, --BOOLEAN
+            cantidad_electrodomesticos, --DECIMAL (10,2)
+            material_papel, --BOOLEAN
+            cantidad_papel, --DECIMAL (10,2)
+            observaciones --VARCHAR (250)
         ) VALUES (
             '$_POST[fecha_entrega]',
             '$_POST[responsable_entrega]',
