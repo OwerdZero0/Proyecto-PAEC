@@ -161,11 +161,21 @@ tr:last-child td {
 .informacion_estadistica td {
     background: rgba(255, 255, 255, 0.5);
     font-size: 0.95rem;
+    text-align: center;
 }
 
 /* Tabla Descripción */
+
+.informacion_descripcion th:first-child {
+    text-align: center;
+}
+
 .informacion_descripcion td {
     vertical-align: middle;
+}
+
+.informacion_descripcion td:last-child {
+    text-align: justify;
 }
 
 .informacion_descripcion h4 {
