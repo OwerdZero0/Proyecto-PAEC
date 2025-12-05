@@ -14,6 +14,10 @@ export const descargables = {
         "subtitulo3_2_descargables": "Archivo del proyecto",
         "informacion3_descargables": "Descarga el archivo del proyecto de Recursos Socioemocionales",
 
+        "boton_historia_descargables": "Descargar",
+        "boton_mate_descargables": "Descargar",
+        "boton_recursos_descargables": "Descargar",
+
         "boton_inicio_descargables": "Inicio"
     },
 
@@ -32,6 +36,10 @@ export const descargables = {
         "subtitulo3_2_descargables": "Project file",
         "informacion3_descargables": "Download the Socio-emotional Resources project file",
 
+        "boton_historia_descargables": "Download",
+        "boton_mate_descargables": "Download",
+        "boton_recursos_descargables": "Download",
+
         "boton_inicio_descargables": "Home"
     },
 
@@ -49,6 +57,10 @@ export const descargables = {
         "subtitulo3_1_descargables": "Tlamachtilli de Recursos socioemocionales",
         "subtitulo3_2_descargables": "Amox de proyecto",
         "informacion3_descargables": "Xikdescarga in archivo de proyecto de Recursos socioemocionales",
+
+        "boton_historia_descargables": "Xikdescarga",
+        "boton_mate_descargables": "Xikdescarga",
+        "boton_recursos_descargables": "Xikdescarga",
 
         "boton_inicio_descargables": "Pehualiztli"
     }

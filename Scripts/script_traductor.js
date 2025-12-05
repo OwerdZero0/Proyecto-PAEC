@@ -48,6 +48,17 @@ function setLenguaje(lang) {
             }
         }
     });
+
+    //Cambio de botones según el idioma
+    const botones = document.querySelectorAll("[data-i18n-value]")
+
+    botones.forEach((el) => {
+        const key = el.getAttribute("data-i18n-value");
+        const traduccion = traducciones[lang][key];
+        if (traduccion) {
+            el.value = traduccion;
+        }
+    });
 }
 
 // Detectar cambios en los radio buttons y llamar a setLenguaje
