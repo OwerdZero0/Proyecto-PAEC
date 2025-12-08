@@ -1,6 +1,6 @@
 export const descargables = {
     es: {
-        "titulo_descargables": "Materiales Descargables de Matemáticas, Historia y Recursos Socioemocionales",
+        "titulo_descargables": "Material Descargable de Temas Selectivos de Matemáticas II, Conciencia Histórica II, Formación Socioemocional V y La Energía en los Procesos de la Vida Diaria",
 
         "subtitulo1_1_descargables": "Proyecto de Conciencia histórica II",
         "subtitulo1_2_descargables": "Archivo del proyecto",
@@ -27,7 +27,7 @@ export const descargables = {
     },
 
     en: {
-        "titulo_descargables": "Downloadable Materials for Mathematics, History and Socio-emotional Resources",
+        "titulo_descargables": "Downloadable Material of Selective Topics of Mathematics II, Historical Awareness II, Socio-emotional Formation V and Energy in Daily Life Processes",
 
         "subtitulo1_1_descargables": "Historical Awareness Project II",
         "subtitulo1_2_descargables": "Project file",
@@ -54,7 +54,7 @@ export const descargables = {
     },
 
     nah: {
-        "titulo_descargables": "Tlatemakilistli tixkohuaj de Matemáticas, Historia huan Recursos socioemocionales",
+        "titulo_descargables": "Tlamatiliztli Tlatemoliz de Tématl Selectivo Tlamatiniliztli Ome, Tlacameh Tlatolmelahuac Ome, Macehualnextiliztli Macuili huan Yeknemilistli Ipan Tlaltikpak Tlen Energia Tlen Tlamachilis Yolilistli.",
 
         "subtitulo1_1_descargables": "Nikan Tlachiyalistli Histórica Tlamachtilli II",
         "subtitulo1_2_descargables": "Amox de proyecto",

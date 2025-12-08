@@ -11,7 +11,7 @@ export const inicio = {
         "boton_galeria_inicio": "Galería",
         "imagen_centro_de_acopio_alt_inicio": "Imagen de un centro de acopio",
         "boton_formulario_inicio": "Formulario",
-        "boton_descargables_inicio": "Materiales: Mat, Hist y Socioem",
+        "boton_descargables_inicio": "Material TS–CH–FS–ED",
         "boton_calculo_reciclaje_inicio": "Cálculo de reciclaje"
     },
     en: {
@@ -26,7 +26,7 @@ export const inicio = {
         "boton_galeria_inicio": "Gallery",
         "imagen_centro_de_acopio_alt_inicio": "Image of a collection center",
         "boton_formulario_inicio": "Form",
-        "boton_descargables_inicio": "Materials: Math, Hist & Socio-em",
+        "boton_descargables_inicio": "Material TS–CH–FS–ED",
         "boton_calculo_reciclaje_inicio": "Recycling calculator"
     },
     nah: {
@@ -41,7 +41,7 @@ export const inicio = {
         "boton_galeria_inicio": "Tlaixnextiloyan",
         "imagen_centro_de_acopio_alt_inicio": "Tlaixcopinaliztli tianquiztli de tlatlaliliztli",
         "boton_formulario_inicio": "Tlahtolcuepa",
-        "boton_descargables_inicio": "Tlatemakilistli: Tlamati, Historia huan Socioem",
+        "boton_descargables_inicio": "Tlatemakilistli: TS–CH–FS–ED",
         "boton_calculo_reciclaje_inicio": "Tlamantli tlacatliztli"
     },
 };
