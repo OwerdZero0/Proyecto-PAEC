@@ -19,14 +19,29 @@
 }
 
 @keyframes entradaSuave {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes gradienteVivo {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body {
@@ -150,10 +165,10 @@ body {
 
 .glass-radio-group label:hover {
     color: white;
-    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-.glass-radio-group input:checked + label {
+.glass-radio-group input:checked+label {
     color: #000;
 }
 
@@ -168,19 +183,19 @@ body {
     left: 5px;
 }
 
-#glass-silver:checked ~ .glass-glider {
+#glass-silver:checked~.glass-glider {
     transform: translateX(0%);
     background: #ffffff;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
-#glass-gold:checked ~ .glass-glider {
+#glass-gold:checked~.glass-glider {
     transform: translateX(calc(100% + 5px));
     background: #ffd700;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
 }
 
-#glass-platinum:checked ~ .glass-glider {
+#glass-platinum:checked~.glass-glider {
     transform: translateX(calc(200% + 10px));
     background: #80d8ff;
     box-shadow: 0 0 15px rgba(128, 216, 255, 0.8);
@@ -210,7 +225,7 @@ body {
     border-radius: var(--borde-radio);
     box-shadow: var(--sombra-suave);
     transition: var(--transicion-suave);
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .img_centro_de_acopio:hover {
@@ -267,7 +282,7 @@ body {
     text-decoration: none;
     transition: var(--transicion-suave);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .item_boton a:hover {
@@ -281,6 +296,7 @@ body {
 .boton_reciclaje,
 .boton_galeria,
 .boton_formulario,
+.boton_consulta_alta,
 .boton_descargables,
 .boton_calculo_reciclaje,
 .boton_admin_asignaciones {
@@ -295,12 +311,13 @@ body {
 .boton_reciclaje img,
 .boton_galeria img,
 .boton_formulario img,
+.boton_consulta_alta img,
 .boton_descargables img,
 .boton_calculo_reciclaje img,
 .boton_admin_asignaciones img {
     width: 60px;
     height: auto;
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
     transition: transform 0.3s ease;
 }
 
@@ -421,6 +438,7 @@ body {
     .boton_reciclaje img,
     .boton_galeria img,
     .boton_formulario img,
+    .boton_consulta_alta img,
     .boton_descargables img,
     .boton_calculo_reciclaje img,
     .boton_admin_asignaciones img {
