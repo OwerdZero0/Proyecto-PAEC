@@ -1,25 +1,44 @@
 <?php
+require_once __DIR__ . '/auth_admin.php';
+require_roles_admin(['master', 'admin', 'subadmin']);
 
 /* =========================
-    CREAR TABLAS SI NO EXISTEN
+   CREAR TABLAS SI NO EXISTEN
 ========================= */
-
-require_once("crear_tablas_admin.php");
+require_once __DIR__ . '/crear_tablas_admin.php';
 
 /* =========================
-    CONEXION
+   CONEXION
 ========================= */
-
 $conexion = mysqli_connect("localhost", "root", "root", "baseRecoleccion")
     or die("Error en la conexión: " . mysqli_connect_error());
 
 mysqli_set_charset($conexion, "utf8mb4");
 
+/* =========================
+   DATOS DE SESION ACTUAL
+========================= */
+$admin_actual_nombre = $_SESSION['admin_usuario'] ?? 'Administrador';
+$admin_actual_rol = $_SESSION['admin_rol'] ?? '';
+
+/* =========================
+   MENSAJES
+========================= */
 $tipo_mensaje = $_GET["tipo"] ?? "";
 $mensaje = $_GET["mensaje"] ?? "";
 
+if ($mensaje === "" && isset($_GET["error"])) {
+    $tipo_mensaje = "error";
+    $mensaje = $_GET["error"];
+}
+
+if ($mensaje === "" && isset($_GET["info"])) {
+    $tipo_mensaje = "ok";
+    $mensaje = $_GET["info"];
+}
+
 /* =========================
-    CONSULTAR MAESTROS
+   CONSULTAR MAESTROS
 ========================= */
 $maestros = mysqli_query($conexion, "
     SELECT *
@@ -28,7 +47,7 @@ $maestros = mysqli_query($conexion, "
 ");
 
 /* =========================
-    CONSULTAR GRUPOS
+   CONSULTAR GRUPOS
 ========================= */
 $grupos = mysqli_query($conexion, "
     SELECT *
@@ -37,7 +56,7 @@ $grupos = mysqli_query($conexion, "
 ");
 
 /* =========================
-    CONSULTAR ASIGNACIONES
+   CONSULTAR ASIGNACIONES
 ========================= */
 $asignaciones = mysqli_query($conexion, "
     SELECT
@@ -57,7 +76,7 @@ $asignaciones = mysqli_query($conexion, "
 ");
 
 /* =========================
-    MAESTROS DISPONIBLES
+   MAESTROS DISPONIBLES
 ========================= */
 $maestros_disponibles = mysqli_query($conexion, "
     SELECT *
@@ -70,7 +89,7 @@ $maestros_disponibles = mysqli_query($conexion, "
 ");
 
 /* =========================
-    GRUPOS DISPONIBLES
+   GRUPOS DISPONIBLES
 ========================= */
 $grupos_disponibles = mysqli_query($conexion, "
     SELECT *
@@ -94,6 +113,25 @@ $grupos_disponibles = mysqli_query($conexion, "
 
 <div class="contenedor">
 
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:15px;">
+        <div style="font-weight:bold;color:#2e7d32;">
+            Sesión: <?php echo htmlspecialchars($admin_actual_nombre); ?> |
+            Rol: <?php echo htmlspecialchars(nombre_rol_bonito($admin_actual_rol)); ?>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <?php if (es_admin_o_superior()): ?>
+                <a href="admin_usuarios.php" style="text-decoration:none;">
+                    <button type="button">Administrar usuarios</button>
+                </a>
+            <?php endif; ?>
+
+            <a href="cerrar_admin.php" style="text-decoration:none;">
+                <button type="button">Cerrar sesión</button>
+            </a>
+        </div>
+    </div>
+
     <h1>Panel administrador de maestros, grupos y asignaciones</h1>
 
     <?php if ($mensaje !== ""): ?>
@@ -104,9 +142,6 @@ $grupos_disponibles = mysqli_query($conexion, "
 
     <div class="grid-admin">
 
-        <!-- =========================
-            AGREGAR MAESTRO
-        ========================= -->
         <div class="card">
             <h2>Agregar maestro</h2>
 
@@ -120,9 +155,6 @@ $grupos_disponibles = mysqli_query($conexion, "
             </form>
         </div>
 
-        <!-- =========================
-            AGREGAR GRUPO
-        ========================= -->
         <div class="card">
             <h2>Agregar grupo</h2>
 
@@ -146,9 +178,6 @@ $grupos_disponibles = mysqli_query($conexion, "
             </form>
         </div>
 
-        <!-- =========================
-            CREAR ASIGNACION
-        ========================= -->
         <div class="card">
             <h2>Asignar maestro a grupo</h2>
 
@@ -187,9 +216,6 @@ $grupos_disponibles = mysqli_query($conexion, "
 
     </div>
 
-    <!-- =========================
-        LISTA DE MAESTROS
-    ========================= -->
     <div class="tabla">
         <h2>Lista de maestros</h2>
 
@@ -209,9 +235,7 @@ $grupos_disponibles = mysqli_query($conexion, "
                     <tr>
                         <td><?php echo $maestro["id_maestro"]; ?></td>
                         <td><?php echo htmlspecialchars($maestro["nombre_maestro"]); ?></td>
-                        <td>
-                            <?php echo ((int)$maestro["activo"] === 1) ? "Sí" : "No"; ?>
-                        </td>
+                        <td><?php echo ((int)$maestro["activo"] === 1) ? "Sí" : "No"; ?></td>
                         <td>
                             <form action="acciones_admin.php" method="POST">
                                 <input type="hidden" name="accion" value="editar_maestro">
@@ -241,9 +265,6 @@ $grupos_disponibles = mysqli_query($conexion, "
         </table>
     </div>
 
-    <!-- =========================
-        LISTA DE GRUPOS
-    ========================= -->
     <div class="tabla">
         <h2>Lista de grupos</h2>
 
@@ -267,9 +288,7 @@ $grupos_disponibles = mysqli_query($conexion, "
                         <td><?php echo htmlspecialchars($grupo["nombre_grupo"]); ?></td>
                         <td><?php echo htmlspecialchars($grupo["ciclo_escolar"]); ?></td>
                         <td><?php echo htmlspecialchars($grupo["turno"]); ?></td>
-                        <td>
-                            <?php echo ((int)$grupo["activo"] === 1) ? "Sí" : "No"; ?>
-                        </td>
+                        <td><?php echo ((int)$grupo["activo"] === 1) ? "Sí" : "No"; ?></td>
                         <td>
                             <form action="acciones_admin.php" method="POST">
                                 <input type="hidden" name="accion" value="editar_grupo">
@@ -283,12 +302,8 @@ $grupos_disponibles = mysqli_query($conexion, "
 
                                 <label>Turno</label>
                                 <select name="turno" required>
-                                    <option value="Matutino" <?php echo ($grupo["turno"] === "Matutino") ? "selected" : ""; ?>>
-                                        Matutino
-                                    </option>
-                                    <option value="Vespertino" <?php echo ($grupo["turno"] === "Vespertino") ? "selected" : ""; ?>>
-                                        Vespertino
-                                    </option>
+                                    <option value="Matutino" <?php echo ($grupo["turno"] === "Matutino") ? "selected" : ""; ?>>Matutino</option>
+                                    <option value="Vespertino" <?php echo ($grupo["turno"] === "Vespertino") ? "selected" : ""; ?>>Vespertino</option>
                                 </select>
 
                                 <label class="fila-check">
@@ -312,9 +327,6 @@ $grupos_disponibles = mysqli_query($conexion, "
         </table>
     </div>
 
-    <!-- =========================
-        ASIGNACIONES
-    ========================= -->
     <div class="tabla">
         <h2>Asignaciones actuales</h2>
 
@@ -352,16 +364,19 @@ $grupos_disponibles = mysqli_query($conexion, "
                                 <label>Maestro</label>
                                 <select name="id_maestro" required>
                                     <?php
+                                    $id_asignacion_actual = (int)$asig['id_asignacion'];
+                                    $id_maestro_actual = (int)$asig['id_maestro'];
+
                                     $lista_maestros_editar = mysqli_query($conexion, "
                                         SELECT *
                                         FROM maestros
                                         WHERE activo = 1
                                         AND (
-                                            id_maestro = {$asig['id_maestro']}
+                                            id_maestro = $id_maestro_actual
                                             OR id_maestro NOT IN (
                                                 SELECT id_maestro
                                                 FROM asignaciones
-                                                WHERE id_asignacion <> {$asig['id_asignacion']}
+                                                WHERE id_asignacion <> $id_asignacion_actual
                                             )
                                         )
                                         ORDER BY nombre_maestro ASC
@@ -369,7 +384,7 @@ $grupos_disponibles = mysqli_query($conexion, "
                                     while ($mEdit = mysqli_fetch_assoc($lista_maestros_editar)):
                                     ?>
                                         <option value="<?php echo $mEdit["id_maestro"]; ?>"
-                                            <?php echo ($mEdit["id_maestro"] == $asig["id_maestro"]) ? "selected" : ""; ?>>
+                                            <?php echo ((int)$mEdit["id_maestro"] === $id_maestro_actual) ? "selected" : ""; ?>>
                                             <?php echo htmlspecialchars($mEdit["nombre_maestro"]); ?>
                                         </option>
                                     <?php endwhile; ?>
@@ -378,16 +393,18 @@ $grupos_disponibles = mysqli_query($conexion, "
                                 <label>Grupo</label>
                                 <select name="id_grupo" required>
                                     <?php
+                                    $id_grupo_actual = (int)$asig['id_grupo'];
+
                                     $lista_grupos_editar = mysqli_query($conexion, "
                                         SELECT *
                                         FROM grupos
                                         WHERE activo = 1
                                         AND (
-                                            id_grupo = {$asig['id_grupo']}
+                                            id_grupo = $id_grupo_actual
                                             OR id_grupo NOT IN (
                                                 SELECT id_grupo
                                                 FROM asignaciones
-                                                WHERE id_asignacion <> {$asig['id_asignacion']}
+                                                WHERE id_asignacion <> $id_asignacion_actual
                                             )
                                         )
                                         ORDER BY turno ASC, ciclo_escolar ASC, nombre_grupo ASC
@@ -395,7 +412,7 @@ $grupos_disponibles = mysqli_query($conexion, "
                                     while ($gEdit = mysqli_fetch_assoc($lista_grupos_editar)):
                                     ?>
                                         <option value="<?php echo $gEdit["id_grupo"]; ?>"
-                                            <?php echo ($gEdit["id_grupo"] == $asig["id_grupo"]) ? "selected" : ""; ?>>
+                                            <?php echo ((int)$gEdit["id_grupo"] === $id_grupo_actual) ? "selected" : ""; ?>>
                                             <?php
                                             echo htmlspecialchars(
                                                 $gEdit["nombre_grupo"] . " | " .
@@ -424,18 +441,21 @@ $grupos_disponibles = mysqli_query($conexion, "
     </div>
 
 </div>
+
 <br><br>
 
-    <!-- =========================
-        BOTON DE REGRESO
-    ========================= -->
-<div class="item_boton">
-        <a href="../index.html">
-            <button class="boton_inicio"><img src="../Multimedia/Imagenes/Centro de Acopio/boton_fecha_atras.png"
-                    alt="Imagen de una flecha hacia atras"></button>
-            <span data-i18n="boton_inicio_admin_asignaciones">Inicio</span>
-        </a>
-    </div>
+<div class="boton-inicio-wrap">
+    <a href="../index.html" class="boton-inicio-link">
+        <div class="boton-inicio-svg">
+            <span class="boton-inicio-icono" aria-hidden="true">
+                <svg viewBox="0 0 576 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M575.8 255.5C575.8 272.3 562.1 286 545.3 286H448V456C448 486.9 422.9 512 392 512H312C294.3 512 280 497.7 280 480V384C280 366.3 265.7 352 248 352H200C182.3 352 168 366.3 168 384V480C168 497.7 153.7 512 136 512H56C25.1 512 0 486.9 0 456V286H30.7C13.9 286 .2 272.3 .2 255.5C.2 246.8 3.9 238.5 10.4 232.8L266.4 8.8C279.3 -2.9 296.7 -2.9 309.6 8.8L565.6 232.8C572.1 238.5 575.8 246.8 575.8 255.5Z" fill="white"/>
+                </svg>
+            </span>
+            <span class="boton-inicio-texto">Inicio</span>
+        </div>
+    </a>
+</div>
 
 <script src="../Scripts/admin_asignaciones.js"></script>
 </body>

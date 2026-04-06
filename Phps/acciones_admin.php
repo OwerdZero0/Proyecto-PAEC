@@ -11,14 +11,49 @@ mysqli_set_charset($conexion, "utf8mb4");
     FUNCIONES AUXILIARES
 ========================================= */
 function limpiar($conexion, $valor) {
-    return mysqli_real_escape_string($conexion, trim($valor));
+    return mysqli_real_escape_string($conexion, trim((string)$valor));
+}
+
+function longitud_texto($valor) {
+    return function_exists('mb_strlen') ? mb_strlen($valor, 'UTF-8') : strlen($valor);
+}
+
+function redirigir_a($ruta, $tipo, $mensaje) {
+    $ruta = trim($ruta) !== '' ? $ruta : 'admin_asignaciones.php';
+    $tipo = urlencode($tipo);
+    $mensaje = urlencode($mensaje);
+    header("Location: {$ruta}?tipo={$tipo}&mensaje={$mensaje}");
+    exit;
 }
 
 function redirigir($tipo, $mensaje) {
-    $tipo = urlencode($tipo);
-    $mensaje = urlencode($mensaje);
-    header("Location: admin_asignaciones.php?tipo={$tipo}&mensaje={$mensaje}");
-    exit;
+    redirigir_a('admin_asignaciones.php', $tipo, $mensaje);
+}
+
+function redirigir_formulario($tipo, $mensaje) {
+    redirigir_a('formulario.php', $tipo, $mensaje);
+}
+
+function obtener_decimal_post($campo) {
+    $valor = trim((string)($_POST[$campo] ?? ''));
+
+    if ($valor === '') {
+        return 0.00;
+    }
+
+    $valor = str_replace(',', '.', $valor);
+
+    if (!is_numeric($valor)) {
+        return null;
+    }
+
+    $numero = (float)$valor;
+
+    if ($numero < 0) {
+        return null;
+    }
+
+    return round($numero, 2);
 }
 
 /* =========================================
@@ -28,10 +63,18 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     redirigir("error", "Acceso no permitido.");
 }
 
-$accion = $_POST["accion"] ?? "";
+$accion = trim((string)($_POST["accion"] ?? ""));
 
-if ($accion === "") {
-    redirigir("error", "No se recibió ninguna acción.");
+if ($accion === '') {
+    if (
+        isset($_POST['fecha_entrega']) ||
+        isset($_POST['responsable_entrega']) ||
+        isset($_POST['grupo_entrega'])
+    ) {
+        $accion = 'guardar_recoleccion';
+    } else {
+        redirigir("error", "No se recibió ninguna acción.");
+    }
 }
 
 /* =========================================
@@ -76,9 +119,9 @@ if ($accion === "editar_maestro") {
         redirigir("error", "Datos inválidos para editar maestro.");
     }
 
-    $sql_verificar = "SELECT id_maestro 
-                        FROM maestros 
-                        WHERE nombre_maestro = '$nombre_maestro' 
+    $sql_verificar = "SELECT id_maestro
+                        FROM maestros
+                        WHERE nombre_maestro = '$nombre_maestro'
                         AND id_maestro <> $id_maestro
                         LIMIT 1";
     $resultado_verificar = mysqli_query($conexion, $sql_verificar);
@@ -319,6 +362,156 @@ if ($accion === "eliminar_asignacion") {
     } else {
         redirigir("error", "Error al eliminar asignación: " . mysqli_error($conexion));
     }
+}
+
+/* =========================================
+    10) GUARDAR RECOLECCION
+========================================= */
+if ($accion === 'guardar_recoleccion') {
+    $fecha_entrega = trim((string)($_POST['fecha_entrega'] ?? ''));
+    $responsable_entrega = trim((string)($_POST['responsable_entrega'] ?? ''));
+    $grupo_entrega = trim((string)($_POST['grupo_entrega'] ?? ''));
+    $observaciones = trim((string)($_POST['observaciones'] ?? ''));
+
+    $material_pet = isset($_POST['material_pet']) ? 1 : 0;
+    $material_carton = isset($_POST['material_carton']) ? 1 : 0;
+    $material_tapas = isset($_POST['material_tapas']) ? 1 : 0;
+    $material_vidrio = isset($_POST['material_vidrio']) ? 1 : 0;
+    $material_electrodomesticos = isset($_POST['material_electrodomesticos']) ? 1 : 0;
+    $material_papel = isset($_POST['material_papel']) ? 1 : 0;
+
+    if ($fecha_entrega === '') {
+        redirigir_formulario('error', 'La fecha de entrega es obligatoria.');
+    }
+
+    $fecha_valida = DateTime::createFromFormat('Y-m-d', $fecha_entrega);
+    if (!$fecha_valida || $fecha_valida->format('Y-m-d') !== $fecha_entrega) {
+        redirigir_formulario('error', 'La fecha de entrega no es válida.');
+    }
+
+    if ($responsable_entrega === '') {
+        redirigir_formulario('error', 'Debes seleccionar un responsable de entrega.');
+    }
+
+    if ($grupo_entrega === '') {
+        redirigir_formulario('error', 'Debes seleccionar un grupo.');
+    }
+
+    if (
+        $material_pet === 0 &&
+        $material_carton === 0 &&
+        $material_tapas === 0 &&
+        $material_vidrio === 0 &&
+        $material_electrodomesticos === 0 &&
+        $material_papel === 0
+    ) {
+        redirigir_formulario('error', 'Debes seleccionar al menos un material entregado.');
+    }
+
+    if (longitud_texto($responsable_entrega) > 80) {
+        redirigir_formulario('error', 'El nombre del responsable excede el tamaño permitido.');
+    }
+
+    if (longitud_texto($grupo_entrega) > 50) {
+        redirigir_formulario('error', 'El grupo excede el tamaño permitido.');
+    }
+
+    if ($observaciones !== '' && longitud_texto($observaciones) > 250) {
+        redirigir_formulario('error', 'Las observaciones no pueden exceder 250 caracteres.');
+    }
+
+    $cantidad_pet = obtener_decimal_post('cantidad_pet');
+    $cantidad_carton = obtener_decimal_post('cantidad_carton');
+    $cantidad_tapas = obtener_decimal_post('cantidad_tapas');
+    $cantidad_vidrio = obtener_decimal_post('cantidad_vidrio');
+    $cantidad_electrodomesticos = obtener_decimal_post('cantidad_electrodomesticos');
+    $cantidad_papel = obtener_decimal_post('cantidad_papel');
+
+    if (
+        $cantidad_pet === null ||
+        $cantidad_carton === null ||
+        $cantidad_tapas === null ||
+        $cantidad_vidrio === null ||
+        $cantidad_electrodomesticos === null ||
+        $cantidad_papel === null
+    ) {
+        redirigir_formulario('error', 'Todas las cantidades deben ser numéricas y mayores o iguales a 0.');
+    }
+
+    if ($material_pet === 0) {
+        $cantidad_pet = 0.00;
+    }
+    if ($material_carton === 0) {
+        $cantidad_carton = 0.00;
+    }
+    if ($material_tapas === 0) {
+        $cantidad_tapas = 0.00;
+    }
+    if ($material_vidrio === 0) {
+        $cantidad_vidrio = 0.00;
+    }
+    if ($material_electrodomesticos === 0) {
+        $cantidad_electrodomesticos = 0.00;
+    }
+    if ($material_papel === 0) {
+        $cantidad_papel = 0.00;
+    }
+
+    $stmt = mysqli_prepare(
+        $conexion,
+        'INSERT INTO recoleccion (
+            fecha_entrega,
+            responsable_entrega,
+            grupo_entrega,
+            material_pet,
+            cantidad_pet,
+            material_carton,
+            cantidad_carton,
+            material_tapas,
+            cantidad_tapas,
+            material_vidrio,
+            cantidad_vidrio,
+            material_electrodomesticos,
+            cantidad_electrodomesticos,
+            material_papel,
+            cantidad_papel,
+            observaciones
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    );
+
+    if (!$stmt) {
+        redirigir_formulario('error', 'Error al preparar el guardado: ' . mysqli_error($conexion));
+    }
+
+    mysqli_stmt_bind_param(
+        $stmt,
+        'sssidiididididis',
+        $fecha_entrega,
+        $responsable_entrega,
+        $grupo_entrega,
+        $material_pet,
+        $cantidad_pet,
+        $material_carton,
+        $cantidad_carton,
+        $material_tapas,
+        $cantidad_tapas,
+        $material_vidrio,
+        $cantidad_vidrio,
+        $material_electrodomesticos,
+        $cantidad_electrodomesticos,
+        $material_papel,
+        $cantidad_papel,
+        $observaciones
+    );
+
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt);
+        redirigir_formulario('ok', 'Registro de recolección guardado correctamente.');
+    }
+
+    $error_stmt = mysqli_stmt_error($stmt);
+    mysqli_stmt_close($stmt);
+    redirigir_formulario('error', 'Error al guardar la recolección: ' . $error_stmt);
 }
 
 /* =========================================

@@ -1,28 +1,39 @@
+<?php
+require_once __DIR__ . '/auth_admin.php';
+
+if (!admin_logueado()) {
+    header('Location: login_admin.php?destino=formulario.php' . urlencode('Debes iniciar sesión para entrar al formulario.'));
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="Styles/style_formulario.css">
-	<title>Formulario PAEC</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulario</title>
+	<link rel="stylesheet" href="../Styles/style_formulario.css">
 </head>
 <body>
-	<form class="formulario" action="conexionalta.php" method="post">
-		<div class="fondo_titulo">
-			<h1 class="titulo_formulario" data-i18n="titulo_formulario">Registro semanal de Acopio reciclable a CBTis No. 153</h1>
-		</div>
+	<form class="formulario" id="formulario_recoleccion" action="acciones_admin.php" method="post">
+		<section class="contenedor_titulos">
+			<div class="fondo_titulo">
+				<h1 class="titulo_formulario" data-i18n="titulo_formulario">Formulario de recolección semanal de materiales reciclables</h1>
+			</div>
+		</section>
 
-		<section class="contenedor_entrega">
+		<section class="contenedor_identificacion">
 			<div class="fondo_subtitulo">
 				<h2 class="subtitulo_formulario" data-i18n="subtitulo1_1_formulario">Identificación de la entrega</h2>
 			</div>
 			
 			<label class="pregunta" data-i18n="pregunta1_1_formulario">Fecha de la semana:</label>
-			<input type="date" name="fecha_entrega" class="respuesta">
+			<input type="date" name="fecha_entrega" class="respuesta" required>
 			<br><br>
 			
 			<label class="pregunta" data-i18n="pregunta1_2_formulario">Responsable de la entrega (tutor):</label>
-			<select name="responsable_entrega" class="respuesta">
+			<select name="responsable_entrega" class="respuesta" required>
+				<option value="" selected disabled>Seleccione un responsable</option>
 				<optgroup label="Matutino">
 					<option value="CORONA ZAHUANTITLA MARICELA">CORONA ZAHUANTITLA MARICELA</option>
 					<option value="MENDEZ SALAS EVARISTO GUADALUPE">MENDEZ SALAS EVARISTO GUADALUPE</option>
@@ -71,7 +82,8 @@
 			<br><br>
 			
 			<label class="pregunta" data-i18n="pregunta1_3_formulario">Grupo:</label>
-			<select name="grupo_entrega" class="respuesta">
+			<select name="grupo_entrega" class="respuesta" required>
+				<option value="" selected disabled>Seleccione un grupo</option>
 				<optgroup label="Matutino">
 					<option value="1AMC">1AMC</option>
 					<option value="1AMVT">1AMVT</option>
@@ -129,45 +141,45 @@
 			
 			<div class="cantidad_entrega">
 				<label class="respuesta">
-					<input id="1" type="checkbox" class="check" name="material_pet" value="1"> 
+					<input id="1" type="checkbox" class="check material-check" data-cantidad="cantidad_pet" name="material_pet" value="1"> 
 					<span data-i18n="check1_formulario">PET (botellas de plástico)</span> 
-					<input type="number" min="0" step="any" name="cantidad_pet" class="respuesta"> kg
+					<input type="number" min="0" step="any" name="cantidad_pet" id="cantidad_pet" class="respuesta cantidad-input"> kg
 				</label>
 				
 				<label class="respuesta">
-					<input id="2" type="checkbox" class="check" name="material_carton" value="1"> 
+					<input id="2" type="checkbox" class="check material-check" data-cantidad="cantidad_carton" name="material_carton" value="1"> 
 					<span data-i18n="check2_formulario">Cartón</span>
-					<input type="number" min="0" step="any" name="cantidad_carton" class="respuesta"> kg
+					<input type="number" min="0" step="any" name="cantidad_carton" id="cantidad_carton" class="respuesta cantidad-input"> kg
 				</label>
 				
 				<label class="respuesta">
-					<input id="3" type="checkbox" class="check" name="material_tapas" value="1"> 
+					<input id="3" type="checkbox" class="check material-check" data-cantidad="cantidad_tapas" name="material_tapas" value="1"> 
 					<span data-i18n="check3_formulario">Tapas plástico</span>
-					<input type="number" min="0" step="any" name="cantidad_tapas" class="respuesta"> kg
+					<input type="number" min="0" step="any" name="cantidad_tapas" id="cantidad_tapas" class="respuesta cantidad-input"> kg
 				</label>
 				
 				<label class="respuesta">
-					<input id="4" type="checkbox" class="check" name="material_vidrio" value="1"> 
+					<input id="4" type="checkbox" class="check material-check" data-cantidad="cantidad_vidrio" name="material_vidrio" value="1"> 
 					<span data-i18n="check4_formulario">Vidrio</span>
-					<input type="number" min="0" step="any" name="cantidad_vidrio" class="respuesta"> kg
+					<input type="number" min="0" step="any" name="cantidad_vidrio" id="cantidad_vidrio" class="respuesta cantidad-input"> kg
 				</label>
 				
 				<label class="respuesta">
-					<input id="5" type="checkbox" class="check" name="material_electrodomesticos" value="1"> 
+					<input id="5" type="checkbox" class="check material-check" data-cantidad="cantidad_electrodomesticos" name="material_electrodomesticos" value="1"> 
 					<span data-i18n="check5_formulario">Aparatos electronicos</span> 
-					<input type="number" min="0" step="any" name="cantidad_electrodomesticos" class="respuesta"> kg
+					<input type="number" min="0" step="any" name="cantidad_electrodomesticos" id="cantidad_electrodomesticos" class="respuesta cantidad-input"> kg
 				</label>
 				
 				<label class="respuesta">
-					<input id="6" type="checkbox" class="check" name="material_papel" value="1"> 
+					<input id="6" type="checkbox" class="check material-check" data-cantidad="cantidad_papel" name="material_papel" value="1"> 
 					<span data-i18n="check6_formulario">Papel (libros y libretas)</span> 
-					<input type="number" min="0" step="any" name="cantidad_papel" class="respuesta"> kg
+					<input type="number" min="0" step="any" name="cantidad_papel" id="cantidad_papel" class="respuesta cantidad-input"> kg
 				</label>
 			</div>
 			
 			<br><br>
 			<label class="pregunta" data-i18n="pregunta2_2_formulario">Observaciones:</label>
-			<textarea name="observaciones" class="respuesta" rows="4"></textarea>
+			<textarea name="observaciones" class="respuesta" rows="4" required></textarea>
 		</section>
 
 		<section class="contenedor_botones">
@@ -179,16 +191,18 @@
 				</span>
 				<p class="texto_enviar" data-i18n="boton_enviar_formulario">Enviar</p>
 			</button>
-			<a href="index.html">
+
+			<a href="cerrar_admin.php">
 				<button class="boton_inicio" type="button">
 					<span class="contenedor_icono_inicio">
 						<svg viewBox="0 0 576 512" class="icono_inicio">
 							<path d="M280.4 148.3L96 300.1V464c0 8.8 7.2 16 16 16l112-.3c8.8 0 16-7.2 16-16V368c0-8.8 7.2-16 16-16h64.3c8.8 0 16 7.2 16 16v95.7c0 8.8 7.2 16 16 16L464 480c8.8 0 16-7.2 16-16V300L295.6 148.3c-6.4-5.2-15.8-5.2-22.2 0zM571.6 251.5l-61.5 50.2c-3 2.5-7.4 2.1-9.9-.9l-26.3-31.7c-2.5-3-2.1-7.4.9-9.9l61.5-50.2c12.1-9.9 14-27.9 4.1-40L488 86.5c-9.9-12.1-27.9-14-40-4.1L384 136.9V48c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16v88.9L128 82.4c-12.1-9.9-30.1-8-40 4.1L39.7 168.9c-9.9 12.1-8 30.1 4.1 40L276 373c6.4 5.2 15.8 5.2 22.2 0l273.4-221.5c12.1-9.9 14-27.9 4.1-40l-48.3-58.5c-9.9-12.1-27.9-14-40-4.1z"/>
-					</svg>
+						</svg>
 					</span>
 					<p class="texto_inicio" data-i18n="boton_inicio_formulario">Inicio</p>
 				</button>
 			</a>
+
 			<button class="boton_basura" type="reset">
 				<span class="contenedor_icono_basura">
 					<svg viewBox="0 0 24 24" class="icono_basura">
@@ -197,10 +211,10 @@
 				</span>
 				<p class="texto_basura" data-i18n="boton_basura_formulario">Borrar</p>
 			</button>
-
 		</section>
 	</form>
-	<script src="Scripts/script_formulario.js"></script>
-	<script type="module" src="Scripts/script_traductor.js"></script>
+
+	<script src="../Scripts/script_formulario.js"></script>
+	<script type="module" src="../Scripts/script_traductor.js"></script>
 </body>
 </html>

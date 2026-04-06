@@ -21,7 +21,6 @@
         </h1>
     </div>
 
-    <!--Radio buttons de idioma-->
     <div class="glass-radio-group">
         <input type="radio" name="plan" id="glass-silver" value="es" checked />
         <label for="glass-silver">Español</label>
@@ -35,7 +34,6 @@
         <div class="glass-glider"></div>
     </div>
 
-    <!--Botones para ir a las otras hojas-->
     <div class="contenedor">
         <div class="contenedor_imagen">
             <img src="Multimedia/Imagenes/Inicio/Centro_de_Acopio.webp" alt="Imagen de un centro de acopio"
@@ -80,31 +78,12 @@
                     </div>
 
                     <div class="item_boton">
-                        <a href="Formulario.html">
-                            <button class="boton_formulario">
-                                <img src="Multimedia/Imagenes/Inicio/Boton_formulario.png"
-                                    alt="Imagen de un formulario">
-                            </button>
-                            <span data-i18n="boton_formulario_inicio">Formulario</span>
-                        </a>
-                    </div>
-
-                    <div class="item_boton">
-                        <a href="Consultoria_Alta.html">
-                            <button class="boton_consulta_alta">
-                                <img src="Multimedia/Imagenes/Inicio/Boton_Consulta.png" alt="Imagen de Consulta">
-                            </button>
-                            <span data-i18n="boton_consulta_alta_inicio">Consulta de Formulario</span>
-                        </a>
-                    </div>
-
-                    <div class="item_boton">
                         <a href="Descargables.html">
                             <button class="boton_descargables">
                                 <img src="Multimedia/Imagenes/Inicio/Boton_descargables.png"
                                     alt="Imagen de un descargables">
                             </button>
-                            <span data-i18n="boton_descargables_inicio">Material TS–CH–FS–ED</span>
+                            <span data-i18n="boton_descargables_inicio">Material TS-CH-FS-ED</span>
                         </a>
                     </div>
 
@@ -123,12 +102,29 @@
             <div class="seccion_botones" id="seccion-admins">
                 <div class="botones botones_admins">
                     <div class="item_boton">
-                        <a href="Phps/admin_asignaciones.php">
+                        <a href="Phps/login_admin.php?destino=admin_asignaciones.php">
                             <button class="boton_admin_asignaciones">
-                                <img src="Multimedia/Imagenes/Inicio/Boton_admin_asignaciones.png"
-                                    alt="Imagen de administración">
+                                <img src="Multimedia/Imagenes/Inicio/asignacion-de-usuarios.png" alt="Imagen de administración de asignaciones">
                             </button>
-                            <span>Administración</span>
+                            <span>Admin asignaciones</span>
+                        </a>
+                    </div>
+
+                    <div class="item_boton">
+                        <a href="Phps/login_admin.php?destino=formulario.php">
+                            <button class="boton_formulario">
+                                <img src="Multimedia/Imagenes/Inicio/Boton_formulario.png" alt="Imagen de un formulario">
+                            </button>
+                            <span data-i18n="boton_formulario_inicio">Formulario</span>
+                        </a>
+                    </div>
+
+                    <div class="item_boton">
+                        <a href="Phps/login_admin.php?destino=admin_usuarios.php">
+                            <button class="boton_admin_asignaciones">
+                                <img src="Multimedia/Imagenes/Inicio/agregar-usuario.png" alt="Imagen de administración de usuarios">
+                            </button>
+                            <span>Admin usuarios</span>
                         </a>
                     </div>
                 </div>
