@@ -107,26 +107,29 @@ $grupos_disponibles = mysqli_query($conexion, "
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de administración</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Styles/style_admin_asignaciones.css">
 </head>
 <body>
 
 <div class="contenedor">
 
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:15px;">
-        <div style="font-weight:bold;color:#2e7d32;">
+    <div class="barra-sesion">
+        <div class="barra-sesion-info">
             Sesión: <?php echo htmlspecialchars($admin_actual_nombre); ?> |
             Rol: <?php echo htmlspecialchars(nombre_rol_bonito($admin_actual_rol)); ?>
         </div>
 
-        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <div class="barra-sesion-botones">
             <?php if (es_admin_o_superior()): ?>
-                <a href="admin_usuarios.php" style="text-decoration:none;">
+                <a href="admin_usuarios.php">
                     <button type="button">Administrar usuarios</button>
                 </a>
             <?php endif; ?>
 
-            <a href="cerrar_admin.php" style="text-decoration:none;">
+            <a href="cerrar_admin.php">
                 <button type="button">Cerrar sesión</button>
             </a>
         </div>
@@ -219,6 +222,7 @@ $grupos_disponibles = mysqli_query($conexion, "
     <div class="tabla">
         <h2>Lista de maestros</h2>
 
+        <div class="tabla-scroll">
         <table>
             <thead>
                 <tr>
@@ -263,11 +267,13 @@ $grupos_disponibles = mysqli_query($conexion, "
                 <?php endwhile; ?>
             </tbody>
         </table>
+        </div>
     </div>
 
     <div class="tabla">
         <h2>Lista de grupos</h2>
 
+        <div class="tabla-scroll">
         <table>
             <thead>
                 <tr>
@@ -325,6 +331,7 @@ $grupos_disponibles = mysqli_query($conexion, "
                 <?php endwhile; ?>
             </tbody>
         </table>
+        </div>
     </div>
 
     <div class="tabla">
@@ -336,6 +343,7 @@ $grupos_disponibles = mysqli_query($conexion, "
             placeholder="Buscar maestro, grupo, ciclo o turno"
         >
 
+        <div class="tabla-scroll">
         <table class="tabla-asignaciones">
             <thead>
                 <tr>
@@ -438,6 +446,7 @@ $grupos_disponibles = mysqli_query($conexion, "
                 <?php endwhile; ?>
             </tbody>
         </table>
+        </div>
     </div>
 
 </div>
@@ -448,8 +457,8 @@ $grupos_disponibles = mysqli_query($conexion, "
     <a href="../index.html" class="boton-inicio-link">
         <div class="boton-inicio-svg">
             <span class="boton-inicio-icono" aria-hidden="true">
-                <svg viewBox="0 0 576 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M575.8 255.5C575.8 272.3 562.1 286 545.3 286H448V456C448 486.9 422.9 512 392 512H312C294.3 512 280 497.7 280 480V384C280 366.3 265.7 352 248 352H200C182.3 352 168 366.3 168 384V480C168 497.7 153.7 512 136 512H56C25.1 512 0 486.9 0 456V286H30.7C13.9 286 .2 272.3 .2 255.5C.2 246.8 3.9 238.5 10.4 232.8L266.4 8.8C279.3 -2.9 296.7 -2.9 309.6 8.8L565.6 232.8C572.1 238.5 575.8 246.8 575.8 255.5Z" fill="white"/>
+                <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
             </span>
             <span class="boton-inicio-texto">Inicio</span>

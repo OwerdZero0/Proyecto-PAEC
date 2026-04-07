@@ -170,8 +170,8 @@ if (!admin_logueado()) {
 			<a href="cerrar_admin.php">
 				<button class="boton_inicio" type="button">
 					<span class="contenedor_icono_inicio">
-						<svg viewBox="0 0 576 512" class="icono_inicio">
-							<path d="M280.4 148.3L96 300.1V464c0 8.8 7.2 16 16 16l112-.3c8.8 0 16-7.2 16-16V368c0-8.8 7.2-16 16-16h64.3c8.8 0 16 7.2 16 16v95.7c0 8.8 7.2 16 16 16L464 480c8.8 0 16-7.2 16-16V300L295.6 148.3c-6.4-5.2-15.8-5.2-22.2 0zM571.6 251.5l-61.5 50.2c-3 2.5-7.4 2.1-9.9-.9l-26.3-31.7c-2.5-3-2.1-7.4.9-9.9l61.5-50.2c12.1-9.9 14-27.9 4.1-40L488 86.5c-9.9-12.1-27.9-14-40-4.1L384 136.9V48c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16v88.9L128 82.4c-12.1-9.9-30.1-8-40 4.1L39.7 168.9c-9.9 12.1-8 30.1 4.1 40L276 373c6.4 5.2 15.8 5.2 22.2 0l273.4-221.5c12.1-9.9 14-27.9 4.1-40l-48.3-58.5c-9.9-12.1-27.9-14-40-4.1z"/>
+						<svg viewBox="0 0 24 24" fill="white" class="icono_inicio">
+							<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
 						</svg>
 					</span>
 					<p class="texto_inicio" data-i18n="boton_inicio_formulario">Inicio</p>

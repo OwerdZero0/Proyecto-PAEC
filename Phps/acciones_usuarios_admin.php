@@ -1,220 +1,371 @@
 <?php
 require_once __DIR__ . '/auth_admin.php';
 
-if (!admin_logueado()) {
-    header('Location: login_admin.php?destino=formulario.php' . urlencode('Debes iniciar sesión para entrar al formulario.'));
+/* =========================================================
+   SECCIÓN 1: VALIDAR SESIÓN Y ROL
+   ---------------------------------------------------------
+   Este archivo solo puede ser usado por usuarios logueados
+   con rol master o admin.
+========================================================= */
+require_roles_admin(['master', 'admin']);
+
+/* =========================================================
+   SECCIÓN 2: CONEXIÓN A LA BASE DE DATOS
+   ---------------------------------------------------------
+   Si auth_admin.php ya dejó disponible $conexion, se usa.
+   Si no existe, se crea una conexión aquí como respaldo.
+========================================================= */
+if (!isset($conexion) || !$conexion) {
+    $conexion = mysqli_connect("localhost", "root", "root", "baseRecoleccion")
+        or die("Error en la conexión: " . mysqli_connect_error());
+
+    mysqli_set_charset($conexion, "utf8mb4");
+}
+
+/* =========================================================
+   SECCIÓN 3: FUNCIONES AUXILIARES
+   ---------------------------------------------------------
+   Estas funciones ayudan a:
+   - limpiar texto recibido por POST
+   - redirigir siempre a admin_usuarios.php
+========================================================= */
+function limpiar($conexion, $valor) {
+    return mysqli_real_escape_string($conexion, trim((string)$valor));
+}
+
+function redirigir_usuarios($tipo, $mensaje) {
+    $tipo = urlencode($tipo);
+    $mensaje = urlencode($mensaje);
+    header("Location: admin_usuarios.php?tipo={$tipo}&mensaje={$mensaje}");
     exit;
 }
+
+/* =========================================================
+   SECCIÓN 4: VALIDAR MÉTODO
+   ---------------------------------------------------------
+   Solo se aceptan peticiones POST porque este archivo
+   procesa formularios.
+========================================================= */
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    redirigir_usuarios("error", "Acceso no permitido.");
+}
+
+/* =========================================================
+   SECCIÓN 5: OBTENER DATOS DE SESIÓN Y ACCIÓN
+   ---------------------------------------------------------
+   Se identifica:
+   - el usuario actual
+   - su rol
+   - la acción enviada desde el formulario
+========================================================= */
+$admin_actual_id = (int)($_SESSION['admin_id'] ?? 0);
+$admin_actual_rol = trim((string)($_SESSION['admin_rol'] ?? ''));
+$accion = trim((string)($_POST['accion'] ?? ''));
+
+if ($accion === '') {
+    redirigir_usuarios("error", "No se recibió ninguna acción.");
+}
+
+/* =========================================================
+   SECCIÓN 6: CREAR USUARIO
+   ---------------------------------------------------------
+   Reglas:
+   - master puede crear admin y subadmin
+   - admin solo puede crear subadmin
+========================================================= */
+if ($accion === 'crear_usuario') {
+
+    $usuario = limpiar($conexion, $_POST['usuario'] ?? '');
+    $password = trim((string)($_POST['password'] ?? ''));
+    $rol = trim((string)($_POST['rol'] ?? ''));
+    $activo = isset($_POST['activo']) ? 1 : 0;
+
+    if ($usuario === '' || $password === '' || $rol === '') {
+        redirigir_usuarios("error", "Todos los campos son obligatorios.");
+    }
+
+    /* -----------------------------------------------------
+       VALIDAR ROL SEGÚN QUIÉN CREA
+    ----------------------------------------------------- */
+    if ($admin_actual_rol === 'master') {
+        if ($rol !== 'admin' && $rol !== 'subadmin') {
+            redirigir_usuarios("error", "Rol inválido.");
+        }
+    } elseif ($admin_actual_rol === 'admin') {
+        if ($rol !== 'subadmin') {
+            redirigir_usuarios("error", "Solo puedes crear usuarios tipo sub-admin.");
+        }
+    } else {
+        redirigir_usuarios("error", "No tienes permiso para crear usuarios.");
+    }
+
+    if (strlen($usuario) > 50) {
+        redirigir_usuarios("error", "El nombre de usuario es demasiado largo.");
+    }
+
+    $sql_verificar = "SELECT id_admin FROM admins WHERE usuario = '$usuario' LIMIT 1";
+    $resultado_verificar = mysqli_query($conexion, $sql_verificar);
+
+    if ($resultado_verificar && mysqli_num_rows($resultado_verificar) > 0) {
+        redirigir_usuarios("error", "Ese usuario ya existe.");
+    }
+
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+    $debe_cambiar_password = 1;
+
+    $stmt = mysqli_prepare($conexion, "
+        INSERT INTO admins (
+            usuario,
+            password_hash,
+            rol,
+            activo,
+            debe_cambiar_password
+        ) VALUES (?, ?, ?, ?, ?)
+    ");
+
+    if (!$stmt) {
+        redirigir_usuarios("error", "Error al preparar la creación del usuario.");
+    }
+
+    mysqli_stmt_bind_param(
+        $stmt,
+        "sssii",
+        $usuario,
+        $password_hash,
+        $rol,
+        $activo,
+        $debe_cambiar_password
+    );
+
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt);
+        redirigir_usuarios("ok", "Usuario creado correctamente.");
+    }
+
+    $error_stmt = mysqli_stmt_error($stmt);
+    mysqli_stmt_close($stmt);
+    redirigir_usuarios("error", "Error al crear usuario: " . $error_stmt);
+}
+
+/* =========================================================
+   SECCIÓN 7: EDITAR USUARIO
+   ---------------------------------------------------------
+   Reglas:
+   - master puede editar a cualquiera
+   - admin no puede editar al master
+   - se puede cambiar:
+     * usuario
+     * rol (solo master y no sobre el master)
+     * contraseña
+     * activo
+     * debe_cambiar_password
+========================================================= */
+if ($accion === 'editar_usuario') {
+    $id_admin = (int)($_POST['id_admin'] ?? 0);
+    $usuario = limpiar($conexion, $_POST['usuario'] ?? '');
+    $rol_post = trim((string)($_POST['rol'] ?? ''));
+    $password = trim((string)($_POST['password'] ?? ''));
+    $activo = isset($_POST['activo']) ? 1 : 0;
+    $debe_cambiar_password = isset($_POST['debe_cambiar_password']) ? 1 : 0;
+
+    if ($id_admin <= 0 || $usuario === '') {
+        redirigir_usuarios("error", "Datos inválidos para editar usuario.");
+    }
+
+    if (strlen($usuario) > 50) {
+        redirigir_usuarios("error", "El nombre de usuario es demasiado largo.");
+    }
+
+    /* -----------------------------------------------------
+       Consultar el usuario objetivo para conocer su rol
+    ----------------------------------------------------- */
+    $sql_objetivo = "SELECT id_admin, usuario, rol FROM admins WHERE id_admin = $id_admin LIMIT 1";
+    $resultado_objetivo = mysqli_query($conexion, $sql_objetivo);
+
+    if (!$resultado_objetivo || mysqli_num_rows($resultado_objetivo) === 0) {
+        redirigir_usuarios("error", "El usuario a editar no existe.");
+    }
+
+    $usuario_objetivo = mysqli_fetch_assoc($resultado_objetivo);
+    $rol_actual_objetivo = $usuario_objetivo['rol'];
+    $es_master_objetivo = ($rol_actual_objetivo === 'master');
+    $es_mi_cuenta = ($id_admin === $admin_actual_id);
+
+    /* -----------------------------------------------------
+       Validar permisos
+    ----------------------------------------------------- */
+    if ($admin_actual_rol === 'admin' && $es_master_objetivo) {
+        redirigir_usuarios("error", "No tienes permiso para editar al usuario master.");
+    }
+
+    if ($admin_actual_rol !== 'master' && $admin_actual_rol !== 'admin') {
+        redirigir_usuarios("error", "No tienes permiso para editar usuarios.");
+    }
+
+    /* -----------------------------------------------------
+       Determinar el rol final
+       - Si el objetivo es master, debe seguir siendo master
+       - Solo master puede cambiar roles de otros usuarios
+    ----------------------------------------------------- */
+    $rol_final = $rol_actual_objetivo;
+
+    if ($es_master_objetivo) {
+        $rol_final = 'master';
+    } else {
+        if ($admin_actual_rol === 'master') {
+            if ($rol_post !== 'admin' && $rol_post !== 'subadmin') {
+                redirigir_usuarios("error", "Rol inválido.");
+            }
+            $rol_final = $rol_post;
+        } else {
+            $rol_final = $rol_actual_objetivo;
+        }
+    }
+
+    /* -----------------------------------------------------
+       Evitar usuario duplicado
+    ----------------------------------------------------- */
+    $sql_verificar = "SELECT id_admin
+                      FROM admins
+                      WHERE usuario = '$usuario'
+                      AND id_admin <> $id_admin
+                      LIMIT 1";
+    $resultado_verificar = mysqli_query($conexion, $sql_verificar);
+
+    if ($resultado_verificar && mysqli_num_rows($resultado_verificar) > 0) {
+        redirigir_usuarios("error", "Ya existe otro usuario con ese nombre.");
+    }
+
+    /* -----------------------------------------------------
+       Regla extra:
+       evitar que el master se desactive a sí mismo
+    ----------------------------------------------------- */
+    if ($es_mi_cuenta && $admin_actual_rol === 'master' && $activo === 0) {
+        redirigir_usuarios("error", "El usuario master no puede desactivarse a sí mismo.");
+    }
+
+    /* -----------------------------------------------------
+       Construir actualización
+       Si se escribió nueva contraseña, se actualiza.
+       Si no, se mantiene la actual.
+    ----------------------------------------------------- */
+    if ($password !== '') {
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $stmt = mysqli_prepare($conexion, "
+            UPDATE admins
+            SET usuario = ?,
+                password_hash = ?,
+                rol = ?,
+                activo = ?,
+                debe_cambiar_password = ?
+            WHERE id_admin = ?
+        ");
+
+        if (!$stmt) {
+            redirigir_usuarios("error", "Error al preparar la actualización del usuario.");
+        }
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "sssiii",
+            $usuario,
+            $password_hash,
+            $rol_final,
+            $activo,
+            $debe_cambiar_password,
+            $id_admin
+        );
+    } else {
+        $stmt = mysqli_prepare($conexion, "
+            UPDATE admins
+            SET usuario = ?,
+                rol = ?,
+                activo = ?,
+                debe_cambiar_password = ?
+            WHERE id_admin = ?
+        ");
+
+        if (!$stmt) {
+            redirigir_usuarios("error", "Error al preparar la actualización del usuario.");
+        }
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "ssiii",
+            $usuario,
+            $rol_final,
+            $activo,
+            $debe_cambiar_password,
+            $id_admin
+        );
+    }
+
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt);
+
+        if ($password !== '' && $es_master_objetivo && $es_mi_cuenta) {
+            redirigir_usuarios("ok", "La contraseña del master se actualizó correctamente.");
+        }
+
+        redirigir_usuarios("ok", "Usuario actualizado correctamente.");
+    }
+
+    $error_stmt = mysqli_stmt_error($stmt);
+    mysqli_stmt_close($stmt);
+    redirigir_usuarios("error", "Error al actualizar usuario: " . $error_stmt);
+}
+
+/* =========================================================
+   SECCIÓN 8: ELIMINAR USUARIO
+   ---------------------------------------------------------
+   Reglas:
+   - master puede eliminar admin y subadmin
+   - admin puede eliminar admin/subadmin, pero no master
+   - nadie puede eliminar su propia cuenta desde aquí
+========================================================= */
+if ($accion === 'eliminar_usuario') {
+    $id_admin = (int)($_POST['id_admin'] ?? 0);
+
+    if ($id_admin <= 0) {
+        redirigir_usuarios("error", "ID de usuario inválido.");
+    }
+
+    $sql_objetivo = "SELECT id_admin, rol, usuario FROM admins WHERE id_admin = $id_admin LIMIT 1";
+    $resultado_objetivo = mysqli_query($conexion, $sql_objetivo);
+
+    if (!$resultado_objetivo || mysqli_num_rows($resultado_objetivo) === 0) {
+        redirigir_usuarios("error", "El usuario a eliminar no existe.");
+    }
+
+    $usuario_objetivo = mysqli_fetch_assoc($resultado_objetivo);
+    $rol_objetivo = $usuario_objetivo['rol'];
+    $es_master_objetivo = ($rol_objetivo === 'master');
+    $es_mi_cuenta = ($id_admin === $admin_actual_id);
+
+    if ($es_mi_cuenta) {
+        redirigir_usuarios("error", "No puedes eliminar tu propia cuenta.");
+    }
+
+    if ($es_master_objetivo) {
+        redirigir_usuarios("error", "No se puede eliminar al usuario master.");
+    }
+
+    if ($admin_actual_rol !== 'master' && $admin_actual_rol !== 'admin') {
+        redirigir_usuarios("error", "No tienes permiso para eliminar usuarios.");
+    }
+
+    $sql_eliminar = "DELETE FROM admins WHERE id_admin = $id_admin LIMIT 1";
+
+    if (mysqli_query($conexion, $sql_eliminar)) {
+        redirigir_usuarios("ok", "Usuario eliminado correctamente.");
+    } else {
+        redirigir_usuarios("error", "Error al eliminar usuario: " . mysqli_error($conexion));
+    }
+}
+
+/* =========================================================
+   SECCIÓN 9: ACCIÓN NO RECONOCIDA
+========================================================= */
+redirigir_usuarios("error", "Acción no reconocida.");
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Formulario</title>
-	<link rel="stylesheet" href="../Styles/style_formulario.css">
-</head>
-<body>
-	<form class="formulario" id="formulario_recoleccion" action="acciones_admin.php" method="post">
-		<section class="contenedor_titulos">
-			<div class="fondo_titulo">
-				<h1 class="titulo_formulario" data-i18n="titulo_formulario">Formulario de recolección semanal de materiales reciclables</h1>
-			</div>
-		</section>
-
-		<section class="contenedor_identificacion">
-			<div class="fondo_subtitulo">
-				<h2 class="subtitulo_formulario" data-i18n="subtitulo1_1_formulario">Identificación de la entrega</h2>
-			</div>
-			
-			<label class="pregunta" data-i18n="pregunta1_1_formulario">Fecha de la semana:</label>
-			<input type="date" name="fecha_entrega" class="respuesta" required>
-			<br><br>
-			
-			<label class="pregunta" data-i18n="pregunta1_2_formulario">Responsable de la entrega (tutor):</label>
-			<select name="responsable_entrega" class="respuesta" required>
-				<option value="" selected disabled>Seleccione un responsable</option>
-				<optgroup label="Matutino">
-					<option value="CORONA ZAHUANTITLA MARICELA">CORONA ZAHUANTITLA MARICELA</option>
-					<option value="MENDEZ SALAS EVARISTO GUADALUPE">MENDEZ SALAS EVARISTO GUADALUPE</option>
-					<option value="GUTIERREZ URCID FERNANDO">GUTIERREZ URCID FERNANDO</option>
-					<option value="ROJAS RODRIGUEZ CARLOS OCTAVIO">ROJAS RODRIGUEZ CARLOS OCTAVIO</option>
-					<option value="GOMEZ OREA NOEMI SUSANA">GOMEZ OREA NOEMI SUSANA</option>
-					<option value="CASTILLO CARDONA SAMANTHA RUBI">CASTILLO CARDONA SAMANTHA RUBI</option>
-					<option value="PALMEROS ORTIZ EDGAR">PALMEROS ORTIZ EDGAR</option>
-					<option value="ESPINOZA SANCHEZ BRISEIDA">ESPINOZA SANCHEZ BRISEIDA</option>
-					<option value="CRUZ MARQUEZ MARIA DEL CARMEN">CRUZ MARQUEZ MARIA DEL CARMEN</option>
-					<option value="TAPIA SMITH NORMA LUZ">TAPIA SMITH NORMA LUZ</option>
-					<option value="VAZQUEZ GONZALEZ GUADALUPE">VAZQUEZ GONZALEZ GUADALUPE</option>
-					<option value="CERON PEREZ SELENE">CERON PEREZ SELENE</option>
-					<option value="LEON COTE BARRERA">LEON COTE BARRERA</option>
-					<option value="BAEZ BARRADAS ZARINA">BAEZ BARRADAS ZARINA</option>
-					<option value="HERNANDEZ LARA DULCE MARIA">HERNANDEZ LARA DULCE MARIA</option>
-					<option value="SOTELO REYES TONANTZIN">SOTELO REYES TONANTZIN</option>
-					<option value="PINEDA VAZQUEZ NARETH">PINEDA VAZQUEZ NARETH</option>
-					<option value="DELGADO ATONAL SYAMASUNDAR-DAS">DELGADO ATONAL SYAMASUNDAR-DAS</option>
-					<option value="HERNANDEZ CRUZ MAXIMINO">HERNANDEZ CRUZ MAXIMINO</option>
-					<option value="BARRIOS RODRIGUEZ GLORIA">BARRIOS RODRIGUEZ GLORIA</option>
-				</optgroup>
-				<optgroup label="Vespertino">
-					<option value="JUAREZ JUAREZ ENRIQUE">JUAREZ JUAREZ ENRIQUE</option>
-					<option value="MATIAS GUZMAN FABIOLA">MATIAS GUZMAN FABIOLA</option>
-					<option value="MORALES QUIROZ KAREN">MORALES QUIROZ KAREN</option>
-					<option value="ATONAL FERNANDEZ STHEPANIE">ATONAL FERNANDEZ STHEPANIE</option>
-					<option value="PEREZ CAMACHO GABINA">PEREZ CAMACHO GABINA</option>
-					<option value="PEREZ COYOTL ANA LAURA">PEREZ COYOTL ANA LAURA</option>
-					<option value="ITURBIDE ORTIZ LUDWINDG">ITURBIDE ORTIZ LUDWINDG</option>
-					<option value="ARROYO SERRANO HECTOR">ARROYO SERRANO HECTOR</option>
-					<option value="DIYARZA MEZA MARIELA">DIYARZA MEZA MARIELA</option>
-					<option value="GONZALEZ GONZALES YASMIN">GONZALEZ GONZALES YASMIN</option>
-					<option value="RIVERA CASTILLO MATILDE">RIVERA CASTILLO MATILDE</option>
-					<option value="RAMOS BRAVO OSCAR">RAMOS BRAVO OSCAR</option>
-					<option value="MENA MENA IRMA">MENA MENA IRMA</option>
-					<option value="BLANCAS AGUILAR CESAR">BLANCAS AGUILAR CESAR</option>
-					<option value="SANTIAGO GUZMAN MIGUEL ANGEL">SANTIAGO GUZMAN MIGUEL ANGEL</option>
-					<option value="JUAREZ SOTO LORENA">JUAREZ SOTO LORENA</option>
-					<option value="ESPEJEL SARTILLO LINDA">ESPEJEL SARTILLO LINDA</option>
-					<option value="MUÑOZ CORTES BEATRIZ">MUÑOZ CORTES BEATRIZ</option>
-					<option value="DE LOS SANTOS MUNIVE VICTORIA">DE LOS SANTOS MUNIVE VICTORIA</option>
-					<option value="VARGAS ALTAMIRANO ALEJANDRO">VARGAS ALTAMIRANO ALEJANDRO</option>
-				</optgroup>
-			</select>
-			<br><br>
-			
-			<label class="pregunta" data-i18n="pregunta1_3_formulario">Grupo:</label>
-			<select name="grupo_entrega" class="respuesta" required>
-				<option value="" selected disabled>Seleccione un grupo</option>
-				<optgroup label="Matutino">
-					<option value="1AMC">1AMC</option>
-					<option value="1AMVT">1AMVT</option>
-					<option value="1AMP">1AMP</option>
-					<option value="1BMP">1BMP</option>
-					<option value="1AMINT">1AMINT</option>
-					<option value="1AMLQ">1AMLQ</option>
-					<option value="1BMLQ">1BMLQ</option>
-					<option value="1AMMTION">1AMMTION</option>
-					<option value="3AMC">3AMC</option>
-					<option value="3AMVT">3AMVT</option>
-					<option value="3AMP">3AMP</option>
-					<option value="3BMP">3BMP</option>
-					<option value="3AMLQ">3AMLQ</option>
-					<option value="3AMMTION">3AMMTION</option>
-					<option value="5AMC">5AMC</option>
-					<option value="5AMLG">5AMLG</option>
-					<option value="5AMP">5AMP</option>
-					<option value="5BMP">5BMP</option>
-					<option value="5AMLQ">5AMLQ</option>
-					<option value="5AMMTION">5AMMTION</option>
-				</optgroup>
-				<optgroup label="Vespertino">
-					<option value="1AVC">1AVC</option>
-					<option value="1AVE-C">1AVE-C</option>
-					<option value="1AVI">1AVI</option>
-					<option value="1AVP">1AVP</option>
-					<option value="1BCP">1BCP</option>
-					<option value="1AVLQ">1AVLQ</option>
-					<option value="1AVMTION">1AVMTION</option>
-					<option value="1AVURB">1AVURB</option>
-					<option value="3AVC">3AVC</option>
-					<option value="3AVVT">3AVVT</option>
-					<option value="3AVP">3AVP</option>
-					<option value="3BVP">3BVP</option>
-					<option value="3AVLQ">3AVLQ</option>
-					<option value="3AVMTION">3AVMTION</option>
-					<option value="5AVC">5AVC</option>
-					<option value="5AVLOG">5AVLOG</option>
-					<option value="5AVP">5AVP</option>
-					<option value="5BVP">5BVP</option>
-					<option value="5AVLQ">5AVLQ</option>
-					<option value="5AVMTION">5AVMTION</option>
-				</optgroup>
-			</select>
-		</section>
-
-		<section class="contenedor_cantidades">
-			<div class="fondo_subtitulo">
-				<h2 class="subtitulo_formulario" data-i18n="subtitulo2_1_formulario">Registro de cantidades</h2>
-			</div>
-			
-			<label class="pregunta" data-i18n="pregunta2_1_formulario">Selecciona los productos entregados:</label>
-			<br><br>
-			
-			<div class="cantidad_entrega">
-				<label class="respuesta">
-					<input id="1" type="checkbox" class="check material-check" data-cantidad="cantidad_pet" name="material_pet" value="1"> 
-					<span data-i18n="check1_formulario">PET (botellas de plástico)</span> 
-					<input type="number" min="0" step="any" name="cantidad_pet" id="cantidad_pet" class="respuesta cantidad-input"> kg
-				</label>
-				
-				<label class="respuesta">
-					<input id="2" type="checkbox" class="check material-check" data-cantidad="cantidad_carton" name="material_carton" value="1"> 
-					<span data-i18n="check2_formulario">Cartón</span>
-					<input type="number" min="0" step="any" name="cantidad_carton" id="cantidad_carton" class="respuesta cantidad-input"> kg
-				</label>
-				
-				<label class="respuesta">
-					<input id="3" type="checkbox" class="check material-check" data-cantidad="cantidad_tapas" name="material_tapas" value="1"> 
-					<span data-i18n="check3_formulario">Tapas plástico</span>
-					<input type="number" min="0" step="any" name="cantidad_tapas" id="cantidad_tapas" class="respuesta cantidad-input"> kg
-				</label>
-				
-				<label class="respuesta">
-					<input id="4" type="checkbox" class="check material-check" data-cantidad="cantidad_vidrio" name="material_vidrio" value="1"> 
-					<span data-i18n="check4_formulario">Vidrio</span>
-					<input type="number" min="0" step="any" name="cantidad_vidrio" id="cantidad_vidrio" class="respuesta cantidad-input"> kg
-				</label>
-				
-				<label class="respuesta">
-					<input id="5" type="checkbox" class="check material-check" data-cantidad="cantidad_electrodomesticos" name="material_electrodomesticos" value="1"> 
-					<span data-i18n="check5_formulario">Aparatos electronicos</span> 
-					<input type="number" min="0" step="any" name="cantidad_electrodomesticos" id="cantidad_electrodomesticos" class="respuesta cantidad-input"> kg
-				</label>
-				
-				<label class="respuesta">
-					<input id="6" type="checkbox" class="check material-check" data-cantidad="cantidad_papel" name="material_papel" value="1"> 
-					<span data-i18n="check6_formulario">Papel (libros y libretas)</span> 
-					<input type="number" min="0" step="any" name="cantidad_papel" id="cantidad_papel" class="respuesta cantidad-input"> kg
-				</label>
-			</div>
-			
-			<br><br>
-			<label class="pregunta" data-i18n="pregunta2_2_formulario">Observaciones:</label>
-			<textarea name="observaciones" class="respuesta" rows="4" required></textarea>
-		</section>
-
-		<section class="contenedor_botones">
-			<button class="boton_enviar" type="submit">
-				<span class="contenedor_icono_enviar">
-					<svg viewBox="0 0 384 512" height="0.9em" class="icono_enviar">
-						<path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"></path>
-					</svg>
-				</span>
-				<p class="texto_enviar" data-i18n="boton_enviar_formulario">Enviar</p>
-			</button>
-
-			<a href="cerrar_admin.php">
-				<button class="boton_inicio" type="button">
-					<span class="contenedor_icono_inicio">
-						<svg viewBox="0 0 576 512" class="icono_inicio">
-							<path d="M280.4 148.3L96 300.1V464c0 8.8 7.2 16 16 16l112-.3c8.8 0 16-7.2 16-16V368c0-8.8 7.2-16 16-16h64.3c8.8 0 16 7.2 16 16v95.7c0 8.8 7.2 16 16 16L464 480c8.8 0 16-7.2 16-16V300L295.6 148.3c-6.4-5.2-15.8-5.2-22.2 0zM571.6 251.5l-61.5 50.2c-3 2.5-7.4 2.1-9.9-.9l-26.3-31.7c-2.5-3-2.1-7.4.9-9.9l61.5-50.2c12.1-9.9 14-27.9 4.1-40L488 86.5c-9.9-12.1-27.9-14-40-4.1L384 136.9V48c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16v88.9L128 82.4c-12.1-9.9-30.1-8-40 4.1L39.7 168.9c-9.9 12.1-8 30.1 4.1 40L276 373c6.4 5.2 15.8 5.2 22.2 0l273.4-221.5c12.1-9.9 14-27.9 4.1-40l-48.3-58.5c-9.9-12.1-27.9-14-40-4.1z"/>
-						</svg>
-					</span>
-					<p class="texto_inicio" data-i18n="boton_inicio_formulario">Inicio</p>
-				</button>
-			</a>
-
-			<button class="boton_basura" type="reset">
-				<span class="contenedor_icono_basura">
-					<svg viewBox="0 0 24 24" class="icono_basura">
-						<path d="M3 6h18M9 6V4h6v2m-7 4v10m4-10v10m4-10v10M5 6l1 14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-14"/>
-					</svg>
-				</span>
-				<p class="texto_basura" data-i18n="boton_basura_formulario">Borrar</p>
-			</button>
-		</section>
-	</form>
-
-	<script src="../Scripts/script_formulario.js"></script>
-	<script type="module" src="../Scripts/script_traductor.js"></script>
-</body>
-</html>

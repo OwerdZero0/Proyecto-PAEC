@@ -37,6 +37,9 @@ if (!$consulta) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración de usuarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Styles/style_admin_usuarios.css">
 </head>
 <body>
@@ -61,7 +64,7 @@ if (!$consulta) {
         <div class="mensaje info"><?php echo htmlspecialchars($info); ?></div>
     <?php endif; ?>
 
-    <?php if ($admin_actual_rol === 'master'): ?>
+    <?php if ($admin_actual_rol === 'master' || $admin_actual_rol === 'admin'): ?>
     <div class="card">
         <h2>Crear usuario</h2>
         <form action="acciones_usuarios_admin.php" method="POST">
@@ -75,8 +78,12 @@ if (!$consulta) {
 
             <label for="rol">Rol</label>
             <select id="rol" name="rol" required>
-                <option value="admin">Admin</option>
-                <option value="subadmin">Sub-admin</option>
+                <?php if ($admin_actual_rol === 'master'): ?>
+                    <option value="admin">Admin</option>
+                    <option value="subadmin">Sub-admin</option>
+                <?php elseif ($admin_actual_rol === 'admin'): ?>
+                    <option value="subadmin">Sub-admin</option>
+                <?php endif; ?>
             </select>
 
             <label>
@@ -93,6 +100,7 @@ if (!$consulta) {
         <h2>Usuarios registrados</h2>
         <br>
 
+        <div class="tabla-scroll">
         <table>
             <thead>
                 <tr>
@@ -187,6 +195,7 @@ if (!$consulta) {
                 <?php endwhile; ?>
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 
@@ -196,8 +205,8 @@ if (!$consulta) {
     <a href="../index.html" class="boton-inicio-link">
         <div class="boton-inicio-svg">
             <span class="boton-inicio-icono" aria-hidden="true">
-                <svg viewBox="0 0 576 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M575.8 255.5C575.8 272.3 562.1 286 545.3 286H448V456C448 486.9 422.9 512 392 512H312C294.3 512 280 497.7 280 480V384C280 366.3 265.7 352 248 352H200C182.3 352 168 366.3 168 384V480C168 497.7 153.7 512 136 512H56C25.1 512 0 486.9 0 456V286H30.7C13.9 286 .2 272.3 .2 255.5C.2 246.8 3.9 238.5 10.4 232.8L266.4 8.8C279.3 -2.9 296.7 -2.9 309.6 8.8L565.6 232.8C572.1 238.5 575.8 246.8 575.8 255.5Z" fill="white"/>
+                <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
             </span>
             <span class="boton-inicio-texto">Inicio</span>
