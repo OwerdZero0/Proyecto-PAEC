@@ -6,17 +6,7 @@
     Este archivo solo debe responder si el usuario ya inició
     sesión. Si no, devuelve error 401 en formato JSON.
 ========================================================= */
-require_once __DIR__ . '/auth_admin.php';
-
-if (!admin_logueado()) {
-    http_response_code(401);
-    header('Content-Type: application/json; charset=utf-8');
-    echo json_encode([
-        "ok" => false,
-        "mensaje" => "No autorizado"
-    ], JSON_UNESCAPED_UNICODE);
-    exit;
-}
+/* Endpoint público para traer los maestros y grupos asignados */
 
 /* =========================================================
     SECCIÓN 2: CONEXIÓN A LA BASE DE DATOS

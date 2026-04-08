@@ -204,11 +204,11 @@ body {
 }
 
 #glass-gold:checked~.glass-glider {
-    transform: translateX(calc(100% + 6px));
+    transform: translateX(calc(100% + 12px));
 }
 
 #glass-platinum:checked~.glass-glider {
-    transform: translateX(calc(200% + 12px));
+    transform: translateX(calc(200% + 24px));
 }
 
 /* ─── CONTENIDO PRINCIPAL ─── */
