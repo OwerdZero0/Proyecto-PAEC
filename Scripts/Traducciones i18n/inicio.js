@@ -1,6 +1,10 @@
 export const inicio = {
     es: {
         "titulo_inicio": "Centro de Acopio para reciclaje responsable en el CBTis No. 153",
+        "subtitulo_inicio": "Educación sin desechables · Comunidad escolar comprometida con el medio ambiente",
+        "banner_linea_1": "DGETI · CBTis No. 153",
+        "banner_linea_2": "San Pablo del Monte, Tlaxcala",
+        "banner_linea_3": "Proyecto Escolar Comunitario · Ciclo escolar 2025-2026",
 
         "texto_inicio_1": "Este proyecto nos mostró que reciclar no es solo separar residuos, sino descubrir el poder que tenemos para transformar nuestra escuela.",
         "texto_inicio_2": "A través de gráficas, formularios y datos, aprendimos que cada acción cuenta y que el reciclaje también se aprende creando.",
@@ -16,6 +20,10 @@ export const inicio = {
     },
     en: {
         "titulo_inicio": "Collection Center for Responsible Recycling at CBTis No. 153",
+        "subtitulo_inicio": "Education without disposables · School community committed to the environment",
+        "banner_linea_1": "DGETI · CBTis No. 153",
+        "banner_linea_2": "San Pablo del Monte, Tlaxcala",
+        "banner_linea_3": "Community School Project · 2025-2026 School Year",
 
         "texto_inicio_1": "This project showed us that recycling is not just separating waste, but discovering the power we have to change our school.",
         "texto_inicio_2": "Through graphs, forms, and data, we learned that every action matters and that recycling can also be learned by creating.",
@@ -31,6 +39,10 @@ export const inicio = {
     },
     nah: {
         "titulo_inicio": "Tlamanalli Tlatēkolistli tlatskaltikpak para nimitstlatikpatlas tlamahuiltilistli ipan CBTis No. 153",
+        "subtitulo_inicio": "Tlamachtiliztli amo tlatzolli · Tlamachtiloyan tlatepanita ica tonantzin tlalli",
+        "banner_linea_1": "DGETI · CBTis No. 153",
+        "banner_linea_2": "San Pablo del Monte, Tlaxcala",
+        "banner_linea_3": "Tlamachtiloyan Altepetl · Xihuitl 2025-2026",
 
         "texto_inicio_1": "Inin tlamachtilistli technextili queh tlen ticchihua tlamixpolihuilistli ahmo san mitzomana, tlahmo nozo techmachtia tlen ticuīliaz para ticpatlasqueh totlaçamachtiloyan.",
         "texto_inicio_2": "Ipan amatlacuīcuilolli, tlaixcopincayotl huan tlamachiyalistli, tlamachtiqueh queh sesen tlamantli quipiya ipati, huan tlamixpolihuilistli nozo tlamachtis ipan tlocoyani.",
