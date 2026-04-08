@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+    --color-primario:   #00695c;
+    --color-secundario: #4db6ac;
+    --color-texto:      #37474f;
+    --color-blanco:     #ffffff;
+    --sombra-suave:     0 10px 30px rgba(0, 0, 0, 0.10);
+    --sombra-hover:     0 15px 35px rgba(0, 105, 92, 0.20);
+    --borde-radio:      16px;
+    --transicion:       all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* =========================
+   RESET
+========================= */
+
+html {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes entradaSuave {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradienteVivo {
+    0%   { background-position: 0%   50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+}
+
+/* =========================
+   BODY — fondo animado
+========================= */
+
+body {
+    background: linear-gradient(-45deg, #e0f7fa, #80deea, #b2dfdb, #e0f2f1);
+    background-size: 400% 400%;
+    animation: gradienteVivo 15s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-x: hidden;
+}
+
+/* =========================
+   CAJA DE LOGIN
+========================= */
+
+.login-box {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra-suave);
+    border: 1px solid rgba(255, 255, 255, 0.60);
+    padding: 40px 36px;
+    animation: entradaSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* =========================
+   TÍTULO H1
+========================= */
+
+h1 {
+    text-align: center;
+    color: var(--color-primario);
+    font-size: 1.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+    padding-bottom: 14px;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+    border-radius: 2px;
+    margin: 10px auto 0;
+}
+
+/* =========================
+   MENSAJES
+========================= */
+
+.mensaje {
+    padding: 13px 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: entradaSuave 0.5s ease forwards;
+}
+
+.mensaje.error {
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    color: #c62828;
+    border-left: 4px solid #e53935;
+}
+
+.mensaje.info {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #1565c0;
+    border-left: 4px solid #1e88e5;
+}
+
+/* =========================
+   LABELS
+========================= */
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 14px;
+    font-weight: 500;
+    color: var(--color-primario);
+    font-size: 0.95rem;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0f2f1;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    background-color: #f9fbe7;
+    transition: var(--transicion);
+    outline: none;
+    margin-bottom: 4px;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    border-color: #b2dfdb;
+    background-color: #ffffff;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--color-secundario);
+    background-color: var(--color-blanco);
+    box-shadow: 0 0 0 4px rgba(77, 182, 172, 0.15);
+    transform: scale(1.01);
+}
+
+/* =========================
+   BOTÓN INGRESAR
+========================= */
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px 22px;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: var(--transicion);
+    background: linear-gradient(45deg, var(--color-primario), #26a69a);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 105, 92, 0.30);
+    letter-spacing: 0.5px;
+}
+
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 105, 92, 0.35);
+}
+
+button[type="submit"]:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* =========================
+   BOTÓN INICIO (pie)
+========================= */
+
+.boton-inicio-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0 0 0;
+}
+
+.boton-inicio-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.boton-inicio-svg {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 26px 10px 16px;
+    border-radius: 999px;
+    background: linear-gradient(45deg, var(--color-primario), #26a69a);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 8px 18px rgba(0, 105, 92, 0.30);
+    transition: var(--transicion);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.boton-inicio-svg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.boton-inicio-svg:hover::before {
+    left: 100%;
+}
+
+.boton-inicio-svg:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 105, 92, 0.35);
+}
+
+.boton-inicio-svg:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.boton-inicio-icono {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.boton-inicio-svg:hover .boton-inicio-icono {
+    transform: rotate(-15deg);
+    background: rgba(255, 255, 255, 0.30);
+}
+
+.boton-inicio-icono svg {
+    display: block;
+    width: auto;
+    height: 22px;
+    max-width: none;
+    flex-shrink: 0;
+}
+
+.boton-inicio-texto {
+    white-space: nowrap;
+}
+
+/* =========================
+   RESPONSIVE — MÓVIL (≤ 480px)
+========================= */
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .login-box {
+        padding: 28px 20px;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 22px;
+    }
+
+    h1::after {
+        width: 50px;
+        height: 3px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+
+    button[type="submit"] {
+        font-size: 0.95rem;
+        padding: 11px 18px;
+    }
+
+    .boton-inicio-svg {
+        font-size: 0.95rem;
+        padding: 9px 20px 9px 12px;
+        gap: 10px;
+    }
+
+    .boton-inicio-icono {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
+    }
+
+    .boton-inicio-icono svg {
+        height: 19px;
+    }
+}
+
+/* =========================
+   RESPONSIVE — MUY PEQUEÑO (≤ 360px)
+========================= */
+
+@media (max-width: 360px) {
+    .login-box {
+        padding: 22px 14px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+}

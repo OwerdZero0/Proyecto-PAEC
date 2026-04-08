@@ -1,110 +1,289 @@
-// A) PARTE IDENTIFICACIÓN DE LA ENTREGA 
+/* =========================================================
+    SECCIÓN 1: ESPERAR A QUE CARGUE EL DOM
+    ---------------------------------------------------------
+    Todo el código se ejecuta hasta que el HTML esté listo.
+========================================================= */
+document.addEventListener('DOMContentLoaded', async function () {
 
-// Obtener los selects por name
-const responsable = document.querySelector('select[name="responsable_entrega"]');
-const grupo = document.querySelector('select[name="grupo_entrega"]');
+    /* =====================================================
+        SECCIÓN 2: OBTENER ELEMENTOS DEL FORMULARIO
+        -----------------------------------------------------
+        Aquí capturamos los elementos que vamos a usar:
+        - formulario
+        - select de responsable
+        - select de grupo
+        - checkboxes de materiales
+    ===================================================== */
+    const formulario = document.querySelector('.formulario');
+    const responsable = document.querySelector('select[name="responsable_entrega"]');
+    const grupo = document.querySelector('select[name="grupo_entrega"]');
+    const checks = document.querySelectorAll('.cantidad_entrega input[type="checkbox"]');
 
-// Mapa responsable -> grupo
-const responsable_grupo = {
-    "CORONA ZAHUANTITLA MARICELA": "1AMC",
-    "MENDEZ SALAS EVARISTO GUADALUPE": "1AMVT",
-    "GUTIERREZ URCID FERNANDO": "1AMP",
-    "ROJAS RODRIGUEZ CARLOS OCTAVIO": "1BMP",
-    "GOMEZ OREA NOEMI SUSANA": "1AMINT",
-    "CASTILLO CARDONA SAMANTHA RUBI": "1AMLQ",
-    "PALMEROS ORTIZ EDGAR": "1BMLQ",
-    "ESPINOZA SANCHEZ BRISEIDA": "1AMMTION",
-    "CRUZ MARQUEZ MARIA DEL CARMEN": "3AMC",
-    "TAPIA SMITH NORMA LUZ": "3AMVT",
-    "VAZQUEZ GONZALEZ GUADALUPE": "3AMP",
-    "CERON PEREZ SELENE": "3BMP",
-    "LEON COTE BARRERA": "3AMLQ",
-    "BAEZ BARRADAS ZARINA": "3AMMTION",
-    "HERNANDEZ LARA DULCE MARIA": "5AMC",
-    "SOTELO REYES TONANTZIN": "5AMLG",
-    "PINEDA VAZQUEZ NARETH": "5AMP",
-    "DELGADO ATONAL SYAMASUNDAR-DAS": "5BMP",
-    "HERNANDEZ CRUZ MAXIMINO": "5AMLQ",
-    "BARRIOS RODRIGUEZ GLORIA": "5AMMTION",
-    "JUAREZ JUAREZ ENRIQUE": "1AVC",
-    "MATIAS GUZMAN FABIOLA": "1AVE-C",
-    "MORALES QUIROZ KAREN": "1AVI",
-    "ATONAL FERNANDEZ STHEPANIE": "1AVP",
-    "PEREZ CAMACHO GABINA": "1BCP",
-    "PEREZ COYOTL ANA LAURA": "1AVLQ",
-    "ITURBIDE ORTIZ LUDWINDG": "1AVMTION",
-    "ARROYO SERRANO HECTOR": "1AVURB",
-    "DIYARZA MEZA MARIELA": "3AVC",
-    "GONZALEZ GONZALES YASMIN": "3AVVT",
-    "RIVERA CASTILLO MATILDE": "3AVP",
-    "RAMOS BRAVO OSCAR": "3BVP",
-    "MENA MENA IRMA": "3AVLQ",
-    "BLANCAS AGUILAR CESAR": "3AVMTION",
-    "SANTIAGO GUZMAN MIGUEL ANGEL": "5AVC",
-    "JUAREZ SOTO LORENA": "5AVLOG",
-    "ESPEJEL SARTILLO LINDA": "5AVP",
-    "MUÑOZ CORTES BEATRIZ": "5BVP",
-    "DE LOS SANTOS MUNIVE VICTORIA": "5AVLQ",
-    "VARGAS ALTAMIRANO ALEJANDRO": "5AVMTION",
-};
+    /* =====================================================
+        SECCIÓN 3: ESTRUCTURAS DE DATOS
+        -----------------------------------------------------
+        Estas variables guardarán:
+        - las asignaciones recibidas desde PHP
+        - un mapa responsable -> grupo
+        - un mapa grupo -> responsable
+        
+        Esto permite que si eliges un maestro, se coloque
+        automáticamente su grupo, y viceversa.
+    ===================================================== */
+    let asignaciones = [];
+    let responsableGrupo = {};
+    let grupoResponsable = {};
 
-// Crear el mapa inverso: grupo -> responsable
-const grupo_responsable = {};
-for (const [resp, grp] of Object.entries(responsable_grupo)) {
-    grupo_responsable[grp] = resp;
-}
+    /* =====================================================
+        SECCIÓN 4: FUNCIÓN PARA CARGAR ASIGNACIONES DESDE PHP
+        -----------------------------------------------------
+        Esta función hace fetch al archivo PHP que consulta
+        la base de datos.
 
-// Manejar cambio en RESPONSABLE
-if (responsable && grupo) {
-    responsable.addEventListener("change", () => {
-    if (responsable.value !== "") {
-        const respKey = responsable.value.trim(); // por los espacios
-        const grupoCalculado = responsable_grupo[respKey] || "";
-        grupo.value = grupoCalculado;
-    } else {
-        grupo.value = "";
+        Después:
+        - limpia los selects
+        - crea grupos por turno
+        - llena las opciones
+        - arma los diccionarios automáticos
+    ===================================================== */
+    async function cargarAsignaciones() {
+        try {
+            const respuesta = await fetch('obtener_asignaciones_formulario.php');
+
+            if (!respuesta.ok) {
+                throw new Error('No se pudo obtener la información del servidor.');
+            }
+
+            const data = await respuesta.json();
+
+            if (!data.ok) {
+                throw new Error(data.mensaje || 'Error al cargar asignaciones.');
+            }
+
+            asignaciones = data.asignaciones || [];
+
+            /* -------------------------------------------------
+                Reiniciar contenido de los selects
+            ------------------------------------------------- */
+            responsable.innerHTML = '<option value="">Seleccione un responsable</option>';
+            grupo.innerHTML = '<option value="">Seleccione un grupo</option>';
+
+            /* -------------------------------------------------
+                Reiniciar diccionarios
+            ------------------------------------------------- */
+            responsableGrupo = {};
+            grupoResponsable = {};
+
+            /* -------------------------------------------------
+                Crear optgroups por turno para responsables
+            ------------------------------------------------- */
+            const optMatutinoResp = document.createElement('optgroup');
+            optMatutinoResp.label = 'Matutino';
+
+            const optVespertinoResp = document.createElement('optgroup');
+            optVespertinoResp.label = 'Vespertino';
+
+            /* -------------------------------------------------
+                Crear optgroups por turno para grupos
+            ------------------------------------------------- */
+            const optMatutinoGrupo = document.createElement('optgroup');
+            optMatutinoGrupo.label = 'Matutino';
+
+            const optVespertinoGrupo = document.createElement('optgroup');
+            optVespertinoGrupo.label = 'Vespertino';
+
+            /* -------------------------------------------------
+                Recorrer asignaciones y llenar estructuras
+            ------------------------------------------------- */
+            asignaciones.forEach(item => {
+                const nombreMaestro = String(item.nombre_maestro || '').trim();
+                const nombreGrupo = String(item.nombre_grupo || '').trim();
+                const turno = String(item.turno || '').trim();
+
+                if (!nombreMaestro || !nombreGrupo) {
+                    return;
+                }
+
+                /* ---------------------------------------------
+                    Guardar relación en ambos sentidos
+                --------------------------------------------- */
+                responsableGrupo[nombreMaestro] = nombreGrupo;
+                grupoResponsable[nombreGrupo] = nombreMaestro;
+
+                /* ---------------------------------------------
+                    Crear opción para responsable
+                --------------------------------------------- */
+                const optionResp = document.createElement('option');
+                optionResp.value = nombreMaestro;
+                optionResp.textContent = nombreMaestro;
+
+                /* ---------------------------------------------
+                    Crear opción para grupo
+                --------------------------------------------- */
+                const optionGrupo = document.createElement('option');
+                optionGrupo.value = nombreGrupo;
+                optionGrupo.textContent = nombreGrupo;
+
+                /* ---------------------------------------------
+                    Clasificar por turno
+                --------------------------------------------- */
+                if (turno === 'Matutino') {
+                    optMatutinoResp.appendChild(optionResp);
+                    optMatutinoGrupo.appendChild(optionGrupo);
+                } else {
+                    optVespertinoResp.appendChild(optionResp);
+                    optVespertinoGrupo.appendChild(optionGrupo);
+                }
+            });
+
+            /* -------------------------------------------------
+                Agregar grupos solo si tienen opciones
+            ------------------------------------------------- */
+            if (optMatutinoResp.children.length > 0) {
+                responsable.appendChild(optMatutinoResp);
+            }
+
+            if (optVespertinoResp.children.length > 0) {
+                responsable.appendChild(optVespertinoResp);
+            }
+
+            if (optMatutinoGrupo.children.length > 0) {
+                grupo.appendChild(optMatutinoGrupo);
+            }
+
+            if (optVespertinoGrupo.children.length > 0) {
+                grupo.appendChild(optVespertinoGrupo);
+            }
+
+        } catch (error) {
+            console.error('Error al cargar asignaciones:', error);
+            alert('No se pudieron cargar los responsables y grupos desde la base de datos.');
+        }
     }
-});
 
-    // Manejar cambio en GRUPO
-    grupo.addEventListener("change", () => {
-    if (grupo.value !== "") {
-        const grpKey = grupo.value.trim();
-        const responsableCalculado = grupo_responsable[grpKey] || "";
-        responsable.value = responsableCalculado;
-    } else {
-        responsable.value = "";
+    /* =====================================================
+        SECCIÓN 5: ACTIVAR Y DESACTIVAR CAMPOS DE CANTIDAD
+        -----------------------------------------------------
+        Si un material está marcado:
+        - se habilita su input numérico
+        - se vuelve obligatorio
+
+        Si no está marcado:
+        - se deshabilita
+        - se limpia
+        - deja de ser obligatorio
+    ===================================================== */
+    function actualizarCamposMaterial() {
+        checks.forEach(check => {
+            const label = check.closest('label');
+            if (!label) return;
+
+            const inputCantidad = label.querySelector('input[type="number"]');
+            if (!inputCantidad) return;
+
+            if (check.checked) {
+                inputCantidad.required = true;
+                inputCantidad.disabled = false;
+                inputCantidad.min = "0";
+            } else {
+                inputCantidad.required = false;
+                inputCantidad.value = '';
+                inputCantidad.disabled = true;
+            }
+        });
     }
-});
 
-}
+    /* =====================================================
+        SECCIÓN 6: CARGAR DATOS DESDE LA BASE DE DATOS
+        -----------------------------------------------------
+        Antes de trabajar con los selects, primero se cargan
+        las asignaciones desde PHP.
+    ===================================================== */
+    await cargarAsignaciones();
 
-// B) PARTE CANTIDADES DE CHECKBOX
+    /* =====================================================
+        SECCIÓN 7: RELACIÓN AUTOMÁTICA RESPONSABLE <-> GRUPO
+        -----------------------------------------------------
+        Si eliges un responsable, se pone su grupo.
+        Si eliges un grupo, se pone su responsable.
+    ===================================================== */
+    if (responsable && grupo) {
 
-// Seleccionamos todos los checkboxes dentro de la sección de cantidades
-const checkboxes = document.querySelectorAll('.cantidad_entrega input[type="checkbox"]');
+        responsable.addEventListener('change', () => {
+            if (responsable.value !== "") {
+                const grupoCalculado = responsableGrupo[responsable.value] || "";
+                grupo.value = grupoCalculado;
+            } else {
+                grupo.value = "";
+            }
+        });
 
-checkboxes.forEach((chk) => {
-    // Buscamos el input de texto que está en el mismo <label> que el checkbox
-    const label = chk.closest("label");
-    const inputCantidad = label.querySelector('input[type="text"], input[type="number"]');
+        grupo.addEventListener('change', () => {
+            if (grupo.value !== "") {
+                const responsableCalculado = grupoResponsable[grupo.value] || "";
+                responsable.value = responsableCalculado;
+            } else {
+                responsable.value = "";
+            }
+        });
+    }
 
-    if (!inputCantidad) return; // seguridad
+    /* =====================================================
+        SECCIÓN 8: ESTADO INICIAL DE LOS MATERIALES
+        -----------------------------------------------------
+        Apenas carga la página, se actualiza el estado de los
+        campos numéricos para que no queden activos sin razón.
+    ===================================================== */
+    actualizarCamposMaterial();
 
-    // Al inicio: desactivamos el input
-    inputCantidad.disabled = true;
+    /* =====================================================
+        SECCIÓN 9: ESCUCHAR CAMBIOS EN LOS CHECKBOXES
+        -----------------------------------------------------
+        Cada vez que se marca o desmarca un material, se
+        actualiza el input de cantidad correspondiente.
+    ===================================================== */
+    checks.forEach(check => {
+        check.addEventListener('change', actualizarCamposMaterial);
+    });
 
-    // Cuando cambia el checkbox
-    chk.addEventListener("change", () => {
-        if (chk.checked) {
-            // Si se marca: activamos el input y hacemos focus
-            inputCantidad.disabled = false;
-            inputCantidad.focus();
-        } else {
-            // Si se desmarca: limpiamos y desactivamos
-            inputCantidad.value = "";
-            inputCantidad.disabled = true;
+    /* =====================================================
+        SECCIÓN 10: VALIDAR ENVÍO DEL FORMULARIO
+        -----------------------------------------------------
+        Aquí se valida que:
+        - haya al menos un material seleccionado
+        - el usuario confirme el envío
+    ===================================================== */
+    formulario.addEventListener('submit', function (e) {
+        const seleccionados = document.querySelectorAll('.cantidad_entrega input[type="checkbox"]:checked');
+
+        if (seleccionados.length === 0) {
+            e.preventDefault();
+            alert('Debe seleccionar al menos un material para registrar la entrega.');
+            return;
+        }
+
+        const confirmarEnvio = confirm(
+            '¿Está segura de enviar esta información? Verifique que los datos sean correctos antes de continuar. Si todo es correcto, seleccione "Aceptar"; de lo contrario, seleccione "Cancelar" para revisarlos.'
+        );
+
+        if (!confirmarEnvio) {
+            e.preventDefault();
         }
     });
-});
 
+    /* =====================================================
+        SECCIÓN 11: COMPORTAMIENTO AL REINICIAR FORMULARIO
+        -----------------------------------------------------
+        Cuando el usuario presiona "Borrar":
+        - se restauran los campos de materiales
+        - se limpian responsable y grupo
+    ===================================================== */
+    formulario.addEventListener('reset', function () {
+        setTimeout(() => {
+            actualizarCamposMaterial();
+            responsable.value = "";
+            grupo.value = "";
+        }, 0);
+    });
+
+});
