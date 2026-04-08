@@ -299,7 +299,8 @@ body {
 .boton_consulta_alta,
 .boton_descargables,
 .boton_calculo_reciclaje,
-.boton_admin_asignaciones {
+.boton_admin_asignaciones,
+.boton_consulta_reciclaje_semanal {
     background: none;
     border: none;
     padding: 0;
@@ -314,7 +315,8 @@ body {
 .boton_consulta_alta img,
 .boton_descargables img,
 .boton_calculo_reciclaje img,
-.boton_admin_asignaciones img {
+.boton_admin_asignaciones img,
+.boton_consulta_reciclaje_semanal img {
     width: 60px;
     height: auto;
     filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
@@ -441,7 +443,8 @@ body {
     .boton_consulta_alta img,
     .boton_descargables img,
     .boton_calculo_reciclaje img,
-    .boton_admin_asignaciones img {
+    .boton_admin_asignaciones img,
+    .boton_consulta_reciclaje_semanal img {
         width: 48px;
     }
 }
