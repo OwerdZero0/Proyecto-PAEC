@@ -1,15 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --color-fondo: #0c0f3c;
-    --color-primario: #00bcd4;
-    --color-secundario: #4dd0e1;
-    --color-texto: #ffffff;
-    --color-cristal: rgba(255, 255, 255, 0.1);
-    --sombra-suave: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --sombra-hover: 0 15px 35px rgba(0, 188, 212, 0.3);
+    /* Paleta más clara y vibrante: Vino claro, Rojo brillante y Marrón cálido */
+    --color-fondo-1: #E4C76D; /* Amarillo/oro mostaza de fondo general */
+    --color-rojo-oscuro: #8C182A; /* Vino tinto principal para banner y texto */
+    
+    --color-fondo-3: #C0392B; /* Rojo brillante */
+    --color-fondo-4: #A16A46; /* Marrón claro / Canela */
+    
+    --color-acento-principal: #FFDCA8;
+    
+    --color-texto: #FFFFFF;
+    --color-texto-secundario: #FFE8D6; 
+    
+    --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.15);
+    --sombra-hover: 0 10px 25px rgba(0, 0, 0, 0.25);
+    
     --borde-radio: 20px;
-    --transicion-suave: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transicion-suave: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 * {
@@ -19,121 +27,133 @@
 }
 
 @keyframes entradaSuave {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes gradienteVivo {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 body {
-    background: linear-gradient(-45deg, #0c0f3c, #1a237e, #006064, #004d40);
-    background-size: 400% 400%;
-    animation: gradienteVivo 20s ease infinite;
+    background-color: var(--color-fondo-1);
     font-family: 'Poppins', sans-serif;
     color: var(--color-texto);
     min-height: 100vh;
-    padding: 30px 20px 40px;
+    padding: 0; /* Sin padding arriba para el banner */
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* ─── BANNER SUPERIOR ─── */
+.banner_superior_escuela {
+    width: 100%;
+    background-color: var(--color-rojo-oscuro);
+    color: white;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 25px;
+}
+
+.banner_superior_escuela p {
+    margin: 4px 0;
+}
+
+.banner_superior_escuela p:nth-child(1) {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+.banner_superior_escuela p:nth-child(2) {
+    font-weight: 400;
+    font-size: 0.95rem;
+}
+.banner_superior_escuela p:nth-child(3) {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* ─── BARRA SUPERIOR Y PESTAÑAS ─── */
 .barra_superior {
     width: 100%;
     max-width: 1400px;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    padding: 0 40px; /* Para mantener los bordes separados */
     animation: entradaSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .menu_superior {
     display: inline-flex;
-    gap: 10px;
-    padding: 10px;
+    gap: 4px;
+    padding: 6px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: #FFF9F2; /* Crema del botón de la imagen */
     box-shadow: var(--sombra-suave);
-    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .menu_superior_boton {
     border: none;
     background: transparent;
-    color: var(--color-texto);
-    padding: 12px 20px;
+    color: var(--color-rojo-oscuro);
+    padding: 12px 28px;
     border-radius: 999px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 600;
     transition: var(--transicion-suave);
 }
 
 .menu_superior_boton:hover {
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(140, 24, 42, 0.08);
 }
 
 .menu_superior_boton.activo {
-    background: #ffffff;
-    color: #000000;
-    box-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
+    background: var(--color-rojo-oscuro);
+    color: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(140, 24, 42, 0.3);
 }
 
+/* ─── TÍTULO ─── */
 .fondo_titulo {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: var(--borde-radio);
-    box-shadow: var(--sombra-suave);
-    padding: 30px 50px;
+    background: #FFF9F2;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px 60px;
     margin-bottom: 40px;
-    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
     max-width: 1200px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
     animation: entradaSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .titulo {
-    color: var(--color-secundario);
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    color: var(--color-rojo-oscuro);
+    font-size: 2.2rem;
+    font-weight: 800;
     margin: 0;
+    text-transform: uppercase;
+    line-height: 1.3;
 }
 
+.subtitulo_titulo {
+    color: #5b4b45; /* Tono marrón grisáceo oscuro */
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+/* ─── SELECTOR LENGUAJE ─── */
 .glass-radio-group {
-    --bg: rgba(255, 255, 255, 0.1);
-    --text: #e0e0e0;
     display: flex;
     position: relative;
-    background: var(--bg);
+    background: #FFF9F2;
     border-radius: 50px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--sombra-suave);
     overflow: hidden;
     width: fit-content;
     margin-bottom: 50px;
@@ -151,100 +171,96 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 100px;
+    min-width: 110px;
     font-size: 1rem;
-    padding: 15px 25px;
+    padding: 14px 25px;
     cursor: pointer;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    color: var(--text);
+    color: var(--color-rojo-oscuro);
     position: relative;
     z-index: 2;
     transition: color 0.3s ease-in-out;
 }
 
-.glass-radio-group label:hover {
-    color: white;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
 .glass-radio-group input:checked+label {
-    color: #000;
+    color: #FFFFFF;
 }
 
 .glass-glider {
     position: absolute;
-    top: 5px;
-    bottom: 5px;
-    width: calc((100% / 3) - 10px);
+    top: 6px;
+    bottom: 6px;
+    width: calc((100% / 3) - 12px);
     border-radius: 40px;
     z-index: 1;
     transition: transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56), background 0.4s ease-in-out;
-    left: 5px;
+    left: 6px;
+    background: var(--color-rojo-oscuro);
+    box-shadow: 0 0 10px rgba(140, 24, 42, 0.4);
 }
 
 #glass-silver:checked~.glass-glider {
     transform: translateX(0%);
-    background: #ffffff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 #glass-gold:checked~.glass-glider {
-    transform: translateX(calc(100% + 5px));
-    background: #ffd700;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    transform: translateX(calc(100% + 6px));
 }
 
 #glass-platinum:checked~.glass-glider {
-    transform: translateX(calc(200% + 10px));
-    background: #80d8ff;
-    box-shadow: 0 0 15px rgba(128, 216, 255, 0.8);
+    transform: translateX(calc(200% + 12px));
 }
 
+/* ─── CONTENIDO PRINCIPAL ─── */
 .contenedor {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
     width: 100%;
     max-width: 1400px;
     gap: 60px;
+    padding: 0 40px;
     animation: entradaSuave 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: 0.4s;
     opacity: 0;
 }
 
+/* IMAGEN + TEXTO */
 .contenedor_imagen {
-    flex: 1 1 60%;
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
 }
 
 .img_centro_de_acopio {
-    width: 80%;
-    max-width: 800px;
-    margin-left: 100px;
+    width: 100%;
+    max-width: 700px;
     height: auto;
     border-radius: var(--borde-radio);
     box-shadow: var(--sombra-suave);
     transition: var(--transicion-suave);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 3px solid #FFF9F2;
+    margin-bottom: 25px;
+    object-fit: cover;
 }
 
 .img_centro_de_acopio:hover {
     transform: scale(1.02);
-    box-shadow: var(--sombra-hover);
+    border-color: var(--color-rojo-oscuro);
 }
 
 .texto_portada {
-    margin-top: 40px;
-    color: var(--color-texto);
-    font-size: 1rem;
+    color: #3b2a24;
+    font-size: 1.05rem;
+    line-height: 1.8;
     text-align: justify;
-    font-weight: 400;
-    letter-spacing: 3px;
-    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+    font-weight: 500;
+    margin-bottom: 15px;
 }
 
+/* PANEL BOTONES */
 .panel_botones {
-    flex: 1 1 34%;
+    flex: 1 1 55%;
     min-width: 320px;
 }
 
@@ -255,145 +271,119 @@ body {
 
 .seccion_botones.activa {
     display: block;
+    animation: entradaSuave 0.5s ease forwards;
 }
 
+/* GRID PARA BOTONES */
 .botones {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
     width: 100%;
 }
 
-.botones_admins {
-    max-width: 420px;
-}
-
+/* ESTILO SÓLIDO DE LOS BOTONES */
 .item_boton {
     width: 100%;
+    height: 100%;
 }
 
 .item_boton a {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 20px;
+    gap: 16px;
+    background: #FFF9F2;
+    padding: 16px 20px;
+    border-radius: 18px;
     text-decoration: none;
     transition: var(--transicion-suave);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent; 
+    box-shadow: var(--sombra-suave);
+    height: 100%;
 }
 
 .item_boton a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(-10px) scale(1.05);
+    background: #FFFFFF;
+    transform: translateY(-5px);
     box-shadow: var(--sombra-hover);
-    border-color: var(--color-secundario);
+    border-color: var(--color-rojo-oscuro);
 }
 
-.boton_centro_de_acopio,
-.boton_reciclaje,
-.boton_galeria,
-.boton_formulario,
-.boton_consulta_alta,
-.boton_descargables,
-.boton_calculo_reciclaje,
-.boton_admin_asignaciones,
-.boton_consulta_reciclaje_semanal {
-    background: none;
-    border: none;
+/* Cuadrado delimitador para el icono */
+.item_boton a button {
+    background: #FFFFFF;
+    border: 2px solid #E8D5CA;
     padding: 0;
     cursor: pointer;
-    margin-right: 20px;
-}
-
-.boton_centro_de_acopio img,
-.boton_reciclaje img,
-.boton_galeria img,
-.boton_formulario img,
-.boton_consulta_alta img,
-.boton_descargables img,
-.boton_calculo_reciclaje img,
-.boton_admin_asignaciones img,
-.boton_consulta_reciclaje_semanal img {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 60px;
-    height: auto;
-    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
-    transition: transform 0.3s ease;
+    height: 60px;
+    border-radius: 14px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition: var(--transicion-suave);
 }
 
-.item_boton a:hover img {
-    transform: rotate(10deg) scale(1.1);
+.item_boton a:hover button {
+    border-color: var(--color-rojo-oscuro);
+    background: #FDF4F4;
+}
+
+.item_boton a button img {
+    width: 36px;
+    height: auto;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.item_boton a:hover button img {
+    transform: scale(1.15) rotate(5deg);
 }
 
 .item_boton span {
-    color: var(--color-texto);
+    color: var(--color-rojo-oscuro);
     font-weight: 600;
-    font-size: 1.2rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    font-size: 1.1rem;
+    line-height: 1.3;
 }
 
+/* ─── RESPONSIVE ─── */
 @media (max-width: 1200px) {
     .contenedor {
         gap: 40px;
-    }
-
-    .img_centro_de_acopio {
-        width: 50%;
-        margin-left: 5px;
-    }
-
-    .texto_portada {
-        font-size: 0.8rem;
-        width: 90%;
-        margin-left: 20px;
-    }
-
-    .panel_botones {
-        flex-basis: 38%;
     }
 }
 
 @media (max-width: 900px) {
     .barra_superior {
         justify-content: center;
+        padding: 0 20px;
     }
 
     .contenedor {
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        padding: 0 20px;
     }
 
     .contenedor_imagen,
     .panel_botones {
         width: 100%;
-        max-width: 600px;
+        max-width: 700px;
     }
-
-    .img_centro_de_acopio {
-        width: 100%;
-        max-width: 600px;
-        margin-left: 0;
-    }
-
-    .texto_portada {
-        width: 100%;
-        margin-left: 0;
-        text-align: justify;
+    
+    .botones {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 20px 14px 30px;
-    }
-
-    .menu_superior {
-        width: 100%;
-        justify-content: center;
+    .banner_superior_escuela {
+        font-size: 0.85rem;
+        padding: 12px 10px;
     }
 
     .menu_superior_boton {
@@ -402,49 +392,31 @@ body {
     }
 
     .fondo_titulo {
-        padding: 24px 20px;
-        margin-bottom: 28px;
+        padding: 25px 20px;
     }
 
     .titulo {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
-
-    .glass-radio-group {
-        margin-bottom: 32px;
-    }
-
-    .glass-radio-group label {
-        min-width: 85px;
-        font-size: 0.9rem;
-        padding: 12px 14px;
-    }
-
-    .panel_botones {
-        min-width: unset;
+    
+    .subtitulo_titulo {
+        font-size: 0.95rem;
     }
 
     .botones {
-        gap: 18px;
+        grid-template-columns: 1fr;
     }
 
     .item_boton a {
-        padding: 16px;
+        padding: 16px 20px;
     }
 
-    .item_boton span {
-        font-size: 1rem;
+    .item_boton a button {
+        width: 50px;
+        height: 50px;
     }
 
-    .boton_centro_de_acopio img,
-    .boton_reciclaje img,
-    .boton_galeria img,
-    .boton_formulario img,
-    .boton_consulta_alta img,
-    .boton_descargables img,
-    .boton_calculo_reciclaje img,
-    .boton_admin_asignaciones img,
-    .boton_consulta_reciclaje_semanal img {
-        width: 48px;
+    .item_boton a button img {
+        width: 28px;
     }
 }
