@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
 require_once __DIR__ . '/auth_admin.php';
@@ -12,6 +12,27 @@ $info = $_GET['info'] ?? '';
 $admin_actual_id = (int)($_SESSION['admin_id'] ?? 0);
 $admin_actual_rol = $_SESSION['admin_rol'] ?? '';
 
+$busqueda_u = isset($_GET['b_u']) ? trim($_GET['b_u']) : '';
+$sql_where_u = "";
+if (!empty($busqueda_u)) {
+    $busqueda_esc_u = mysqli_real_escape_string($conexion, $busqueda_u);
+    $sql_where_u = " WHERE usuario LIKE '%$busqueda_esc_u%' ";
+}
+
+$sql_count_u = "SELECT COUNT(*) as total FROM admins" . $sql_where_u;
+$resultado_count_u = mysqli_query($conexion, $sql_count_u);
+$total_registros_u = (int)mysqli_fetch_assoc($resultado_count_u)['total'];
+
+$por_pagina = 10;
+$total_paginas_u = ceil($total_registros_u / $por_pagina);
+if ($total_paginas_u == 0) $total_paginas_u = 1;
+
+$pagina_u = isset($_GET['p_u']) ? (int)$_GET['p_u'] : 1;
+if ($pagina_u < 1) $pagina_u = 1;
+if ($pagina_u > $total_paginas_u) $pagina_u = $total_paginas_u;
+
+$offset_u = ($pagina_u - 1) * $por_pagina;
+
 $consulta = mysqli_query($conexion, "
     SELECT
         id_admin,
@@ -22,10 +43,21 @@ $consulta = mysqli_query($conexion, "
         ultimo_acceso,
         fecha_creacion
     FROM admins
+    $sql_where_u
     ORDER BY
         FIELD(rol, 'master', 'admin', 'subadmin'),
         usuario ASC
+    LIMIT $por_pagina OFFSET $offset_u
 ");
+
+// Preparar URL base para la paginación conservando filtros (si los hubiera)
+$params_get_u = $_GET;
+unset($params_get_u['p_u']);
+$query_filtros_u = http_build_query($params_get_u);
+$url_base_u = "?";
+if (!empty($query_filtros_u)) {
+    $url_base_u .= $query_filtros_u . "&";
+}
 
 if (!$consulta) {
     die('Error al consultar admins: ' . mysqli_error($conexion));
@@ -47,7 +79,6 @@ if (!$consulta) {
 
     <div class="acciones-superiores">
         <a href="admin_asignaciones.php"><button type="button" class="btn-secundario">Volver a asignaciones</button></a>
-        <a href="cerrar_admin.php"><button type="button">Cerrar sesión</button></a>
     </div>
 
     <h1>Administración de usuarios</h1>
@@ -98,6 +129,11 @@ if (!$consulta) {
 
     <div class="tabla">
         <h2>Usuarios registrados</h2>
+        
+        <form method="GET" class="form-busqueda">
+            <input type="text" name="b_u" value="<?php echo htmlspecialchars($busqueda_u); ?>" placeholder="Buscar usuario...">
+            <button type="submit">Buscar</button>
+        </form>
         <br>
 
         <div class="tabla-scroll">
@@ -196,13 +232,39 @@ if (!$consulta) {
             </tbody>
         </table>
         </div>
+        
+        <?php if ($total_paginas_u > 0): ?>
+            <div class="paginacion">
+                <?php if ($pagina_u > 1): ?>
+                    <a href="<?= $url_base_u . "p_u=" . ($pagina_u - 1) ?>" class="page-link">Anterior &larr;</a>
+                <?php endif; ?>
+
+                <?php 
+                for ($i = 1; $i <= $total_paginas_u; $i++): 
+                    if ($i == 1 || $i == $total_paginas_u || abs($i - $pagina_u) < 2):
+                ?>
+                    <a href="<?= $url_base_u . "p_u=" . $i ?>" class="page-link <?= ($i == $pagina_u) ? 'active' : '' ?>"><?= $i ?></a>
+                <?php 
+                    elseif ($i == 2 && $pagina_u > 3): 
+                        echo "<span class='page-dots'>...</span>";
+                    elseif ($i == $total_paginas_u - 1 && $pagina_u < $total_paginas_u - 2):
+                        echo "<span class='page-dots'>...</span>";
+                    endif;
+                endfor; 
+                ?>
+
+                <?php if ($pagina_u < $total_paginas_u): ?>
+                    <a href="<?= $url_base_u . "p_u=" . ($pagina_u + 1) ?>" class="page-link">Siguiente &rarr;</a>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 
 <br><br>
 
 <div class="boton-inicio-wrap">
-    <a href="../index.html" class="boton-inicio-link">
+    <a href="cerrar_admin.php" class="boton-inicio-link">
         <div class="boton-inicio-svg">
             <span class="boton-inicio-icono" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -213,5 +275,8 @@ if (!$consulta) {
         </div>
     </a>
 </div>
+<footer style="text-align: center; padding: 20px; font-size: 0.85rem; color: #4a4a4a; margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.1);">
+    <p>&copy; Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026).</p>
+</footer>
 </body>
 </html>

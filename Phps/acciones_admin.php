@@ -438,6 +438,17 @@ if ($accion === 'guardar_recoleccion') {
         redirigir_formulario('error', 'Todas las cantidades deben ser numéricas y mayores o iguales a 0.');
     }
 
+    if (
+        ($material_pet === 1 && $cantidad_pet <= 0) ||
+        ($material_carton === 1 && $cantidad_carton <= 0) ||
+        ($material_tapas === 1 && $cantidad_tapas <= 0) ||
+        ($material_vidrio === 1 && $cantidad_vidrio <= 0) ||
+        ($material_electrodomesticos === 1 && $cantidad_electrodomesticos <= 0) ||
+        ($material_papel === 1 && $cantidad_papel <= 0)
+    ) {
+        redirigir_formulario('error', 'La cantidad de los materiales seleccionados no puede ser de 0 kg.');
+    }
+
     if ($material_pet === 0) {
         $cantidad_pet = 0.00;
     }
@@ -485,7 +496,7 @@ if ($accion === 'guardar_recoleccion') {
 
     mysqli_stmt_bind_param(
         $stmt,
-        'sssidiididididis',
+        'sssidididididids',
         $fecha_entrega,
         $responsable_entrega,
         $grupo_entrega,
