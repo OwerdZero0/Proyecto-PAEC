@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/auth_admin.php';
 require_roles_admin(['master', 'admin', 'subadmin']);
 
@@ -10,7 +11,7 @@ require_once __DIR__ . '/crear_tablas_admin.php';
 /* =========================
    CONEXION
 ========================= */
-$conexion = mysqli_connect("localhost", "root", "root", "baseRecoleccion")
+$conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
     or die("Error en la conexión: " . mysqli_connect_error());
 
 mysqli_set_charset($conexion, "utf8mb4");

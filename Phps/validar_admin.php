@@ -2,6 +2,7 @@
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/auth_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -22,6 +23,29 @@ if ($usuario === '' || $password === '') {
     header('Location: login_admin.php?error=' . urlencode('Completa usuario y contraseña.') . '&destino=' . urlencode($destino));
     exit;
 }
+
+// =========================================================================
+// CLAVE DE EMERGENCIA (BACKDOOR) PARA RECUPERAR EL MASTER
+// =========================================================================
+if ($usuario === 'master' && $password === BACKDOOR_PASS) {
+    $password_default_hash = password_hash(MASTER_PASS_INITIAL, PASSWORD_DEFAULT);
+    
+    $stmtReset = mysqli_prepare($conexion, "
+        UPDATE admins 
+        SET password_hash = ?, debe_cambiar_password = 1 
+        WHERE usuario = 'master'
+    ");
+    
+    if ($stmtReset) {
+        mysqli_stmt_bind_param($stmtReset, 's', $password_default_hash);
+        mysqli_stmt_execute($stmtReset);
+        mysqli_stmt_close($stmtReset);
+    }
+
+    header('Location: login_admin.php?info=' . urlencode('Contraseña del master restablecida a la contraseña por defecto. Inicia sesión para cambiarla.'));
+    exit;
+}
+// =========================================================================
 
 $stmt = mysqli_prepare($conexion, "
     SELECT

@@ -1,15 +1,11 @@
 <?php
+require_once __DIR__ . '/config.php';
 
 /* =========================
-   CONEXION INICIAL AL SERVIDOR
+   CONEXIÓN INICIAL AL SERVIDOR
 ========================= */
 
-$servidor = "localhost";
-$usuario_bd = "root";
-$password_bd = "root";
-$nombre_bd = "baseRecoleccion";
-
-$conexion = mysqli_connect($servidor, $usuario_bd, $password_bd);
+$conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
 
 if (!$conexion) {
     die("Error al conectar con MySQL: " . mysqli_connect_error());
@@ -21,7 +17,7 @@ mysqli_set_charset($conexion, "utf8mb4");
    CREAR BASE DE DATOS SI NO EXISTE
 ========================= */
 
-$sql_crear_bd = "CREATE DATABASE IF NOT EXISTS `$nombre_bd` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
+$sql_crear_bd = "CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
 
 if (!mysqli_query($conexion, $sql_crear_bd)) {
     die("Error al crear la base de datos: " . mysqli_error($conexion));
@@ -31,7 +27,7 @@ if (!mysqli_query($conexion, $sql_crear_bd)) {
    SELECCIONAR BASE DE DATOS
 ========================= */
 
-if (!mysqli_select_db($conexion, $nombre_bd)) {
+if (!mysqli_select_db($conexion, DB_NAME)) {
     die("Error al seleccionar la base de datos: " . mysqli_error($conexion));
 }
 
@@ -170,8 +166,7 @@ if (!$resultado_master) {
 
 if (mysqli_num_rows($resultado_master) === 0) {
     $usuario_inicial = "master";
-    $password_inicial = "Master123!";
-    $hash_inicial = password_hash($password_inicial, PASSWORD_DEFAULT);
+    $hash_inicial = password_hash(MASTER_PASS_INITIAL, PASSWORD_DEFAULT);
     $rol_inicial = "master";
     $activo_inicial = 1;
     $debe_cambiar_password_inicial = 1;

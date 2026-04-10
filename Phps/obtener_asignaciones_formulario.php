@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/config.php';
 
 /* =========================================================
     SECCIÓN 1: VALIDAR SESIÓN
@@ -14,7 +15,7 @@
     Se establece la conexión a MySQL usando la misma base
     de datos de tu sistema.
 ========================================================= */
-$conexion = mysqli_connect("localhost", "root", "root", "baseRecoleccion");
+$conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 if (!$conexion) {
     http_response_code(500);

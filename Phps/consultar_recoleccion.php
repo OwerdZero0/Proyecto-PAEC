@@ -1,7 +1,8 @@
 <?php
+require_once __DIR__ . '/config.php';
 
 // 2. Conexión a la base de datos
-$conexion = mysqli_connect("localhost", "root", "root", "baseRecoleccion");
+$conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
