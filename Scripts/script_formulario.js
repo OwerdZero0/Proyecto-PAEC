@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             if (check.checked) {
                 inputCantidad.required = true;
                 inputCantidad.disabled = false;
-                inputCantidad.min = "0";
+                inputCantidad.min = "0.01";
             } else {
                 inputCantidad.required = false;
                 inputCantidad.value = '';
@@ -254,21 +254,66 @@ document.addEventListener('DOMContentLoaded', async function () {
         - el usuario confirme el envío
     ===================================================== */
     formulario.addEventListener('submit', function (e) {
+        e.preventDefault();
+
         const seleccionados = document.querySelectorAll('.cantidad_entrega input[type="checkbox"]:checked');
 
         if (seleccionados.length === 0) {
-            e.preventDefault();
-            alert('Debe seleccionar al menos un material para registrar la entrega.');
+            Swal.fire({
+                title: 'Atención',
+                text: 'Debe seleccionar al menos un material para registrar la entrega.',
+                icon: 'warning',
+                confirmButtonText: 'Entendido',
+                confirmButtonColor: '#00695c',
+                background: 'rgba(255, 255, 255, 0.95)',
+                color: '#37474f',
+                backdrop: 'rgba(0, 105, 92, 0.4)'
+            });
             return;
         }
 
-        const confirmarEnvio = confirm(
-            '¿Está segura de enviar esta información? Verifique que los datos sean correctos antes de continuar. Si todo es correcto, seleccione "Aceptar"; de lo contrario, seleccione "Cancelar" para revisarlos.'
-        );
+        let cantidadInvalida = false;
+        seleccionados.forEach(check => {
+            const label = check.closest('label');
+            if (label) {
+                const inputCantidad = label.querySelector('input[type="number"]');
+                if (inputCantidad && parseFloat(inputCantidad.value) <= 0) {
+                    cantidadInvalida = true;
+                }
+            }
+        });
 
-        if (!confirmarEnvio) {
-            e.preventDefault();
+        if (cantidadInvalida) {
+            Swal.fire({
+                title: 'Cantidad inválida',
+                text: 'La cantidad de los materiales seleccionados no puede ser 0 kg. Por favor ingrese una cantidad válida mayor a 0.',
+                icon: 'error',
+                confirmButtonText: 'Entendido',
+                confirmButtonColor: '#00695c',
+                background: 'rgba(255, 255, 255, 0.95)',
+                color: '#37474f',
+                backdrop: 'rgba(0, 105, 92, 0.4)'
+            });
+            return;
         }
+
+        Swal.fire({
+            title: '¿Confirmar envío?',
+            text: '¿Está seguro(a) de enviar esta información? Verifique que los datos sean correctos antes de continuar.',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#00695c',
+            cancelButtonColor: '#e53935',
+            background: 'rgba(255, 255, 255, 0.95)',
+            color: '#37474f',
+            backdrop: 'rgba(0, 105, 92, 0.4)'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                formulario.submit();
+            }
+        });
     });
 
     /* =====================================================

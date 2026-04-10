@@ -313,6 +313,7 @@ table tr:hover td {
 .badge-tapas { background-color: #e91e63; }
 .badge-vidrio { background-color: #4caf50; }
 .badge-papel { background-color: #ff9800; }
+.badge-electrodomesticos { background-color: #9c27b0; }
 
 /* Boton Inicio Pie */
 .boton-inicio-wrap {
@@ -398,4 +399,66 @@ table tr:hover td {
     h1 { font-size: 1.5rem; }
     h2 { font-size: 1.1rem; }
     .card, .tabla { padding: 20px 16px; }
+}
+
+/* =========================
+   PAGINACIÓN
+========================= */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 16px;
+    background: #ffffff;
+    color: var(--color-texto);
+    text-decoration: none;
+    border: 1px solid #d1d5db;
+    margin-left: -1px; /* Para fusionar los bordes como en la imagen */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.page-link:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.page-link:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.page-link:hover {
+    background: #f9fafb;
+    color: var(--color-primario);
+}
+
+.page-link.active {
+    background: var(--color-primario);
+    color: #ffffff;
+    border-color: var(--color-primario);
+    z-index: 1; /* Para que el borde primario se sobreponga */
+    box-shadow: 0 2px 8px rgba(0, 105, 92, 0.3);
+}
+
+.page-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    background: #ffffff;
+    color: #9ca3af;
+    border: 1px solid #d1d5db;
+    margin-left: -1px;
 }
