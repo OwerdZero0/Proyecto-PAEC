@@ -209,7 +209,7 @@ select:focus {
 }
 
 /* =========================
-   TABLAS
+    TABLAS
 ========================= */
 
 .tabla {
@@ -402,7 +402,7 @@ table tr:hover td {
 }
 
 /* =========================
-   PAGINACIÓN
+    PAGINACIÓN
 ========================= */
 .paginacion {
     display: flex;

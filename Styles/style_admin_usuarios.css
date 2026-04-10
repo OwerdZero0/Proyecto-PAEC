@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* =========================
-   VARIABLES
+    VARIABLES
 ========================= */
 
 :root {
@@ -16,7 +16,7 @@
 }
 
 /* =========================
-   RESET
+    RESET
 ========================= */
 
 html {
@@ -30,7 +30,7 @@ html {
 }
 
 /* =========================
-   ANIMACIONES
+    ANIMACIONES
 ========================= */
 
 @keyframes entradaSuave {
@@ -45,7 +45,7 @@ html {
 }
 
 /* =========================
-   BODY
+    BODY
 ========================= */
 
 body {
@@ -61,7 +61,7 @@ body {
 }
 
 /* =========================
-   CONTENEDOR PRINCIPAL
+    CONTENEDOR PRINCIPAL
 ========================= */
 
 .contenedor {
@@ -78,7 +78,7 @@ body {
 }
 
 /* =========================
-   ACCIONES SUPERIORES (barra de nav)
+    ACCIONES SUPERIORES (barra de nav)
 ========================= */
 
 .acciones-superiores {
@@ -99,7 +99,7 @@ body {
 }
 
 /* =========================
-   TÍTULO H1
+    TÍTULO H1
 ========================= */
 
 h1 {
@@ -126,7 +126,7 @@ h1::after {
 }
 
 /* =========================
-   SUBTÍTULOS H2
+    SUBTÍTULOS H2
 ========================= */
 
 h2 {
@@ -155,7 +155,7 @@ h2::after {
 }
 
 /* =========================
-   MENSAJES
+    MENSAJES
 ========================= */
 
 .mensaje {
@@ -186,7 +186,7 @@ h2::after {
 }
 
 /* =========================
-   CARD (formulario crear usuario)
+    CARD (formulario crear usuario)
 ========================= */
 
 .card {
@@ -210,7 +210,7 @@ h2::after {
 }
 
 /* =========================
-   LABELS
+    LABELS
 ========================= */
 
 label {
@@ -229,7 +229,7 @@ label > input[type="checkbox"] {
 }
 
 /* =========================
-   INPUTS / SELECT / PASSWORD
+    INPUTS / SELECT / PASSWORD
 ========================= */
 
 input[type="text"],
@@ -270,7 +270,7 @@ input[type="checkbox"] {
 }
 
 /* =========================
-   BOTONES
+    BOTONES
 ========================= */
 
 button {
@@ -342,7 +342,7 @@ form[onsubmit] button {
 }
 
 /* =========================
-   TABLA CONTENEDOR
+    TABLA CONTENEDOR
 ========================= */
 
 .tabla {
@@ -364,7 +364,7 @@ form[onsubmit] button {
 }
 
 /* =========================
-   SCROLL HORIZONTAL TABLA  (móvil)
+    SCROLL HORIZONTAL TABLA  (móvil)
 ========================= */
 
 .tabla-scroll {
@@ -379,7 +379,7 @@ form[onsubmit] button {
 }
 
 /* =========================
-   TABLE
+    TABLE
 ========================= */
 
 table {
@@ -460,7 +460,7 @@ table td form[onsubmit] button {
 }
 
 /* =========================
-   BOTÓN INICIO (pie de página)
+    BOTÓN INICIO (pie de página)
 ========================= */
 
 .boton-inicio-wrap {
@@ -551,7 +551,7 @@ table td form[onsubmit] button {
 }
 
 /* =========================
-   RESPONSIVE — TABLET (≤ 900px)
+    RESPONSIVE — TABLET (≤ 900px)
 ========================= */
 
 @media (max-width: 900px) {
@@ -589,7 +589,7 @@ table td form[onsubmit] button {
 }
 
 /* =========================
-   RESPONSIVE — MÓVIL GRANDE (≤ 600px)
+    RESPONSIVE — MÓVIL GRANDE (≤ 600px)
 ========================= */
 
 @media (max-width: 600px) {
@@ -688,7 +688,7 @@ table td form[onsubmit] button {
 }
 
 /* =========================
-   RESPONSIVE — MÓVIL PEQUEÑO (≤ 400px)
+    RESPONSIVE — MÓVIL PEQUEÑO (≤ 400px)
 ========================= */
 
 @media (max-width: 400px) {
@@ -712,7 +712,7 @@ table td form[onsubmit] button {
 }
 
 /* =========================
-   PAGINACIÓN
+    PAGINACIÓN
 ========================= */
 .paginacion {
     display: flex;
@@ -774,7 +774,7 @@ table td form[onsubmit] button {
 }
 
 /* =========================
-   FORMULARIO DE BÚSQUEDA
+    FORMULARIO DE BÚSQUEDA
 ========================= */
 .form-busqueda {
     display: flex;

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* =========================
-   VARIABLES
+    VARIABLES
 ========================= */
 
 :root {
@@ -17,7 +17,7 @@
 }
 
 /* =========================
-   RESET
+    RESET
 ========================= */
 
 html {
@@ -31,7 +31,7 @@ html {
 }
 
 /* =========================
-   ANIMACIONES
+    ANIMACIONES
 ========================= */
 
 @keyframes entradaSuave {
@@ -46,7 +46,7 @@ html {
 }
 
 /* =========================
-   BODY
+    BODY
 ========================= */
 
 body {
@@ -62,7 +62,11 @@ body {
 }
 
 /* =========================
-   CONTENEDOR PRINCIPAL
+    TABLA CON SCROLL HORIZONTAL
+========================= */
+
+/* =========================
+    CONTENEDOR PRINCIPAL
 ========================= */
 
 .contenedor {
@@ -79,7 +83,7 @@ body {
 }
 
 /* =========================
-   BARRA SUPERIOR DE SESIÓN
+    BARRA SUPERIOR DE SESIÓN
 ========================= */
 
 .barra-sesion {
@@ -108,7 +112,7 @@ body {
 }
 
 /* =========================
-   TÍTULO H1
+    TÍTULO H1
 ========================= */
 
 h1 {
@@ -135,7 +139,7 @@ h1::after {
 }
 
 /* =========================
-   SUBTÍTULOS H2
+    SUBTÍTULOS H2
 ========================= */
 
 h2 {
@@ -164,7 +168,7 @@ h2::after {
 }
 
 /* =========================
-   GRID DE CARDS
+    GRID DE CARDS
 ========================= */
 
 .grid-admin {
@@ -175,7 +179,7 @@ h2::after {
 }
 
 /* =========================
-   CARDS
+    CARDS
 ========================= */
 
 .card {
@@ -200,7 +204,7 @@ h2::after {
 }
 
 /* =========================
-   MENSAJES OK / ERROR
+    MENSAJES OK / ERROR
 ========================= */
 
 .mensaje-ok {
@@ -228,7 +232,7 @@ h2::after {
 }
 
 /* =========================
-   FORMULARIOS — LABELS
+    FORMULARIOS — LABELS
 ========================= */
 
 label {
@@ -250,7 +254,7 @@ label.fila-check {
 }
 
 /* =========================
-   FORMULARIOS — INPUTS / SELECT
+    FORMULARIOS — INPUTS / SELECT
 ========================= */
 
 input[type="text"],
@@ -288,7 +292,7 @@ input[type="checkbox"] {
 }
 
 /* =========================
-   BUSCADOR DE ASIGNACIONES
+    BUSCADOR DE ASIGNACIONES
 ========================= */
 
 #buscador_asignaciones {
@@ -312,7 +316,7 @@ input[type="checkbox"] {
 }
 
 /* =========================
-   BOTONES
+    BOTONES
 ========================= */
 
 button {
@@ -377,7 +381,7 @@ button:active {
 }
 
 /* =========================
-   TABLAS
+    TABLAS
 ========================= */
 
 .tabla {
@@ -464,7 +468,7 @@ table td form button {
 }
 
 /* =========================
-   BOTON INICIO (pie de página)
+    BOTON INICIO (pie de página)
 ========================= */
 
 .boton-inicio-wrap {
@@ -555,8 +559,8 @@ table td form button {
 }
 
 /* =========================
-   TABLA CON SCROLL HORIZONTAL
-   (se necesita en el PHP)
+    TABLA CON SCROLL HORIZONTAL
+    (se necesita en el PHP)
 ========================= */
 
 .tabla-scroll {
@@ -571,7 +575,7 @@ table td form button {
 }
 
 /* =========================
-   RESPONSIVE — TABLET (≤ 900px)
+    RESPONSIVE — TABLET (≤ 900px)
 ========================= */
 
 @media (max-width: 900px) {
@@ -617,7 +621,7 @@ table td form button {
 }
 
 /* =========================
-   RESPONSIVE — MÓVIL GRANDE (≤ 600px)
+    RESPONSIVE — MÓVIL GRANDE (≤ 600px)
 ========================= */
 
 @media (max-width: 600px) {
@@ -719,7 +723,7 @@ table td form button {
 }
 
 /* =========================
-   RESPONSIVE — MÓVIL PEQUEÑO (≤ 400px)
+    RESPONSIVE — MÓVIL PEQUEÑO (≤ 400px)
 ========================= */
 
 @media (max-width: 400px) {
@@ -747,7 +751,7 @@ table td form button {
 }
 
 /* =========================
-   PAGINACIÓN
+    PAGINACIÓN
 ========================= */
 .paginacion {
     display: flex;
@@ -809,7 +813,7 @@ table td form button {
 }
 
 /* =========================
-   FORMULARIO DE BÚSQUEDA
+    FORMULARIO DE BÚSQUEDA
 ========================= */
 .form-busqueda {
     display: flex;

@@ -3,18 +3,18 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/auth_admin.php';
 
 /* =========================================================
-   SECCIÓN 1: VALIDAR SESIÓN Y ROL
-   ---------------------------------------------------------
-   Este archivo solo puede ser usado por usuarios logueados
-   con rol master o admin.
+    SECCIÓN 1: VALIDAR SESIÓN Y ROL
+    ---------------------------------------------------------
+    Este archivo solo puede ser usado por usuarios logueados
+    con rol master o admin.
 ========================================================= */
 require_roles_admin(['master', 'admin']);
 
 /* =========================================================
-   SECCIÓN 2: CONEXIÓN A LA BASE DE DATOS
-   ---------------------------------------------------------
-   Si auth_admin.php ya dejó disponible $conexion, se usa.
-   Si no existe, se crea una conexión aquí como respaldo.
+    SECCIÓN 2: CONEXIÓN A LA BASE DE DATOS
+    ---------------------------------------------------------
+    Si auth_admin.php ya dejó disponible $conexion, se usa.
+    Si no existe, se crea una conexión aquí como respaldo.
 ========================================================= */
 if (!isset($conexion) || !$conexion) {
     $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
@@ -24,11 +24,11 @@ if (!isset($conexion) || !$conexion) {
 }
 
 /* =========================================================
-   SECCIÓN 3: FUNCIONES AUXILIARES
-   ---------------------------------------------------------
-   Estas funciones ayudan a:
-   - limpiar texto recibido por POST
-   - redirigir siempre a admin_usuarios.php
+    SECCIÓN 3: FUNCIONES AUXILIARES
+    ---------------------------------------------------------
+    Estas funciones ayudan a:
+    - limpiar texto recibido por POST
+    - redirigir siempre a admin_usuarios.php
 ========================================================= */
 function limpiar($conexion, $valor) {
     return mysqli_real_escape_string($conexion, trim((string)$valor));
@@ -42,22 +42,22 @@ function redirigir_usuarios($tipo, $mensaje) {
 }
 
 /* =========================================================
-   SECCIÓN 4: VALIDAR MÉTODO
-   ---------------------------------------------------------
-   Solo se aceptan peticiones POST porque este archivo
-   procesa formularios.
+    SECCIÓN 4: VALIDAR MÉTODO
+    ---------------------------------------------------------
+    Solo se aceptan peticiones POST porque este archivo
+    procesa formularios.
 ========================================================= */
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     redirigir_usuarios("error", "Acceso no permitido.");
 }
 
 /* =========================================================
-   SECCIÓN 5: OBTENER DATOS DE SESIÓN Y ACCIÓN
-   ---------------------------------------------------------
-   Se identifica:
-   - el usuario actual
-   - su rol
-   - la acción enviada desde el formulario
+    SECCIÓN 5: OBTENER DATOS DE SESIÓN Y ACCIÓN
+    ---------------------------------------------------------
+    Se identifica:
+    - el usuario actual
+    - su rol
+    - la acción enviada desde el formulario
 ========================================================= */
 $admin_actual_id = (int)($_SESSION['admin_id'] ?? 0);
 $admin_actual_rol = trim((string)($_SESSION['admin_rol'] ?? ''));
@@ -68,11 +68,11 @@ if ($accion === '') {
 }
 
 /* =========================================================
-   SECCIÓN 6: CREAR USUARIO
-   ---------------------------------------------------------
-   Reglas:
-   - master puede crear admin y subadmin
-   - admin solo puede crear subadmin
+    SECCIÓN 6: CREAR USUARIO
+    ---------------------------------------------------------
+    Reglas:
+    - master puede crear admin y subadmin
+    - admin solo puede crear subadmin
 ========================================================= */
 if ($accion === 'crear_usuario') {
 
@@ -86,7 +86,7 @@ if ($accion === 'crear_usuario') {
     }
 
     /* -----------------------------------------------------
-       VALIDAR ROL SEGÚN QUIÉN CREA
+        VALIDAR ROL SEGÚN QUIÉN CREA
     ----------------------------------------------------- */
     if ($admin_actual_rol === 'master') {
         if ($rol !== 'admin' && $rol !== 'subadmin') {
@@ -149,17 +149,17 @@ if ($accion === 'crear_usuario') {
 }
 
 /* =========================================================
-   SECCIÓN 7: EDITAR USUARIO
-   ---------------------------------------------------------
-   Reglas:
-   - master puede editar a cualquiera
-   - admin no puede editar al master
-   - se puede cambiar:
-     * usuario
-     * rol (solo master y no sobre el master)
-     * contraseña
-     * activo
-     * debe_cambiar_password
+    SECCIÓN 7: EDITAR USUARIO
+    ---------------------------------------------------------
+    Reglas:
+    - master puede editar a cualquiera
+    - admin no puede editar al master
+    - se puede cambiar:
+      * usuario
+      * rol (solo master y no sobre el master)
+      * contraseña
+      * activo
+      * debe_cambiar_password
 ========================================================= */
 if ($accion === 'editar_usuario') {
     $id_admin = (int)($_POST['id_admin'] ?? 0);
@@ -178,7 +178,7 @@ if ($accion === 'editar_usuario') {
     }
 
     /* -----------------------------------------------------
-       Consultar el usuario objetivo para conocer su rol
+        Consultar el usuario objetivo para conocer su rol
     ----------------------------------------------------- */
     $sql_objetivo = "SELECT id_admin, usuario, rol FROM admins WHERE id_admin = $id_admin LIMIT 1";
     $resultado_objetivo = mysqli_query($conexion, $sql_objetivo);
@@ -193,7 +193,7 @@ if ($accion === 'editar_usuario') {
     $es_mi_cuenta = ($id_admin === $admin_actual_id);
 
     /* -----------------------------------------------------
-       Validar permisos
+        Validar permisos
     ----------------------------------------------------- */
     if ($admin_actual_rol === 'admin' && $es_master_objetivo) {
         redirigir_usuarios("error", "No tienes permiso para editar al usuario master.");
@@ -204,9 +204,9 @@ if ($accion === 'editar_usuario') {
     }
 
     /* -----------------------------------------------------
-       Determinar el rol final
-       - Si el objetivo es master, debe seguir siendo master
-       - Solo master puede cambiar roles de otros usuarios
+        Determinar el rol final
+        - Si el objetivo es master, debe seguir siendo master
+        - Solo master puede cambiar roles de otros usuarios
     ----------------------------------------------------- */
     $rol_final = $rol_actual_objetivo;
 
@@ -224,13 +224,13 @@ if ($accion === 'editar_usuario') {
     }
 
     /* -----------------------------------------------------
-       Evitar usuario duplicado
+        Evitar usuario duplicado
     ----------------------------------------------------- */
     $sql_verificar = "SELECT id_admin
-                      FROM admins
-                      WHERE usuario = '$usuario'
-                      AND id_admin <> $id_admin
-                      LIMIT 1";
+                    FROM admins
+                    WHERE usuario = '$usuario'
+                    AND id_admin <> $id_admin
+                    LIMIT 1";
     $resultado_verificar = mysqli_query($conexion, $sql_verificar);
 
     if ($resultado_verificar && mysqli_num_rows($resultado_verificar) > 0) {
@@ -238,17 +238,17 @@ if ($accion === 'editar_usuario') {
     }
 
     /* -----------------------------------------------------
-       Regla extra:
-       evitar que el master se desactive a sí mismo
+        Regla extra:
+        evitar que el master se desactive a sí mismo
     ----------------------------------------------------- */
     if ($es_mi_cuenta && $admin_actual_rol === 'master' && $activo === 0) {
         redirigir_usuarios("error", "El usuario master no puede desactivarse a sí mismo.");
     }
 
     /* -----------------------------------------------------
-       Construir actualización
-       Si se escribió nueva contraseña, se actualiza.
-       Si no, se mantiene la actual.
+        Construir actualización
+        Si se escribió nueva contraseña, se actualiza.
+        Si no, se mantiene la actual.
     ----------------------------------------------------- */
     if ($password !== '') {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -318,12 +318,12 @@ if ($accion === 'editar_usuario') {
 }
 
 /* =========================================================
-   SECCIÓN 8: ELIMINAR USUARIO
-   ---------------------------------------------------------
-   Reglas:
-   - master puede eliminar admin y subadmin
-   - admin puede eliminar admin/subadmin, pero no master
-   - nadie puede eliminar su propia cuenta desde aquí
+    SECCIÓN 8: ELIMINAR USUARIO
+    ---------------------------------------------------------
+    Reglas:
+    - master puede eliminar admin y subadmin
+    - admin puede eliminar admin/subadmin, pero no master
+    - nadie puede eliminar su propia cuenta desde aquí
 ========================================================= */
 if ($accion === 'eliminar_usuario') {
     $id_admin = (int)($_POST['id_admin'] ?? 0);
@@ -366,7 +366,7 @@ if ($accion === 'eliminar_usuario') {
 }
 
 /* =========================================================
-   SECCIÓN 9: ACCIÓN NO RECONOCIDA
+    SECCIÓN 9: ACCIÓN NO RECONOCIDA
 ========================================================= */
 redirigir_usuarios("error", "Acción no reconocida.");
 ?>

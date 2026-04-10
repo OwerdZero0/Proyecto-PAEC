@@ -4,12 +4,12 @@ require_once __DIR__ . '/auth_admin.php';
 require_roles_admin(['master', 'admin', 'subadmin']);
 
 /* =========================
-   CREAR TABLAS SI NO EXISTEN
+    CREAR TABLAS SI NO EXISTEN
 ========================= */
 require_once __DIR__ . '/crear_tablas_admin.php';
 
 /* =========================
-   CONEXION
+    CONEXION
 ========================= */
 $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
     or die("Error en la conexión: " . mysqli_connect_error());
@@ -17,13 +17,13 @@ $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
 mysqli_set_charset($conexion, "utf8mb4");
 
 /* =========================
-   DATOS DE SESION ACTUAL
+    DATOS DE SESION ACTUAL
 ========================= */
 $admin_actual_nombre = $_SESSION['admin_usuario'] ?? 'Administrador';
 $admin_actual_rol = $_SESSION['admin_rol'] ?? '';
 
 /* =========================
-   MENSAJES
+    MENSAJES
 ========================= */
 $tipo_mensaje = $_GET["tipo"] ?? "";
 $mensaje = $_GET["mensaje"] ?? "";
@@ -39,7 +39,7 @@ if ($mensaje === "" && isset($_GET["info"])) {
 }
 
 /* =========================
-   CONSULTAR MAESTROS
+    CONSULTAR MAESTROS
 ========================= */
 $busqueda_m = isset($_GET['b_m']) ? trim($_GET['b_m']) : '';
 $sql_where_m = "";
@@ -69,7 +69,7 @@ $maestros = mysqli_query($conexion, "
 ");
 
 /* =========================
-   CONSULTAR GRUPOS
+    CONSULTAR GRUPOS
 ========================= */
 $busqueda_g = isset($_GET['b_g']) ? trim($_GET['b_g']) : '';
 $sql_where_g = "";
@@ -98,7 +98,7 @@ $grupos = mysqli_query($conexion, "
 ");
 
 /* =========================
-   CONSULTAR ASIGNACIONES
+    CONSULTAR ASIGNACIONES
 ========================= */
 $busqueda_a = isset($_GET['b_a']) ? trim($_GET['b_a']) : '';
 $sql_where_a = "";
@@ -168,7 +168,7 @@ function render_paginacion($total_paginas, $pagina_actual, $param_name) {
 }
 
 /* =========================
-   MAESTROS DISPONIBLES
+    MAESTROS DISPONIBLES
 ========================= */
 $maestros_disponibles = mysqli_query($conexion, "
     SELECT *
@@ -181,7 +181,7 @@ $maestros_disponibles = mysqli_query($conexion, "
 ");
 
 /* =========================
-   GRUPOS DISPONIBLES
+    GRUPOS DISPONIBLES
 ========================= */
 $grupos_disponibles = mysqli_query($conexion, "
     SELECT *

@@ -2,7 +2,7 @@
 require_once __DIR__ . '/config.php';
 
 /* =========================
-   CONEXIÓN INICIAL AL SERVIDOR
+    CONEXIÓN INICIAL AL SERVIDOR
 ========================= */
 
 $conexion = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
@@ -14,7 +14,7 @@ if (!$conexion) {
 mysqli_set_charset($conexion, "utf8mb4");
 
 /* =========================
-   CREAR BASE DE DATOS SI NO EXISTE
+    CREAR BASE DE DATOS SI NO EXISTE
 ========================= */
 
 $sql_crear_bd = "CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
@@ -24,7 +24,7 @@ if (!mysqli_query($conexion, $sql_crear_bd)) {
 }
 
 /* =========================
-   SELECCIONAR BASE DE DATOS
+    SELECCIONAR BASE DE DATOS
 ========================= */
 
 if (!mysqli_select_db($conexion, DB_NAME)) {
@@ -34,7 +34,7 @@ if (!mysqli_select_db($conexion, DB_NAME)) {
 mysqli_set_charset($conexion, "utf8mb4");
 
 /* =========================
-   CREAR TABLA ADMINS
+    CREAR TABLA ADMINS
 ========================= */
 
 $sql_tabla_admins = "
@@ -55,7 +55,7 @@ if (!mysqli_query($conexion, $sql_tabla_admins)) {
 }
 
 /* =========================
-   CREAR TABLA MAESTROS
+    CREAR TABLA MAESTROS
 ========================= */
 
 $sql_tabla_maestros = "
@@ -73,7 +73,7 @@ if (!mysqli_query($conexion, $sql_tabla_maestros)) {
 }
 
 /* =========================
-   CREAR TABLA GRUPOS
+    CREAR TABLA GRUPOS
 ========================= */
 
 $sql_tabla_grupos = "
@@ -93,7 +93,7 @@ if (!mysqli_query($conexion, $sql_tabla_grupos)) {
 }
 
 /* =========================
-   CREAR TABLA ASIGNACIONES
+    CREAR TABLA ASIGNACIONES
 ========================= */
 
 $sql_tabla_asignaciones = "
@@ -120,7 +120,7 @@ if (!mysqli_query($conexion, $sql_tabla_asignaciones)) {
 }
 
 /* =========================
-   CREAR TABLA RECOLECCION
+    CREAR TABLA RECOLECCION
 ========================= */
 
 $sql_tabla_recoleccion = "
@@ -150,7 +150,7 @@ if (!mysqli_query($conexion, $sql_tabla_recoleccion)) {
 }
 
 /* =========================
-   VERIFICAR SI EXISTE UN MASTER
+    VERIFICAR SI EXISTE UN MASTER
 ========================= */
 
 $sql_verificar_master = "SELECT id_admin FROM admins WHERE rol = 'master' LIMIT 1";
@@ -161,7 +161,7 @@ if (!$resultado_master) {
 }
 
 /* =========================
-   CREAR MASTER INICIAL SI NO EXISTE
+    CREAR MASTER INICIAL SI NO EXISTE
 ========================= */
 
 if (mysqli_num_rows($resultado_master) === 0) {

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* =========================
-   VARIABLES
+    VARIABLES
 ========================= */
 
 :root {
@@ -16,7 +16,7 @@
 }
 
 /* =========================
-   RESET
+    RESET
 ========================= */
 
 html {
@@ -30,7 +30,7 @@ html {
 }
 
 /* =========================
-   ANIMACIONES
+    ANIMACIONES
 ========================= */
 
 @keyframes entradaSuave {
@@ -45,7 +45,7 @@ html {
 }
 
 /* =========================
-   BODY — fondo animado
+    BODY — fondo animado
 ========================= */
 
 body {
@@ -64,7 +64,7 @@ body {
 }
 
 /* =========================
-   CAJA DE LOGIN
+    CAJA DE LOGIN
 ========================= */
 
 .login-box {
@@ -80,7 +80,7 @@ body {
 }
 
 /* =========================
-   TÍTULO H1
+    TÍTULO H1
 ========================= */
 
 h1 {
@@ -107,7 +107,7 @@ h1::after {
 }
 
 /* =========================
-   MENSAJES
+    MENSAJES
 ========================= */
 
 .mensaje {
@@ -132,7 +132,7 @@ h1::after {
 }
 
 /* =========================
-   LABELS
+    LABELS
 ========================= */
 
 label {
@@ -149,7 +149,7 @@ label:first-of-type {
 }
 
 /* =========================
-   INPUTS
+    INPUTS
 ========================= */
 
 input[type="text"],
@@ -182,7 +182,7 @@ input[type="password"]:focus {
 }
 
 /* =========================
-   BOTÓN INGRESAR
+    BOTÓN INGRESAR
 ========================= */
 
 button[type="submit"] {
@@ -231,7 +231,7 @@ button[type="submit"]:active {
 }
 
 /* =========================
-   BOTÓN INICIO (pie)
+    BOTÓN INICIO (pie)
 ========================= */
 
 .boton-inicio-wrap {
@@ -322,7 +322,7 @@ button[type="submit"]:active {
 }
 
 /* =========================
-   RESPONSIVE — MÓVIL (≤ 480px)
+    RESPONSIVE — MÓVIL (≤ 480px)
 ========================= */
 
 @media (max-width: 480px) {
@@ -375,7 +375,7 @@ button[type="submit"]:active {
 }
 
 /* =========================
-   RESPONSIVE — MUY PEQUEÑO (≤ 360px)
+    RESPONSIVE — MUY PEQUEÑO (≤ 360px)
 ========================= */
 
 @media (max-width: 360px) {
