@@ -23,7 +23,8 @@ export const descargables = {
         "boton_recursos_descargables": "Descargar",
         "boton_energia_descargables": "Descargar",
 
-        "boton_inicio_descargables": "Inicio"
+        "boton_inicio_descargables": "Inicio",
+        "creditos_creadores_descargables": "© Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026)."
     },
 
     en: {
@@ -50,7 +51,8 @@ export const descargables = {
         "boton_recursos_descargables": "Download",
         "boton_energia_descargables": "Download",
 
-        "boton_inicio_descargables": "Home"
+        "boton_inicio_descargables": "Home",
+        "creditos_creadores_descargables": "© System proudly developed and donated to CBTis No. 153 by students Francisco Fuentes Capilla and Iván Amaro Tlalpa (2026)."
     },
 
     nah: {
@@ -77,6 +79,7 @@ export const descargables = {
         "boton_recursos_descargables": "Xikdescarga",
         "boton_energia_descargables": "Xikdescarga",
 
-        "boton_inicio_descargables": "Pehualiztli"
+        "boton_inicio_descargables": "Pehualiztli",
+        "creditos_creadores_descargables": "© Inin tlanonotzaliztli opeuh ihuan omonequilti ica tlamatiliztli in ompa CBTis No. 153, in tlamachtiltin Francisco Fuentes Capilla ihuan Iván Amaro Tlalpa (2026)."
     }
 };

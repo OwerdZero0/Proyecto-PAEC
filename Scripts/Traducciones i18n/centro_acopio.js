@@ -80,7 +80,8 @@ export const centro_acopio = {
         "imagen3_centro_acopio": "Séptima imagen de Centro de Acopio",
         "imagen4_centro_acopio": "Octava imagen de Centro de Acopio",
 
-        "boton_inicio_centro_acopio": "Inicio"
+        "boton_inicio_centro_acopio": "Inicio",
+        "creditos_creadores_centro_acopio": "© Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026)."
     },
 
     en: {
@@ -164,7 +165,8 @@ export const centro_acopio = {
         "imagen3_centro_acopio": "Seventh image of Collection Center",
         "imagen4_centro_acopio": "Eighth image of Collection Center",
 
-        "boton_inicio_centro_acopio": "Home"
+        "boton_inicio_centro_acopio": "Home",
+        "creditos_creadores_centro_acopio": "© System proudly developed and donated to CBTis No. 153 by students Francisco Fuentes Capilla and Iván Amaro Tlalpa (2026)."
     },
 
     nah: {
@@ -248,6 +250,7 @@ export const centro_acopio = {
         "imagen3_centro_acopio": "Chicome tlaixcopincayotl de Centro de Acopio",
         "imagen4_centro_acopio": "Chicuei tlaixcopincayotl de Centro de Acopio",
 
-        "boton_inicio_centro_acopio": "Pehualiztli"
+        "boton_inicio_centro_acopio": "Pehualiztli",
+        "creditos_creadores_centro_acopio": "© Inin tlanonotzaliztli opeuh ihuan omonequilti ica tlamatiliztli in ompa CBTis No. 153, in tlamachtiltin Francisco Fuentes Capilla ihuan Iván Amaro Tlalpa (2026)."
     }
 };

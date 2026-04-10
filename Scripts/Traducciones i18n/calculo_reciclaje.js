@@ -63,7 +63,8 @@ export const calculo_reciclaje = {
         "imagen5_calculo_reciclaje": "Quinta imagen de Resultados de Autoevaluación",
         "imagen6_calculo_reciclaje": "Sexta imagen de Resultados de Autoevaluación",
 
-        "boton_inicio_calculo_reciclaje": "Inicio"
+        "boton_inicio_calculo_reciclaje": "Inicio",
+        "creditos_creadores_calculo_reciclaje": "© Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026)."
     },
 
     en: {
@@ -130,7 +131,8 @@ export const calculo_reciclaje = {
         "imagen5_calculo_reciclaje": "Fifth image of Self-Evaluation Results",
         "imagen6_calculo_reciclaje": "Sixth image of Self-Evaluation Results",
 
-        "boton_inicio_calculo_reciclaje": "Home"
+        "boton_inicio_calculo_reciclaje": "Home",
+        "creditos_creadores_calculo_reciclaje": "© System proudly developed and donated to CBTis No. 153 by students Francisco Fuentes Capilla and Iván Amaro Tlalpa (2026)."
     },
 
     nah: {
@@ -197,6 +199,7 @@ export const calculo_reciclaje = {
         "imagen5_calculo_reciclaje": "Macuili tlaixcopincayotl de Resultados de Autoevaluación",
         "imagen6_calculo_reciclaje": "Chicuace tlaixcopincayotl de Resultados de Autoevaluación",
 
-        "boton_inicio_calculo_reciclaje": "Pehualiztli"
+        "boton_inicio_calculo_reciclaje": "Pehualiztli",
+        "creditos_creadores_calculo_reciclaje": "© Inin tlanonotzaliztli opeuh ihuan omonequilti ica tlamatiliztli in ompa CBTis No. 153, in tlamachtiltin Francisco Fuentes Capilla ihuan Iván Amaro Tlalpa (2026)."
     }
 };

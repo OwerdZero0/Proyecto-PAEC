@@ -51,7 +51,8 @@ export const reciclaje = {
         "imagen7_proceso_proyecto": "Séptima imagen de Proceso del Proyecto",
         "imagen8_proceso_proyecto": "Octava imagen de Proceso del Proyecto",
 
-        "boton_inicio_proceso_proyecto": "Inicio"
+        "boton_inicio_proceso_proyecto": "Inicio",
+        "creditos_creadores_reciclaje": "© Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026)."
     },
 
     en: {
@@ -106,7 +107,8 @@ export const reciclaje = {
         "imagen7_proceso_proyecto": "Seventh image of Project Process",
         "imagen8_proceso_proyecto": "Eighth image of Project Process",
 
-        "boton_inicio_proceso_proyecto": "Home"
+        "boton_inicio_proceso_proyecto": "Home",
+        "creditos_creadores_reciclaje": "© System proudly developed and donated to CBTis No. 153 by students Francisco Fuentes Capilla and Iván Amaro Tlalpa (2026)."
     },
 
     nah: {
@@ -161,6 +163,7 @@ export const reciclaje = {
         "imagen7_proceso_proyecto": "Chicome tlaixcopincayotl de Proceso del Proyecto",
         "imagen8_proceso_proyecto": "Chicuei tlaixcopincayotl de Proceso del Proyecto",
 
-        "boton_inicio_proceso_proyecto": "Pehualiztli"
+        "boton_inicio_proceso_proyecto": "Pehualiztli",
+        "creditos_creadores_reciclaje": "© Inin tlanonotzaliztli opeuh ihuan omonequilti ica tlamatiliztli in ompa CBTis No. 153, in tlamachtiltin Francisco Fuentes Capilla ihuan Iván Amaro Tlalpa (2026)."
     }
 };

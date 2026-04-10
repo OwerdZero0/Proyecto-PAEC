@@ -50,6 +50,7 @@ export const galeria = {
         "videos_galeria": "Multimedia/Videos/Galeria/video_galeria_es.mp4",
 
         "boton_inicio_galeria": "Inicio",
+        "creditos_creadores_galeria": "© Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026)."
     },
 
     en: {
@@ -103,6 +104,7 @@ export const galeria = {
         "videos_galeria": "Multimedia/Videos/Galeria/video_galeria_en.mp4",
 
         "boton_inicio_galeria": "Home",
+        "creditos_creadores_galeria": "© System proudly developed and donated to CBTis No. 153 by students Francisco Fuentes Capilla and Iván Amaro Tlalpa (2026)."
     },
 
     nah: {
@@ -156,5 +158,6 @@ export const galeria = {
         "videos_galeria": "Multimedia/Videos/Galeria/video_galeria_nah.mp4",
 
         "boton_inicio_galeria": "Pehualiztli",
+        "creditos_creadores_galeria": "© Inin tlanonotzaliztli opeuh ihuan omonequilti ica tlamatiliztli in ompa CBTis No. 153, in tlamachtiltin Francisco Fuentes Capilla ihuan Iván Amaro Tlalpa (2026)."
     },
 };
