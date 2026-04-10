@@ -1,174 +1,202 @@
 export const calculo_reciclaje = {
     es: {
-        "titulo_calculo_reciclaje": "Paises que más hacen el reciclaje en el mundo",
-        "subtitulo_calculo_reciclaje": "los 5 países con más reciclaje mundial son:",
+        "titulo_calculo_reciclaje": "RESULTADOS DE AUTOEVALUACIÓN",
+        "subtitulo_calculo_reciclaje": "CUANTITATIVOS Y CUALITATIVOS",
 
-        "pais_1_1_calculo_reciclaje": "Austria",
-        "pais_1_2_calculo_reciclaje": "Gales (Wales)",
-        "pais_1_3_calculo_reciclaje": "Taiwán",
-        "pais_1_4_calculo_reciclaje": "Alemania",
-        "pais_1_5_calculo_reciclaje": "Bélgica",
+        "dato_1_calculo_reciclaje": "Participación docente",
+        "dato_2_calculo_reciclaje": "Proyectos presentados",
+        "dato_3_calculo_reciclaje": "Proyectos a concurso",
+        "dato_4_calculo_reciclaje": "Ponderación",
 
-        "punto_1_1_calculo_reciclaje": "1. Tasa de reciclaje",
-        "punto_1_2_calculo_reciclaje": "2. Responsabilidad ampliada del productor",
-        "punto_1_3_calculo_reciclaje": "3. Separación doméstica estructurada",
-        "punto_1_4_calculo_reciclaje": "4. Restricciones en vertederos",
-        "punto_1_5_calculo_reciclaje": "5. Infraestructura y gestión",
+        "subtitulo1_calculo_reciclaje": "Apartado",
+        "subtitulo2_calculo_reciclaje": "Descripción",
+        "subtitulo3_calculo_reciclaje": "Dato clave",
 
-        "punto_2_1_calculo_reciclaje": "1. Tasa de reciclaje",
-        "punto_2_2_calculo_reciclaje": "2. Metas legales de reciclaje",
-        "punto_2_3_calculo_reciclaje": "3. Obligación empresarial",
-        "punto_2_4_calculo_reciclaje": "4. Jerarquía de residuos aplicada",
-        "punto_2_5_calculo_reciclaje": "5. Sanciones legales",
+        "apartado_1_calculo_reciclaje": "Instrumento a utilizar",
+        "descripcion_1_calculo_reciclaje": "Todo el grupo colegiado utiliza un solo instrumento de evaluación para valorar el trabajo del proyecto.",
+        "clave_1_calculo_reciclaje": "Rúbrica Integral de Evaluación Integral",
 
-        "punto_3_1_calculo_reciclaje": "1. Tasa de reciclaje",
-        "punto_3_2_calculo_reciclaje": "2. Programa “Four-in-One”",
-        "punto_3_3_calculo_reciclaje": "3. Clasificación doméstica estricta",
-        "punto_3_4_calculo_reciclaje": "4. Sistema “paga por bolsa”",
-        "punto_3_5_calculo_reciclaje": "5. Infraestructura y financiamiento",
+        "apartado_2_calculo_reciclaje": "Transversalidad PAEC",
+        "descripcion_2_calculo_reciclaje": "El Proyecto Escolar Comunitario se trabaja de manera transversal con la participación de todas las asignaturas.",
+        "clave_2_calculo_reciclaje": "Todas las asignaturas participan",
 
-        "punto_4_1_calculo_reciclaje": "1. Tasa de reciclaje",
-        "punto_4_2_calculo_reciclaje": "2. Sistema “Grüner Punkt”",
-        "punto_4_3_calculo_reciclaje": "3. Ley de Envasado (“VerpackG”)",
-        "punto_4_4_calculo_reciclaje": "4. Separación doméstica estructurada",
-        "punto_4_5_calculo_reciclaje": "5. Incentivos y regulaciones adicionales",
+        "apartado_3_calculo_reciclaje": "Integración académica",
+        "descripcion_3_calculo_reciclaje": "La especialidad de programación se presenta como ejemplo de articulación académica dentro del proyecto.",
+        "clave_3_calculo_reciclaje": "Ejemplo de programación",
 
-        "punto_5_1_calculo_reciclaje": "1. Tasa de reciclaje",
-        "punto_5_2_calculo_reciclaje": "2. Responsabilidad ampliada del productor (EPR)",
-        "punto_5_3_calculo_reciclaje": "3. Separación obligatoria en regiones",
-        "punto_5_4_calculo_reciclaje": "4. Sitios de entrega (“bring sites”)",
-        "punto_5_5_calculo_reciclaje": "5. Parques de reciclaje (“container parks”)",
+        "apartado_4_calculo_reciclaje": "Ponderación",
+        "descripcion_4_calculo_reciclaje": "El proyecto tiene un valor específico dentro de la evaluación escolar.",
+        "clave_4_calculo_reciclaje": "30%",
 
-        "subtitulo1_calculo_reciclaje": "Paises",
-        "subtitulo2_calculo_reciclaje": "Procedimiento",
+        "subtitulo4_calculo_reciclaje": "Evidencia / resultado",
+        "subtitulo5_calculo_reciclaje": "Descripción",
 
-        "informacion1_calculo_reciclaje": "En Austria existe un sistema de responsabilidad ampliada del productor (“producer responsibility”), muy parecido al de Alemania. La recolección doméstica está muy estructurada: los hogares separan en orgánicos, papel, plástico, vidrio (y vidrio se separa por color). Está prohibida la disposición de ciertos residuos en vertederos: por ejemplo, productos con más del 5 % de carbono orgánico no pueden ir a vertedero, lo que impulsa el reciclaje. Tiene centros de entrega (“drop-off points”) para reciclables y servicios municipales de recolección; Altstoff Recycling Austria (ARA) es la organización principal para gestionar este sistema.",
+        "evidencia_1_calculo_reciclaje": "Participación académica",
+        "informacion1_calculo_reciclaje": "Participación del 93% de los docentes en las actividades. Se presentaron 37 proyectos y 4 de ellos avanzan a concurso, 2 en fase local y 2 en fase estatal.",
 
-        "informacion2_calculo_reciclaje": "El gobierno de Gales tiene metas legales (“statutory targets”) para reciclar: por ejemplo, en su “Collections Blueprint 2025” exige que los ayuntamientos recolecten residuos residuales solo cada 3 semanas para incentivar separar más para reciclar. Se obliga a las empresas a separar residuos: desde abril de 2024, todos los lugares de trabajo (oficinas, tiendas, fábricas) tienen que separar papel/cartón, vidrio, plásticos, metales, incluso alimentos si generan más de 5 kg a la semana. Gales aplica la jerarquía de residuos (“waste hierarchy”): primero se prioriza evitar, luego reutilizar, luego reciclar/compostar, y finalmente otros métodos. Hay sanciones si no se cumple con los objetivos locales de reciclaje según la legislación.",
+        "evidencia_2_calculo_reciclaje": "Infraestructura del proyecto",
+        "informacion2_calculo_reciclaje": "Se instalaron contenedores en el patio y en las aulas. Todos los grupos presentan bitácora de seguimiento del PAEC y ya existe un espacio oficial para el centro de acopio escolar.",
 
-        "informacion3_calculo_reciclaje": "Tiene un sistema llamado “Four-in-One Recycling Program”: integran gobierno, industria, comunidades y productores para gestionar el reciclaje. Clasificación muy específica de basura: los residentes separan en basura reciclable, desechos de cocina y basura ordinaria. El sistema de bolsas: usan un esquema “paga por bolsa” (“pay-as-you-throw”): por ejemplo, las bolsas oficiales para basura general tienen un costo, lo que incentiva reciclar porque los desechos reciclables no necesitan esas bolsas. Tienen muchas plantas de incineración para lo que no se puede reciclar: por ejemplo la planta de Hsinchu. Además, para los residuos industriales, aplican reutilización: hasta el 80% del residuo industrial es reutilizado bajo regulaciones. Hay un fondo (“Resource Recycling Management Fund”) que financia las actividades de reciclaje: la autoridad de recursos tiene un papel clave para coordinar y asegurar reciclaje.",
+        "evidencia_3_calculo_reciclaje": "Reconocimiento y transparencia",
+        "informacion3_calculo_reciclaje": "Se reconoció la participación en hábitos de reciclaje y se desarrolló una página web para dar transparencia al proyecto. Además, se recolectan diversos residuos reciclables como PET, latas, tapas, pilas, papel, cartón, vidrio y componentes electrónicos pequeños.",
 
-        "informacion4_calculo_reciclaje": "Tienen el famoso sistema del “Grüner Punkt” (Punto Verde): los fabricantes deben pagar para que sus empaques sean reciclados. Ley de envasado (“VerpackG”): obliga a los productores a inscribirse en un sistema dual para hacerse cargo del reciclaje de sus empaques. Sistema de separación en los hogares: usan “yellow sack” (bolsas amarillas) para plásticos, metales y empaques ligeros. Cada material tiene su contenedor / su recolección: vidrio, papel/cartón, orgánicos, etc. Además de las bolsas amarillas. También hay sistema de depósito (“Pfand”) para ciertos envases de bebidas, lo que incentiva devolver botellas para reciclarlas. Además, tienen regulaciones para aparatos electrónicos y baterías (“extended producer responsibility” también para otros tipos de residuos), forzando a los productores a hacerse cargo de sus productos al final de su vida útil.",
+        "evidencia_4_calculo_reciclaje": "Resultados cualitativos",
+        "informacion4_calculo_reciclaje": "Se consolidó la transversalidad académica, aumentó la conciencia ambiental y el comité escolar se fortaleció como órgano coordinador del proyecto.",
 
-        "informacion5_calculo_reciclaje": "Bélgica aplica también extended producer responsibility (EPR) para muchos flujos de residuos: empaques, pilas, medicamentos, papel/cartón, etc. En algunas regiones belgas, el ordenamiento del reciclaje es obligatorio: por ejemplo, separar plástico, metal, cartón (PMD) y tener bolsas o contenedores específicos según el tipo de residuo. Tiene sitios de entrega (“bring sites”) para vidrio, donde los ciudadanos llevan sus botellas y frascos. Además, los residuos complicados o grandes pueden llevarse a parques de reciclaje (“container parks”) donde se separan muchos tipos de materiales.",
+        "evidencia_5_calculo_reciclaje": "Cambios en hábitos escolares",
+        "informacion5_calculo_reciclaje": "Se redujo el uso de desechables en la escuela, se promovió el uso de recipientes reutilizables y se observaron aulas y espacios más limpios.",
 
-        "boton_inicio_calculo_reciclaje": "Inicio",
+        "evidencia_6_calculo_reciclaje": "Impacto institucional",
+        "informacion6_calculo_reciclaje": "Mejoró la imagen del plantel y se consolidó el Centro de Acopio Escolar como parte de la vida institucional.",
+
+        "subtitulo6_calculo_reciclaje": "Conclusiones",
+        "subtitulo7_calculo_reciclaje": "Pregunta de reflexión",
+
+        "conclusion_calculo_reciclaje": "El centro de acopio escolar se ha consolidado como un espacio formativo que impulsa la conciencia ambiental y la participación comunitaria. A través de la separación responsable de residuos y la reducción de desechables, fortalece la corresponsabilidad entre estudiantes, docentes y directivos, reflejando el compromiso institucional con la sostenibilidad y la transformación social.",
+
+        "pregunta_calculo_reciclaje": "Si todas las escuelas de México adoptaran prácticas de reciclaje y eliminaran el uso de desechables dentro de las mismas, ¿lograríamos una reducción significativa de la contaminación en nuestro país?",
+        
+        "imagen1_calculo_reciclaje": "Primera imagen de Resultados de Autoevaluación",
+        "imagen2_calculo_reciclaje": "Segunda imagen de Resultados de Autoevaluación",
+        "imagen3_calculo_reciclaje": "Tercera imagen de Resultados de Autoevaluación",
+        "imagen4_calculo_reciclaje": "Cuarta imagen de Resultados de Autoevaluación",
+        "imagen5_calculo_reciclaje": "Quinta imagen de Resultados de Autoevaluación",
+        "imagen6_calculo_reciclaje": "Sexta imagen de Resultados de Autoevaluación",
+
+        "boton_inicio_calculo_reciclaje": "Inicio"
     },
 
     en: {
-        "titulo_calculo_reciclaje": "Countries that recycle the most in the world",
-        "subtitulo_calculo_reciclaje": "The 5 countries with the highest recycling rates are:",
+        "titulo_calculo_reciclaje": "SELF-EVALUATION RESULTS",
+        "subtitulo_calculo_reciclaje": "QUANTITATIVE AND QUALITATIVE",
 
-        "pais_1_calculo_reciclaje": "Austria",
-        "pais_2_calculo_reciclaje": "Wales",
-        "pais_3_calculo_reciclaje": "Taiwan",
-        "pais_4_calculo_reciclaje": "Germany",
-        "pais_5_calculo_reciclaje": "Belgium",
+        "dato_1_calculo_reciclaje": "Teacher participation",
+        "dato_2_calculo_reciclaje": "Projects submitted",
+        "dato_3_calculo_reciclaje": "Projects in competition",
+        "dato_4_calculo_reciclaje": "Weighting",
 
-        "punto_1_1_calculo_reciclaje": "1. Recycling rate",
-        "punto_1_2_calculo_reciclaje": "2. Extended producer responsibility",
-        "punto_1_3_calculo_reciclaje": "3. Structured household separation",
-        "punto_1_4_calculo_reciclaje": "4. Landfill restrictions",
-        "punto_1_5_calculo_reciclaje": "5. Infrastructure and waste management",
+        "subtitulo1_calculo_reciclaje": "Section",
+        "subtitulo2_calculo_reciclaje": "Description",
+        "subtitulo3_calculo_reciclaje": "Key data",
 
-        "punto_2_1_calculo_reciclaje": "1. Recycling rate",
-        "punto_2_2_calculo_reciclaje": "2. Legal recycling targets",
-        "punto_2_3_calculo_reciclaje": "3. Business obligations",
-        "punto_2_4_calculo_reciclaje": "4. Applied waste hierarchy",
-        "punto_2_5_calculo_reciclaje": "5. Legal sanctions",
+        "apartado_1_calculo_reciclaje": "Instrument to be used",
+        "descripcion_1_calculo_reciclaje": "The entire collegial group uses a single evaluation instrument to assess the project's work.",
+        "clave_1_calculo_reciclaje": "Comprehensive Integral Evaluation Rubric",
 
-        "punto_3_1_calculo_reciclaje": "1. Recycling rate",
-        "punto_3_2_calculo_reciclaje": "2. “Four-in-One” program",
-        "punto_3_3_calculo_reciclaje": "3. Strict household sorting",
-        "punto_3_4_calculo_reciclaje": "4. “Pay-as-you-throw” bag system",
-        "punto_3_5_calculo_reciclaje": "5. Infrastructure and funding",
+        "apartado_2_calculo_reciclaje": "PAEC cross-curricular approach",
+        "descripcion_2_calculo_reciclaje": "The Community School Project is worked on in a cross-curricular way with the participation of all subjects.",
+        "clave_2_calculo_reciclaje": "All subjects participate",
 
-        "punto_4_1_calculo_reciclaje": "1. Recycling rate",
-        "punto_4_2_calculo_reciclaje": "2. “Grüner Punkt” system",
-        "punto_4_3_calculo_reciclaje": "3. Packaging Law (“VerpackG”)",
-        "punto_4_4_calculo_reciclaje": "4. Structured household separation",
-        "punto_4_5_calculo_reciclaje": "5. Additional incentives and regulations",
+        "apartado_3_calculo_reciclaje": "Academic integration",
+        "descripcion_3_calculo_reciclaje": "The programming specialty is presented as an example of academic articulation within the project.",
+        "clave_3_calculo_reciclaje": "Programming example",
 
-        "punto_5_1_calculo_reciclaje": "1. Recycling rate",
-        "punto_5_2_calculo_reciclaje": "2. Extended producer responsibility (EPR)",
-        "punto_5_3_calculo_reciclaje": "3. Mandatory regional separation",
-        "punto_5_4_calculo_reciclaje": "4. Glass “bring sites”",
-        "punto_5_5_calculo_reciclaje": "5. Recycling parks (“container parks”)",
+        "apartado_4_calculo_reciclaje": "Weighting",
+        "descripcion_4_calculo_reciclaje": "The project has a specific value within school assessment.",
+        "clave_4_calculo_reciclaje": "30%",
 
-        "subtitulo1_calculo_reciclaje": "Countries",
-        "subtitulo2_calculo_reciclaje": "Procedure",
+        "subtitulo4_calculo_reciclaje": "Evidence / result",
+        "subtitulo5_calculo_reciclaje": "Description",
 
-        "informacion1_calculo_reciclaje": "Austria has an extended producer responsibility system, very similar to Germany’s. Household collection is highly structured: homes separate organics, paper, plastic and glass (and glass is separated by color). Certain waste is banned from landfills: for example, materials with more than 5% organic carbon cannot be landfilled, which pushes recycling. There are drop-off points for recyclables and municipal collection services; Altstoff Recycling Austria (ARA) is the main organization managing this system.",
+        "evidencia_1_calculo_reciclaje": "Academic participation",
+        "informacion1_calculo_reciclaje": "There was 93% teacher participation in the activities. A total of 37 projects were submitted, and 4 of them advanced to competition, 2 at the local phase and 2 at the state phase.",
 
-        "informacion2_calculo_reciclaje": "The government of Wales has statutory legal targets for recycling. For example, in its “Collections Blueprint 2025” it requires municipalities to collect residual waste only every 3 weeks to encourage people to separate more for recycling. Businesses are required to separate waste: since April 2024, all workplaces (offices, shops, factories) must separate paper/cardboard, glass, plastics, metals and even food waste if they generate more than 5 kg per week. Wales applies the waste hierarchy: prevention, then reuse, then recycling/composting and finally other methods. There are legal sanctions if local recycling targets are not met.",
+        "evidencia_2_calculo_reciclaje": "Project infrastructure",
+        "informacion2_calculo_reciclaje": "Containers were installed in the courtyard and classrooms. All groups present a PAEC follow-up logbook, and there is already an official space for the school collection center.",
 
-        "informacion3_calculo_reciclaje": "Taiwan has a system called the “Four-in-One Recycling Program”, integrating government, industry, communities and producers to manage recycling. Waste is sorted very specifically: residents separate recyclable waste, kitchen waste and general waste. They use a “pay-as-you-throw” scheme: official bags for residual waste have a cost, which encourages recycling because recyclables don’t need those bags. There are many incineration plants for what cannot be recycled, such as the Hsinchu plant. For industrial waste, reuse is promoted: up to 80% of industrial waste is reused under regulations. A “Resource Recycling Management Fund” finances recycling activities; the resource authority plays a key role in coordinating and ensuring recycling.",
+        "evidencia_3_calculo_reciclaje": "Recognition and transparency",
+        "informacion3_calculo_reciclaje": "Participation in recycling habits was recognized and a website was developed to provide transparency for the project. In addition, various recyclable materials are collected such as PET, cans, caps, batteries, paper, cardboard, glass, and small electronic components.",
 
-        "informacion4_calculo_reciclaje": "Germany has the well-known “Grüner Punkt” (Green Dot) system: manufacturers must pay for their packaging to be recycled. The Packaging Law (“VerpackG”) requires producers to register in a dual system that takes responsibility for recycling their packaging. At home, people use the “yellow sack” system for plastics, metals and light packaging. Each material has its own container or collection stream: glass, paper/cardboard, organics, etc., in addition to the yellow bags. There is also a deposit system (“Pfand”) for certain drink containers, encouraging bottle return for recycling. There are additional regulations for electronic devices and batteries, extending producer responsibility to other waste streams.",
+        "evidencia_4_calculo_reciclaje": "Qualitative results",
+        "informacion4_calculo_reciclaje": "Cross-curricular academic work was consolidated, environmental awareness increased, and the school committee was strengthened as the project's coordinating body.",
 
-        "informacion5_calculo_reciclaje": "Belgium also applies extended producer responsibility (EPR) to many waste streams: packaging, batteries, medicines, paper/cardboard and more. In some Belgian regions, recycling sorting is mandatory: for example, separating plastic, metal and drink cartons (PMD) and using specific bags or containers according to the type of waste. There are glass bring sites where citizens take bottles and jars. Bulky or complex waste can be taken to recycling parks (“container parks”), where many material types are separated.",
+        "evidencia_5_calculo_reciclaje": "Changes in school habits",
+        "informacion5_calculo_reciclaje": "The use of disposable products at school was reduced, reusable containers were promoted, and cleaner classrooms and spaces were observed.",
 
-        "boton_inicio_calculo_reciclaje": "Home",
+        "evidencia_6_calculo_reciclaje": "Institutional impact",
+        "informacion6_calculo_reciclaje": "The school's image improved and the School Collection Center was consolidated as part of institutional life.",
+
+        "subtitulo6_calculo_reciclaje": "Conclusions",
+        "subtitulo7_calculo_reciclaje": "Reflection question",
+
+        "conclusion_calculo_reciclaje": "The school collection center has become a formative space that promotes environmental awareness and community participation. Through responsible waste separation and the reduction of disposable products, it strengthens shared responsibility among students, teachers, and administrators, reflecting the institution's commitment to sustainability and social transformation.",
+
+        "pregunta_calculo_reciclaje": "If all schools in Mexico adopted recycling practices and eliminated the use of disposable products within them, would we achieve a significant reduction in pollution in our country?",
+
+        "imagen1_calculo_reciclaje": "First image of Self-Evaluation Results",
+        "imagen2_calculo_reciclaje": "Second image of Self-Evaluation Results",
+        "imagen3_calculo_reciclaje": "Third image of Self-Evaluation Results",
+        "imagen4_calculo_reciclaje": "Fourth image of Self-Evaluation Results",
+        "imagen5_calculo_reciclaje": "Fifth image of Self-Evaluation Results",
+        "imagen6_calculo_reciclaje": "Sixth image of Self-Evaluation Results",
+
+        "boton_inicio_calculo_reciclaje": "Home"
     },
 
     nah: {
-    "titulo_calculo_reciclaje": "Altepetl tlahcuilōlli tlen más quichihuah tlalcuahuitl ipan tlalticpac",
-    "subtitulo_calculo_reciclaje": "In 5 altepetl tlen más quichihuah tlalcuahuitl yej nica:",
+        "titulo_calculo_reciclaje": "TLAHTOLMELAHUALIZTLI TLAIXMATILIZTLI",
+        "subtitulo_calculo_reciclaje": "TLAMACHILIZTLI IHUAN TLAIXMATILIZTLI",
 
-    "pais_1_calculo_reciclaje": "Austria",
-    "pais_2_calculo_reciclaje": "Gales (Wales)",
-    "pais_3_calculo_reciclaje": "Taiwán",
-    "pais_4_calculo_reciclaje": "Alemania",
-    "pais_5_calculo_reciclaje": "Bélgica",
+        "dato_1_calculo_reciclaje": "Tlamachtijkeh tlen omoparticiparoj",
+        "dato_2_calculo_reciclaje": "Tlatekij tlen omotlalijkeh",
+        "dato_3_calculo_reciclaje": "Tlatekij tlen oyajke ipan concurso",
+        "dato_4_calculo_reciclaje": "Tlateixpantiliztli",
 
-    "punto_1_1_calculo_reciclaje": "1. Tlalcuahuitl tlahtlamantli",
-    "punto_1_2_calculo_reciclaje": "2. Tlen tequiti teyecoltic tlatequitilistli",
-    "punto_1_3_calculo_reciclaje": "3. Tlahcuilōlli tlen cali ipan tlapohualli",
-    "punto_1_4_calculo_reciclaje": "4. Tlayehualoliztli ipan tlatzauctli (vertedero)",
-    "punto_1_5_calculo_reciclaje": "5. Tlamanalli huan tlayecoliztli",
+        "subtitulo1_calculo_reciclaje": "Tlatequiliztli",
+        "subtitulo2_calculo_reciclaje": "Itechpa tlanextiliztli",
+        "subtitulo3_calculo_reciclaje": "Tlen moneki",
 
-    "punto_2_1_calculo_reciclaje": "1. Tlalcuahuitl tlahtlamantli",
-    "punto_2_2_calculo_reciclaje": "2. Tlanahuatilli ipan tlalcuahuitl",
-    "punto_2_3_calculo_reciclaje": "3. Tlatequitilistli tlen tlanahuatia nemilistli",
-    "punto_2_4_calculo_reciclaje": "4. Tlamantli tlapohualli tlen tlālli",
-    "punto_2_5_calculo_reciclaje": "5. Tlatzacuiltiliztli tlen tlanahuatia",
+        "apartado_1_calculo_reciclaje": "Tlanemililli tlen motequitiz",
+        "descripcion_1_calculo_reciclaje": "Nochi grupo colegiado quitekitia san se tlanemililli de evaluación para quimattiz in tlatekij tlen mochij ipan proyecto.",
+        "clave_1_calculo_reciclaje": "Rúbrica Integral de Evaluación",
 
-    "punto_3_1_calculo_reciclaje": "1. Tlalcuahuitl tlahtlamantli",
-    "punto_3_2_calculo_reciclaje": "2. “Four-in-One” tlayecoliztli",
-    "punto_3_3_calculo_reciclaje": "3. Tlen tlapohualli cali tlen chicahuac",
-    "punto_3_4_calculo_reciclaje": "4. “Tlatlayohualiztli tlen bolsa” (paga por bolsa)",
-    "punto_3_5_calculo_reciclaje": "5. Tlamanalli huan tomin tlen quimacah",
+        "apartado_2_calculo_reciclaje": "Transversalidad PAEC",
+        "descripcion_2_calculo_reciclaje": "In Tlatekij tlamachtilcalli ipan altepetl motekitia de manera transversal ica participación de nochi asignaturas.",
+        "clave_2_calculo_reciclaje": "Nochi asignaturas participaroah",
 
-    "punto_4_1_calculo_reciclaje": "1. Tlalcuahuitl tlahtlamantli",
-    "punto_4_2_calculo_reciclaje": "2. Sistema “Grüner Punkt”",
-    "punto_4_3_calculo_reciclaje": "3. Tlanahuatilli tlen pepitas (“VerpackG”)",
-    "punto_4_4_calculo_reciclaje": "4. Tlapohualli cali tlen yec tlasencahual",
-    "punto_4_5_calculo_reciclaje": "5. Tlatlayohualiztli huan tlanahuatilli oksequiteh",
+        "apartado_3_calculo_reciclaje": "Integración académica",
+        "descripcion_3_calculo_reciclaje": "In especialidad de programación motta quen se ejemplo de quenin mochihua in tlamachtiliztli ipan proyecto.",
+        "clave_3_calculo_reciclaje": "Ejemplo de programación",
 
-    "punto_5_1_calculo_reciclaje": "1. Tlalcuahuitl tlahtlamantli",
-    "punto_5_2_calculo_reciclaje": "2. Tlatequitilistli teyecoltic (EPR)",
-    "punto_5_3_calculo_reciclaje": "3. Tlapohualli tlen tlamanalli ipan regiones",
-    "punto_5_4_calculo_reciclaje": "4. “Tepanazco” campa mocah huēl tekuani (bring sites)",
-    "punto_5_5_calculo_reciclaje": "5. Tlalcuahuitl calco (container parks)",
+        "apartado_4_calculo_reciclaje": "Tlateixpantiliztli",
+        "descripcion_4_calculo_reciclaje": "In proyecto quipia se valor específico ipan evaluación escolar.",
+        "clave_4_calculo_reciclaje": "30%",
 
-    "subtitulo1_calculo_reciclaje": "Altepetl",
-    "subtitulo2_calculo_reciclaje": "Tlatequitiliztli",
+        "subtitulo4_calculo_reciclaje": "Tlanextil / resultado",
+        "subtitulo5_calculo_reciclaje": "Itechpa tlanextiliztli",
 
-    "informacion1_calculo_reciclaje":
-        "Ipan Austria onca se tlayecoliztli campa tlen quichihuah tlatequi teyecoltic, quemeh ipan Alemania. Ipan cali quitlajcuilohuah orgánico, amatl, plastikotl, huan xalli (in xalli nojquiya tlepohualo por color). Ipan tlatzauctli (vertedero) amo quicahuiliah tlamantli tlen más del 5% carbono orgánico. Onca “drop-off” campa motemacah tlamantli tlalcuahuitl. ARA (Altstoff Recycling Austria) quinyecana nochi tlayecoliztli.",
+        "evidencia_1_calculo_reciclaje": "Participación académica",
+        "informacion1_calculo_reciclaje": "Omoparticiparoj 93% de docentes ipan actividades. Omotlalijkeh 37 proyectos huan 4 de yejhuan oyajke ipan concurso, ome ipan fase local huan ome ipan fase estatal.",
 
-    "informacion2_calculo_reciclaje":
-        "Gales quipiya tlanahuatilli tlen tlalcuahuitl. “Collections Blueprint 2025” tlanahuatia ma quicohuazca tlamantli sobrante cada 3 semanas para ma tlalcuahuih más. Desde abril 2024, nochi tequitlacanah (oficinas, tiendas, fábricas) monequi tlapohuaz papel, vidrio, plastikotl, metal, huan tlacualiztli tlen más de 5 kg por semana. Quichihuah tlapalehuia tlen se tlahtōlli tlen quipiya ma tlalcuahuih más, huan tlatzacuiltiliztli tlaonque amo quichihuah.",
+        "evidencia_2_calculo_reciclaje": "Infraestructura del proyecto",
+        "informacion2_calculo_reciclaje": "Omotlalijkeh contenedores ipan patio huan ipan aulas. Nochi grupos quipiah bitácora de seguimiento del PAEC huan ya onca se espacio oficial para in centro de acopio escolar.",
 
-    "informacion3_calculo_reciclaje":
-        "Taiwán quipiya “Four-in-One Recycling Program”, campa tlacameh, gobierno, productores huan industria quimonequiltih ipan tlalcuahuitl. Tlapohualli chicahuac: basura reciclable, tlacualiztli sobrante, huan basura común. Mochipa quipohuah “paga por bolsa”: bolsas ofisiales para basura tlapan, pero amo para tlalcuahuitl. Onca incineradoras quemeh Hsinchu para tlen amo hueli tlalcuahuitl. Hasta 80% industrial tlamantli quimonequiltiah de nuevo. Fondo “Resource Recycling Management Fund” quimacah tomin para tlayecoliztli.",
+        "evidencia_3_calculo_reciclaje": "Reconocimiento huan transparencia",
+        "informacion3_calculo_reciclaje": "Omosej reconocimiento por participación ipan hábitos de reciclaje huan omochij se página web para quitenextis transparencia del proyecto. Noijki mosentlaliah residuos quen PET, latas, tapas, pilas, amatl, cartón, vidrio huan componentes electrónicos.",
 
-    "informacion4_calculo_reciclaje":
-        "Alemania quipiya “Grüner Punkt”: productores monequi tlacopah para ma tlalcuahuih in pepitas. Tlanahuatilli “VerpackG” quipia ma motlajcuiloh mirah ipan sistema doble. Tlapohualli cali: “yellow sack” para plastikotl, metal huan empaques tlen huihuitic. Tlen xalli, amatl/cartón, orgánicos, tlen más, quipiyah in contenedores. Sistema “Pfand” quichihua ma quitemotih botellas. Nojquiya quipiya reglas para aparatos electrónicos huan pilas, quemeh producer responsibility.",
+        "evidencia_4_calculo_reciclaje": "Resultados cualitativos",
+        "informacion4_calculo_reciclaje": "Omosemili in transversalidad académica, omochicau conciencia ambiental huan in comité escolar omochij más fuerte quen órgano coordinador del proyecto.",
 
-    "informacion5_calculo_reciclaje":
-        "Ipan Bélgica quipiyah tlatequitilistli teyecoltic para tlamantli tlen: empaques, pilas, medicinas, amatl/cartón. Ipan regiones monequi tlapohuaz PMD (plastik, metal, cartón). Onca “bring sites” campa quitemohuah vidrio. Tlamantli wey o complicados motlaliah ipan “container parks” para tlapohualli tlen miekeh tlamantli tlen tlalcuahuitl.",
+        "evidencia_5_calculo_reciclaje": "Cambios ipan hábitos escolares",
+        "informacion5_calculo_reciclaje": "Omopoloj in uso de desechables ipan escuela, omoyecana in uso de recipientes reutilizables huan omottaqueh aulas huan espacios más chipahuac.",
 
-    "boton_inicio_calculo_reciclaje": "Pehualiztli",
-    },
+        "evidencia_6_calculo_reciclaje": "Impacto institucional",
+        "informacion6_calculo_reciclaje": "Omocualtili in imagen del plantel huan omosemili in Centro de Acopio Escolar quen parte de la vida institucional.",
+
+        "subtitulo6_calculo_reciclaje": "Tlamilistli",
+        "subtitulo7_calculo_reciclaje": "Tlanemilolli",
+
+        "conclusion_calculo_reciclaje": "In centro de acopio escolar omosemili quen se espacio formativo tlen quinyolehua conciencia ambiental huan participación comunitaria. Ica separación responsable de residuos huan reducción de desechables, quichicahua in corresponsabilidad entre estudiantes, docentes huan directivos, huan quitenextia in compromiso institucional ica sostenibilidad huan transformación social.",
+
+        "pregunta_calculo_reciclaje": "Tla nochi escuelas de México quiseliseh prácticas de reciclaje huan quipoloseh in uso de desechables calijtic, ¿huelis timottiliseh se reducción significativa de la contaminación ipan to país?",
+
+        "imagen1_calculo_reciclaje": "Achto tlaixcopincayotl de Resultados de Autoevaluación",
+        "imagen2_calculo_reciclaje": "Ome tlaixcopincayotl de Resultados de Autoevaluación",
+        "imagen3_calculo_reciclaje": "Yeyi tlaixcopincayotl de Resultados de Autoevaluación",
+        "imagen4_calculo_reciclaje": "Nahui tlaixcopincayotl de Resultados de Autoevaluación",
+        "imagen5_calculo_reciclaje": "Macuili tlaixcopincayotl de Resultados de Autoevaluación",
+        "imagen6_calculo_reciclaje": "Chicuace tlaixcopincayotl de Resultados de Autoevaluación",
+
+        "boton_inicio_calculo_reciclaje": "Pehualiztli"
+    }
 };
