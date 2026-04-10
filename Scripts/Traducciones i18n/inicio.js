@@ -22,7 +22,9 @@ export const inicio = {
         "boton_descargables_inicio": "Material TS–CH–FS–ED",
         "boton_calculo_reciclaje_inicio": "Cálculo de reciclaje",
         "boton_admin_asignaciones_inicio": "Admin asignaciones",
-        "boton_admin_usuarios_inicio": "Admin usuarios"
+        "boton_admin_usuarios_inicio": "Admin usuarios",
+
+        "creditos_creadores_inicio": "© Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026)."
     },
     en: {
         "titulo_inicio": "Collection Center for Responsible Recycling at CBTis No. 153",
@@ -47,7 +49,9 @@ export const inicio = {
         "boton_descargables_inicio": "Material TS–CH–FS–ED",
         "boton_calculo_reciclaje_inicio": "Recycling calculator",
         "boton_admin_asignaciones_inicio": "Admin assignments",
-        "boton_admin_usuarios_inicio": "Admin users"
+        "boton_admin_usuarios_inicio": "Admin users",
+
+        "creditos_creadores_inicio": "© System proudly developed and donated to CBTis No. 153 by students Francisco Fuentes Capilla and Iván Amaro Tlalpa (2026)."
     },
     nah: {
         "titulo_inicio": "Tlamanalli Tlatēkolistli tlatskaltikpak para nimitstlatikpatlas tlamahuiltilistli ipan CBTis No. 153",
@@ -72,6 +76,8 @@ export const inicio = {
         "boton_descargables_inicio": "Tlatemakilistli: TS–CH–FS–ED",
         "boton_calculo_reciclaje_inicio": "Tlamantli tlacatliztli",
         "boton_admin_asignaciones_inicio": "Tlayecantli tequitlamatiliztli",
-        "boton_admin_usuarios_inicio": "Tlayecantli tlatequihuayan"
+        "boton_admin_usuarios_inicio": "Tlayecantli tlatequihuayan",
+
+        "creditos_creadores_inicio": "© Inin tlanonotzaliztli opeuh ihuan omonequilti ica tlamatiliztli in ompa CBTis No. 153, in tlamachtiltin Francisco Fuentes Capilla ihuan Iván Amaro Tlalpa (2026)."
     },
 };
