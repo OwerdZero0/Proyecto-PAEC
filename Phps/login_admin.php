@@ -55,7 +55,30 @@ if (admin_logueado()) {
             <input type="text" id="usuario" name="usuario" required>
 
             <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" required>
+            <div class="password-wrap">
+                <input type="password" id="password" name="password" required>
+                <button
+                    type="button"
+                    class="toggle-password"
+                    id="togglePassword"
+                    aria-label="Mostrar contraseña"
+                    aria-pressed="false"
+                    title="Mostrar contraseña"
+                >
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <g class="eye-closed">
+                            <path d="M3 3L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M10.6 6.5C11.05 6.17 11.51 6 12 6c4.2 0 7.52 2.55 9 6-0.46 1.07-1.08 2.04-1.82 2.87" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.53 6.53C4.99 7.61 3.78 9.16 3 12c1.8 4.2 5.4 7 9 7 1.52 0 2.94-.31 4.2-.88" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9.88 9.88A3 3 0 0 0 14.12 14.12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <g class="eye-open">
+                            <path d="M2 12C3.8 7.8 7.4 5 12 5s8.2 2.8 10 7c-1.8 4.2-5.4 7-10 7s-8.2-2.8-10-7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </g>
+                    </svg>
+                </button>
+            </div>
 
             <button type="submit">Ingresar</button>
         </form>
@@ -76,5 +99,7 @@ if (admin_logueado()) {
     <footer style="text-align: center; padding: 20px; font-size: 0.85rem; color: #4a4a4a; margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.1);">
         <p>&copy; Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026).</p>
     </footer>
+
+    <script src="../Scripts/script_login_admin.js"></script>
 </body>
 </html>
