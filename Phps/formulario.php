@@ -201,11 +201,11 @@ if (!admin_logueado()) {
 	    2. script_traductor.js:
 	        - mantiene tu sistema de traducción
 	===================================================== -->
+    <footer style="text-align: center; padding: 20px; font-size: 0.85rem; color: #4a4a4a; margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.1);">
+        <p data-i18n="creditos_creadores_formulario">© Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026).</p>
+    </footer>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="../Scripts/script_formulario.js"></script>
 	<script type="module" src="../Scripts/script_traductor.js"></script>
-    <footer style="text-align: center; padding: 20px; font-size: 0.85rem; color: #4a4a4a; margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.1);">
-        <p>&copy; Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026).</p>
-    </footer>
 </body>
 </html>

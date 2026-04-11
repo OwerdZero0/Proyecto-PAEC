@@ -19,7 +19,9 @@ export const formulario = {
 
         "boton_enviar_formulario": "Enviar",
         "boton_inicio_formulario": "Inicio",
-        "boton_basura_formulario": "Borrar"
+        "boton_basura_formulario": "Borrar",
+
+        "creditos_creadores_formulario": "© Sistema desarrollado y donado con orgullo al CBTis No. 153 por los estudiantes Francisco Fuentes Capilla e Iván Amaro Tlalpa (2026)."
     },
 
     en: {
@@ -42,7 +44,9 @@ export const formulario = {
 
         "boton_enviar_formulario": "Submit",
         "boton_inicio_formulario": "Home",
-        "boton_basura_formulario": "Clear"
+        "boton_basura_formulario": "Clear",
+
+        "creditos_creadores_formulario": "© System proudly developed and donated to CBTis No. 153 by students Francisco Fuentes Capilla and Iván Amaro Tlalpa (2026)."
     },
 
     nah: {
@@ -65,6 +69,8 @@ export const formulario = {
 
         "boton_enviar_formulario": "Tlatitlanilli",
         "boton_inicio_formulario": "Pehualiztli",
-        "boton_basura_formulario": "Xipoa"
+        "boton_basura_formulario": "Xipoa",
+
+        "creditos_creadores_formulario": "© Inin tlanonotzaliztli opeuh ihuan omonequilti ica tlamatiliztli in ompa CBTis No. 153, in tlamachtiltin Francisco Fuentes Capilla ihuan Iván Amaro Tlalpa (2026)."
     },
 };
