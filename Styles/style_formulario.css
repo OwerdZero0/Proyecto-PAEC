@@ -228,6 +228,18 @@ body {
     border-color: var(--color-primario);
 }
 
+/* Checkbox centrado (último material solo en su fila) */
+.check_centrado {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+}
+
+.check_centrado label.respuesta {
+    width: 100%;
+    max-width: 340px;
+}
+
 /* Botones */
 .contenedor_botones {
     display: flex;

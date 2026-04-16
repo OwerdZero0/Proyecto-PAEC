@@ -123,6 +123,7 @@ if (!empty($query_filtros)) {
                     <option value="vidrio" <?= ($filtro_material == 'vidrio') ? 'selected' : '' ?>>Vidrio</option>
                     <option value="electrodomesticos" <?= ($filtro_material == 'electrodomesticos') ? 'selected' : '' ?>>Aparatos electrónicos</option>
                     <option value="papel" <?= ($filtro_material == 'papel') ? 'selected' : '' ?>>Papel</option>
+                    <option value="pilas" <?= ($filtro_material == 'pilas') ? 'selected' : '' ?>>Pilas y baterías</option>
                 </select>
             </div>
 
@@ -165,6 +166,7 @@ if (!empty($query_filtros)) {
                                         if($row['material_vidrio']) echo "<span class='badge badge-vidrio'>Vidrio: {$row['cantidad_vidrio']}kg</span>";
                                         if($row['material_electrodomesticos']) echo "<span class='badge badge-electrodomesticos'>Aparatos electrónicos: {$row['cantidad_electrodomesticos']}kg</span>";
                                         if($row['material_papel']) echo "<span class='badge badge-papel'>Papel: {$row['cantidad_papel']}kg</span>";
+                                        if($row['material_pilas']) echo "<span class='badge badge-pilas'>Pilas: {$row['cantidad_pilas']}kg</span>";
                                     ?>
                                     </div>
                                 </td>

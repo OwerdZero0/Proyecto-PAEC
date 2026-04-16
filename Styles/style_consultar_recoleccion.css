@@ -314,6 +314,7 @@ table tr:hover td {
 .badge-vidrio { background-color: #4caf50; }
 .badge-papel { background-color: #ff9800; }
 .badge-electrodomesticos { background-color: #9c27b0; }
+.badge-pilas { background-color: #607d8b; }
 
 /* Boton Inicio Pie */
 .boton-inicio-wrap {

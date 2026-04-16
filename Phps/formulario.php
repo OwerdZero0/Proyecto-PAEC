@@ -147,6 +147,14 @@ if (!admin_logueado()) {
 					<span data-i18n="check6_formulario">Papel (libros y libretas)</span> 
 					<input type="number" min="0" step="any" name="cantidad_papel" class="respuesta"> kg
 				</label>
+
+				<div class="check_centrado">
+					<label class="respuesta">
+						<input id="7" type="checkbox" class="check" name="material_pilas" value="1"> 
+						<span data-i18n="check7_formulario">Pilas y baterías</span> 
+						<input type="number" min="0" step="any" name="cantidad_pilas" class="respuesta"> kg
+					</label>
+				</div>
 			</div>
 			
 			<br><br>
