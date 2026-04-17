@@ -69,3 +69,28 @@ function descargar_energia() {
     link.download = nombreArchivos[idiomaGuardado]["energia"];
     link.click();
 }
+
+/* ── Tap-to-Flip para dispositivos táctiles (≤768px) ── */
+document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.card_padre');
+
+    cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+            // Solo activar tap-to-flip en pantallas ≤768px
+            if (window.innerWidth > 768) return;
+
+            // No voltear si el usuario tocó el botón de descarga
+            if (e.target.tagName === 'INPUT') return;
+
+            // Cerrar cualquier otra tarjeta abierta
+            cards.forEach(function (other) {
+                if (other !== card) {
+                    other.classList.remove('flipped');
+                }
+            });
+
+            // Alternar la tarjeta actual
+            card.classList.toggle('flipped');
+        });
+    });
+});

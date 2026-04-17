@@ -683,6 +683,20 @@ table td form button {
         width: 100%;
     }
 
+    .form-busqueda {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-busqueda input[type="text"] {
+        width: 100%;
+        flex: none;
+    }
+
+    .form-busqueda button {
+        width: 100%;
+    }
+
     table {
         font-size: 0.78rem;
     }
@@ -817,6 +831,7 @@ table td form button {
 ========================= */
 .form-busqueda {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
     align-items: center;
@@ -824,10 +839,12 @@ table td form button {
 
 .form-busqueda input[type="text"] {
     flex: 1;
+    min-width: 0;
     margin-bottom: 0;
 }
 
 .form-busqueda button {
     margin-top: 0;
     padding: 11px 20px;
+    white-space: nowrap;
 }
