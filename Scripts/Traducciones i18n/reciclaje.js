@@ -1,6 +1,6 @@
 export const reciclaje = {
     es: {
-        "titulo_proceso_proyecto": "Proceso del Proyecto",
+        "titulo_proceso_proyecto": "Etapas de nuestro proyecto escolar",
 
         "subtitulo1_proceso_proyecto": "Etapa 1: Identificación del problema",
         "informacion1_1_proceso_proyecto": "El proyecto inicia con la detección de una problemática ambiental dentro y fuera del plantel. Se observa un exceso de basura en la escuela por el uso frecuente de desechables en cafeterías y comedores escolares.",
@@ -56,7 +56,7 @@ export const reciclaje = {
     },
 
     en: {
-        "titulo_proceso_proyecto": "Project Process",
+        "titulo_proceso_proyecto": "Stages of our school project",
 
         "subtitulo1_proceso_proyecto": "Stage 1: Problem identification",
         "informacion1_1_proceso_proyecto": "The project begins with the detection of an environmental problem inside and outside the school. An excess of waste is observed due to the frequent use of disposable products in cafeterias and school dining areas.",
@@ -112,7 +112,7 @@ export const reciclaje = {
     },
 
     nah: {
-        "titulo_proceso_proyecto": "Iojhui in Proyecto",
+        "titulo_proceso_proyecto": "Tlamachtiliztli tlaixpanoltiliztli",
 
         "subtitulo1_proceso_proyecto": "Achto etapa: Nesi in problema",
         "informacion1_1_proceso_proyecto": "Inin proyecto pehua ica quimattizque se problema ambiental calijtic huan calteno. Mita miyac basura ipan escuela ipampa motequitia desechables ipan cafeterías huan comedores escolares.",

@@ -106,6 +106,12 @@ body {
     transition: var(--transicion-suave);
 }
 
+/* Imagen completa sin recorte (Etapa 8) */
+.img-completa {
+    object-fit: contain !important;
+    background-color: #FFF9F2;
+}
+
 .contenedor1 img:hover, .contenedor2 img:hover {
     transform: scale(1.02);
     box-shadow: var(--sombra-hover);
