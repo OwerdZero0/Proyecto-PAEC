@@ -555,6 +555,20 @@ table td form[onsubmit] button {
 ========================= */
 
 @media (max-width: 900px) {
+    /* Forzar visibilidad en móviles para evitar bugs de animaciones */
+    .contenedor,
+    .card,
+    .tabla,
+    .mensaje,
+    .mensaje.ok,
+    .mensaje.error,
+    .mensaje.info {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
     body {
         padding: 24px 12px;
     }
@@ -585,6 +599,20 @@ table td form[onsubmit] button {
 
     .acciones-superiores {
         gap: 8px;
+    }
+
+    .form-busqueda {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-busqueda input[type="text"] {
+        width: 100%;
+        flex: none;
+    }
+
+    .form-busqueda button {
+        width: 100%;
     }
 }
 
@@ -644,20 +672,6 @@ table td form[onsubmit] button {
     }
 
     .fila-form button {
-        width: 100%;
-    }
-
-    .form-busqueda {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .form-busqueda input[type="text"] {
-        width: 100%;
-        flex: none;
-    }
-
-    .form-busqueda button {
         width: 100%;
     }
 

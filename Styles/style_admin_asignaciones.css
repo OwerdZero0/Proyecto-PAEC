@@ -579,6 +579,18 @@ table td form button {
 ========================= */
 
 @media (max-width: 900px) {
+    /* Forzar visibilidad en móviles para evitar bugs de animaciones */
+    .contenedor,
+    .card,
+    .tabla,
+    .mensaje-ok,
+    .mensaje-error {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
     body {
         padding: 24px 12px;
     }
@@ -617,6 +629,20 @@ table td form button {
     .card,
     .tabla {
         padding: 20px 16px;
+    }
+
+    .form-busqueda {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-busqueda input[type="text"] {
+        width: 100%;
+        flex: none;
+    }
+
+    .form-busqueda button {
+        width: 100%;
     }
 }
 
@@ -680,20 +706,6 @@ table td form button {
     }
 
     .form-eliminar button {
-        width: 100%;
-    }
-
-    .form-busqueda {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .form-busqueda input[type="text"] {
-        width: 100%;
-        flex: none;
-    }
-
-    .form-busqueda button {
         width: 100%;
     }
 
