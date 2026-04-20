@@ -19,6 +19,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Quita el flash azul en móviles */
+    -webkit-text-size-adjust: 100%;           /* Evita que el navegador cambie el tamaño del texto al girar el cel */
+    box-sizing: border-box;                   /* Evita problemas con el padding y el tamaño */
+    user-select: none;                        /* Evita que el usuario seleccione el texto */
+    -webkit-user-select: none;                /* Safari y Chrome móvil */
+    -webkit-touch-callout: none;              /* Evita el menú de "Copiar" en iOS */
 }
 
 @keyframes gradienteVivo {
@@ -400,4 +406,4 @@ tr:nth-child(even) td {
         font-size: 1.3rem;
     }
 }
-
+
