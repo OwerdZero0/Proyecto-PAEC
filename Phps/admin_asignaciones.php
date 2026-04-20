@@ -256,7 +256,7 @@ $grupos_disponibles = mysqli_query($conexion, "
                 <input type="text" id="nombre_grupo" name="nombre_grupo" placeholder="Ejemplo: 1AMC" required>
 
                 <label for="ciclo_escolar">Ciclo escolar</label>
-                <input type="text" id="ciclo_escolar" name="ciclo_escolar" placeholder="Ejemplo: 2025-2026" required>
+                <input type="text" id="ciclo_escolar" name="ciclo_escolar" placeholder="Ejemplo: Febrero 2026 - Julio 2026" required>
 
                 <label for="turno">Turno</label>
                 <select id="turno" name="turno" required>
