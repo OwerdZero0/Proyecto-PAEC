@@ -148,13 +148,17 @@ if (!admin_logueado()) {
 					<input type="number" min="0" step="any" name="cantidad_papel" class="respuesta"> kg
 				</label>
 
-				<div class="check_centrado">
-					<label class="respuesta">
-						<input id="7" type="checkbox" class="check" name="material_pilas" value="1"> 
-						<span data-i18n="check7_formulario">Pilas y baterías</span> 
-						<input type="number" min="0" step="any" name="cantidad_pilas" class="respuesta"> kg
-					</label>
-				</div>
+				<label class="respuesta">
+					<input id="7" type="checkbox" class="check" name="material_pilas" value="1"> 
+					<span data-i18n="check7_formulario">Pilas y baterías</span> 
+					<input type="number" min="0" step="any" name="cantidad_pilas" class="respuesta"> kg
+				</label>
+
+				<label class="respuesta">
+					<input id="8" type="checkbox" class="check" name="material_aluminio" value="1"> 
+					<span data-i18n="check8_formulario">Aluminio</span> 
+					<input type="number" min="0" step="any" name="cantidad_aluminio" class="respuesta"> kg
+				</label>
 			</div>
 			
 			<br><br>

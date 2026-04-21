@@ -14,6 +14,8 @@ export const formulario = {
         "check4_formulario": "Vidrio",
         "check5_formulario": "Aparatos electronicos",
         "check6_formulario": "Papel (libros y libretas)",
+        "check7_formulario": "Pilas y baterías",
+        "check8_formulario": "Aluminio",
 
         "pregunta2_2_formulario": "Observaciones:",
 
@@ -39,6 +41,8 @@ export const formulario = {
         "check4_formulario": "Glass",
         "check5_formulario": "Electronic devices",
         "check6_formulario": "Paper (books and notebooks)",
+        "check7_formulario": "Batteries",
+        "check8_formulario": "Aluminum",
 
         "pregunta2_2_formulario": "Remarks:",
 
@@ -64,6 +68,8 @@ export const formulario = {
         "check4_formulario": "Vidrio",
         "check5_formulario": "Aparatos electronicos",
         "check6_formulario": "Papel (amoxmeh huan cuadernos)",
+        "check7_formulario": "Pilas huan baterias",
+        "check8_formulario": "Aluminio",
 
         "pregunta2_2_formulario": "Tlayecoliztli:",
 

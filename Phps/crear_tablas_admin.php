@@ -143,6 +143,8 @@ CREATE TABLE IF NOT EXISTS recoleccion (
     cantidad_papel DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     material_pilas TINYINT(1) NOT NULL DEFAULT 0,
     cantidad_pilas DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    material_aluminio TINYINT(1) NOT NULL DEFAULT 0,
+    cantidad_aluminio DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     observaciones VARCHAR(250) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ";

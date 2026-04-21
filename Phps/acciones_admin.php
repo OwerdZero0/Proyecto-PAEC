@@ -382,6 +382,7 @@ if ($accion === 'guardar_recoleccion') {
     $material_electrodomesticos = isset($_POST['material_electrodomesticos']) ? 1 : 0;
     $material_papel = isset($_POST['material_papel']) ? 1 : 0;
     $material_pilas = isset($_POST['material_pilas']) ? 1 : 0;
+    $material_aluminio = isset($_POST['material_aluminio']) ? 1 : 0;
 
     if ($fecha_entrega === '') {
         redirigir_formulario('error', 'La fecha de entrega es obligatoria.');
@@ -407,7 +408,8 @@ if ($accion === 'guardar_recoleccion') {
         $material_vidrio === 0 &&
         $material_electrodomesticos === 0 &&
         $material_papel === 0 &&
-        $material_pilas === 0
+        $material_pilas === 0 &&
+        $material_aluminio === 0
     ) {
         redirigir_formulario('error', 'Debes seleccionar al menos un material entregado.');
     }
@@ -431,6 +433,7 @@ if ($accion === 'guardar_recoleccion') {
     $cantidad_electrodomesticos = obtener_decimal_post('cantidad_electrodomesticos');
     $cantidad_papel = obtener_decimal_post('cantidad_papel');
     $cantidad_pilas = obtener_decimal_post('cantidad_pilas');
+    $cantidad_aluminio = obtener_decimal_post('cantidad_aluminio');
 
     if (
         $cantidad_pet === null ||
@@ -439,7 +442,8 @@ if ($accion === 'guardar_recoleccion') {
         $cantidad_vidrio === null ||
         $cantidad_electrodomesticos === null ||
         $cantidad_papel === null ||
-        $cantidad_pilas === null
+        $cantidad_pilas === null ||
+        $cantidad_aluminio === null
     ) {
         redirigir_formulario('error', 'Todas las cantidades deben ser numéricas y mayores o iguales a 0.');
     }
@@ -451,7 +455,8 @@ if ($accion === 'guardar_recoleccion') {
         ($material_vidrio === 1 && $cantidad_vidrio <= 0) ||
         ($material_electrodomesticos === 1 && $cantidad_electrodomesticos <= 0) ||
         ($material_papel === 1 && $cantidad_papel <= 0) ||
-        ($material_pilas === 1 && $cantidad_pilas <= 0)
+        ($material_pilas === 1 && $cantidad_pilas <= 0) ||
+        ($material_aluminio === 1 && $cantidad_aluminio <= 0)
     ) {
         redirigir_formulario('error', 'La cantidad de los materiales seleccionados no puede ser de 0 kg.');
     }
@@ -477,6 +482,9 @@ if ($accion === 'guardar_recoleccion') {
     if ($material_pilas === 0) {
         $cantidad_pilas = 0.00;
     }
+    if ($material_aluminio === 0) {
+        $cantidad_aluminio = 0.00;
+    }
 
     $stmt = mysqli_prepare(
         $conexion,
@@ -498,8 +506,10 @@ if ($accion === 'guardar_recoleccion') {
             cantidad_papel,
             material_pilas,
             cantidad_pilas,
+            material_aluminio,
+            cantidad_aluminio,
             observaciones
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
     );
 
     if (!$stmt) {
@@ -508,7 +518,7 @@ if ($accion === 'guardar_recoleccion') {
 
     mysqli_stmt_bind_param(
         $stmt,
-        'sssididididididids',
+        'sssidididididididids',
         $fecha_entrega,
         $responsable_entrega,
         $grupo_entrega,
@@ -526,6 +536,8 @@ if ($accion === 'guardar_recoleccion') {
         $cantidad_papel,
         $material_pilas,
         $cantidad_pilas,
+        $material_aluminio,
+        $cantidad_aluminio,
         $observaciones
     );
 
