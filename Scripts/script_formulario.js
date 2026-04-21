@@ -184,7 +184,9 @@ document.addEventListener('DOMContentLoaded', async function () {
             if (check.checked) {
                 inputCantidad.required = true;
                 inputCantidad.disabled = false;
-                inputCantidad.min = "0.01";
+                inputCantidad.min = "0.001";
+                inputCantidad.max = "9999999999.999";
+                inputCantidad.step = "0.001";
             } else {
                 inputCantidad.required = false;
                 inputCantidad.value = '';
@@ -244,6 +246,39 @@ document.addEventListener('DOMContentLoaded', async function () {
     ===================================================== */
     checks.forEach(check => {
         check.addEventListener('change', actualizarCamposMaterial);
+    });
+
+    /* -----------------------------------------------------
+        RESTRINGIR A 10 ENTEROS Y 3 DECIMALES EN TIEMPO REAL
+    ----------------------------------------------------- */
+    const inputsCantidades = document.querySelectorAll('.cantidad_entrega input[type="number"]');
+    inputsCantidades.forEach(input => {
+        input.addEventListener('input', function() {
+            let val = this.value;
+            if (val.includes('.')) {
+                let parts = val.split('.');
+                let entero = parts[0];
+                let decimal = parts[1] || '';
+                
+                if (entero.length > 10) {
+                    entero = entero.slice(0, 10);
+                }
+                if (decimal.length > 3) {
+                    decimal = decimal.slice(0, 3);
+                }
+                
+                // Si el input comenzó con . (ej: .5)
+                if (entero === "" && val.startsWith('.')) {
+                    entero = "0";
+                }
+                
+                this.value = `${entero}.${decimal}`;
+            } else {
+                if (val.length > 10) {
+                    this.value = val.slice(0, 10);
+                }
+            }
+        });
     });
 
     /* =====================================================

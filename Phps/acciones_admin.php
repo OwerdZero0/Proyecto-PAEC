@@ -40,7 +40,7 @@ function obtener_decimal_post($campo) {
     $valor = trim((string)($_POST[$campo] ?? ''));
 
     if ($valor === '') {
-        return 0.00;
+        return '0.000';
     }
 
     $valor = str_replace(',', '.', $valor);
@@ -55,7 +55,7 @@ function obtener_decimal_post($campo) {
         return null;
     }
 
-    return round($numero, 2);
+    return number_format($numero, 3, '.', '');
 }
 
 /* =========================================
@@ -462,28 +462,28 @@ if ($accion === 'guardar_recoleccion') {
     }
 
     if ($material_pet === 0) {
-        $cantidad_pet = 0.00;
+        $cantidad_pet = '0.000';
     }
     if ($material_carton === 0) {
-        $cantidad_carton = 0.00;
+        $cantidad_carton = '0.000';
     }
     if ($material_tapas === 0) {
-        $cantidad_tapas = 0.00;
+        $cantidad_tapas = '0.000';
     }
     if ($material_vidrio === 0) {
-        $cantidad_vidrio = 0.00;
+        $cantidad_vidrio = '0.000';
     }
     if ($material_electrodomesticos === 0) {
-        $cantidad_electrodomesticos = 0.00;
+        $cantidad_electrodomesticos = '0.000';
     }
     if ($material_papel === 0) {
-        $cantidad_papel = 0.00;
+        $cantidad_papel = '0.000';
     }
     if ($material_pilas === 0) {
-        $cantidad_pilas = 0.00;
+        $cantidad_pilas = '0.000';
     }
     if ($material_aluminio === 0) {
-        $cantidad_aluminio = 0.00;
+        $cantidad_aluminio = '0.000';
     }
 
     $stmt = mysqli_prepare(
@@ -518,7 +518,7 @@ if ($accion === 'guardar_recoleccion') {
 
     mysqli_stmt_bind_param(
         $stmt,
-        'sssidididididididids',
+        'sssisisisisisisisiss',
         $fecha_entrega,
         $responsable_entrega,
         $grupo_entrega,

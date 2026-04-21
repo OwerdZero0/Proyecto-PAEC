@@ -23,7 +23,7 @@ if (!admin_logueado()) {
 	    -----------------------------------------------------
 	    Aquí se carga el archivo CSS del formulario.
 	===================================================== -->
-	<link rel="stylesheet" href="../Styles/style_formulario.css">
+	<link rel="stylesheet" href="../Styles/style_formulario.css?v=1.0.3">
 
 	<title>Formulario</title>
 </head>
@@ -115,49 +115,49 @@ if (!admin_logueado()) {
 				<label class="respuesta">
 					<input id="1" type="checkbox" class="check" name="material_pet" value="1"> 
 					<span data-i18n="check1_formulario">PET (botellas de plástico)</span> 
-					<input type="number" min="0" step="any" name="cantidad_pet" class="respuesta"> kg
+					<input type="number" min="0.001" max="9999999999.999" step="0.001" name="cantidad_pet" class="respuesta"> kg
 				</label>
 				
 				<label class="respuesta">
 					<input id="2" type="checkbox" class="check" name="material_carton" value="1"> 
 					<span data-i18n="check2_formulario">Cartón</span>
-					<input type="number" min="0" step="any" name="cantidad_carton" class="respuesta"> kg
+					<input type="number" min="0.001" max="9999999999.999" step="0.001" name="cantidad_carton" class="respuesta"> kg
 				</label>
 				
 				<label class="respuesta">
 					<input id="3" type="checkbox" class="check" name="material_tapas" value="1"> 
 					<span data-i18n="check3_formulario">Tapas plástico</span>
-					<input type="number" min="0" step="any" name="cantidad_tapas" class="respuesta"> kg
+					<input type="number" min="0.001" max="9999999999.999" step="0.001" name="cantidad_tapas" class="respuesta"> kg
 				</label>
 				
 				<label class="respuesta">
 					<input id="4" type="checkbox" class="check" name="material_vidrio" value="1"> 
 					<span data-i18n="check4_formulario">Vidrio</span>
-					<input type="number" min="0" step="any" name="cantidad_vidrio" class="respuesta"> kg
+					<input type="number" min="0.001" max="9999999999.999" step="0.001" name="cantidad_vidrio" class="respuesta"> kg
 				</label>
 				
 				<label class="respuesta">
 					<input id="5" type="checkbox" class="check" name="material_electrodomesticos" value="1"> 
 					<span data-i18n="check5_formulario">Aparatos electrónicos</span> 
-					<input type="number" min="0" step="any" name="cantidad_electrodomesticos" class="respuesta"> kg
+					<input type="number" min="0.001" max="9999999999.999" step="0.001" name="cantidad_electrodomesticos" class="respuesta"> kg
 				</label>
 				
 				<label class="respuesta">
 					<input id="6" type="checkbox" class="check" name="material_papel" value="1"> 
 					<span data-i18n="check6_formulario">Papel (libros y libretas)</span> 
-					<input type="number" min="0" step="any" name="cantidad_papel" class="respuesta"> kg
+					<input type="number" min="0.001" max="9999999999.999" step="0.001" name="cantidad_papel" class="respuesta"> kg
 				</label>
 
 				<label class="respuesta">
 					<input id="7" type="checkbox" class="check" name="material_pilas" value="1"> 
 					<span data-i18n="check7_formulario">Pilas y baterías</span> 
-					<input type="number" min="0" step="any" name="cantidad_pilas" class="respuesta"> kg
+					<input type="number" min="0.001" max="9999999999.999" step="0.001" name="cantidad_pilas" class="respuesta"> kg
 				</label>
 
 				<label class="respuesta">
 					<input id="8" type="checkbox" class="check" name="material_aluminio" value="1"> 
 					<span data-i18n="check8_formulario">Aluminio</span> 
-					<input type="number" min="0" step="any" name="cantidad_aluminio" class="respuesta"> kg
+					<input type="number" min="0.001" max="9999999999.999" step="0.001" name="cantidad_aluminio" class="respuesta"> kg
 				</label>
 			</div>
 			
